@@ -1,0 +1,67 @@
+﻿<div style="margin-top:10px;">
+    <div style="margin:20px;">
+        <div>
+            <div class="form-group">
+                <label>Training</label>
+                <select [(ngModel)]="trainingId" class="form-control">
+                    <option value="0">--Select--</option>
+                    <option *ngFor="let training of trainingList"
+                            value={{training.TrainingId}}>
+                        {{training.TrainingNeed}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Start Date</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control validation-field" [(ngModel)]="startDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-addon" (click)="d.toggle()">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>End Date</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="endDate" ngbDatepicker #d1="ngbDatepicker">
+                        <div class="input-group-addon" (click)="d1.toggle()">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary" value="Filter" (click)="getTrainingReport()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+    <p-dataTable [value]="trainingReportData" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                 #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords"
+                 sortField="TrainingNeed" [lazy]="true"  (onLazyLoad)="loadTrainingReportLazy($event)">
+        <p-header>
+        <div class="ui-helper-clearfix">
+            <button type="button" pButton icon="fa-file-o" iconPos="left" label="Download" (click)="exportCSV()" style="float:left"></button>
+        </div>
+        </p-header>
+        <!--<p-footer></p-footer>-->
+        <p-column field="TrainingNeed" header="Training" [sortable]="true"></p-column>
+        <p-column field="TraineeName" header="Trainee" [sortable]="true"></p-column>
+        <p-column field="TrainerName" header="Trainer" [sortable]="true"></p-column>
+        <p-column field="AttemptDate" header="Date Attended" [sortable]="true">
+            <ng-template let-col let-report="rowData" pTemplate="body">
+                <span>{{report.AttemptDate}}</span>
+            </ng-template>
+        </p-column>
+        <p-column field="Score" header="Score" [sortable]="true">
+            <ng-template let-report="rowData" pTemplate="body">
+                <span>{{report.Score != null?  report.Score + '/' + report.TotalScore: ''}}</span>
+            </ng-template>
+        </p-column>
+        <p-column field="TrainerComment" header="Trainer Comment" [sortable]="true"></p-column>
+        <p-column field="TraineeComment" header="Trainee Comment" [sortable]="true"></p-column>
+    </p-dataTable>

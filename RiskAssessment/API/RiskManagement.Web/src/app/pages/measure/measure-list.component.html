@@ -1,0 +1,209 @@
+﻿<div class="modal-body">
+    <div class="form-group">
+
+        <p-dataTable [value]="measureList" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                     resizableColumns="true" sortField="StartDate" #dt [responsive]="true">
+
+            <p-column field="Description" header="Measure" [filter]="true" [sortable]="true"></p-column>
+            <p-column field="Frequency.Description" header="Frequency" [filter]="true" [sortable]="true"></p-column>-->
+            <p-column field="Target" header="Target" [filter]="true" [sortable]="true"></p-column>
+            <p-column header="Columns">
+                <ng-template let-col let-cols="rowData" pTemplate="body">
+                    <div class="form-group" [hidden]="cols.MeasureColumns.length ==0">
+                        <span>{{cols.MeasureColumns.length}} &nbsp;Columns &nbsp; <i data-toggle="modal" (click)="getMeasureColumns(cols.MeasureColumns)" data-target="#lg-modal-cols" class="fa fa-info" aria-hidden="true"></i></span>
+                    </div>
+                </ng-template>
+            </p-column>
+            <p-column header="Objectives">
+                <ng-template let-col let-cols="rowData" pTemplate="body">
+                    <div class="form-group" [hidden]="cols.MeasureObjectives.length ==0">
+                        <span>{{cols.MeasureObjectives.length}} &nbsp;Objectives &nbsp; <i data-toggle="modal" (click)="getMeasureObjectives(cols.MeasureObjectives)" data-target="#lg-modal-objs" class="fa fa-info" aria-hidden="true"></i></span>
+                    </div>
+                </ng-template>
+            </p-column>
+            <p-column header="Data">
+                <ng-template let-col let-cols="rowData" pTemplate="body">
+                    <div class="form-group">
+                        <span>
+                            Data &nbsp; <i data-toggle="modal" (click)="getMeasureColumnsData(cols.MeasureId)" data-target="#lg-modal-dataview" class="fa fa-info" aria-hidden="true"></i>
+                            &nbsp; <i data-toggle="modal" (click)="showChart(cols.MeasureId)" data-target="#lg-modalChart" class="fa fa-line-chart" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </ng-template>
+            </p-column>
+            <p-column field="LastDate" header="Last Date" [filter]="false" [sortable]="false"></p-column>
+            <p-column field="NextDate" header="Next Date" [filter]="false" [sortable]="false"></p-column>
+            <p-column styleClass="col-button">
+                <ng-template pTemplate="header">
+                    <div class="form-group" style="width:100%">
+                        <button type="button" class="btn btn-primary" pButton icon="fa-plus" (click)="redirectToNewPage()" label="Add">Add New</button>
+                    </div>
+                </ng-template>
+                <ng-template let-cols="rowData" pTemplate="body">
+                    <div class="form-group" [hidden]="cols.MeasureColumns.length ==0">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lg-modal-data" (click)="addEditMeasureColumnData(cols)" label="Add">Add Data</button>
+                    </div>
+                </ng-template>
+            </p-column>
+
+        </p-dataTable>
+
+    </div>
+
+</div>
+
+<!--Columns-->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal-cols" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Column List</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p-dataTable [editable]="true" [value]="measureColumns" [responsive]="true">
+                        <p-column field="ColumnName" header="Column Names"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Objectives-->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal-objs" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Objectives</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p-dataTable [editable]="true" [value]="measureObjectives" [responsive]="true">
+                        <p-column field="Description" header="Objectives"></p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Columns Data-->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal-dataview" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Data</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p-dataTable [editable]="true" [value]="measureColumnsDataByDate" [responsive]="true">
+                        <p-column field="Date" header="Date" [sortable]="true">
+                            <ng-template let-col let-report="rowData" pTemplate="body">
+                                <label>{{report.Date | date: 'dd/MM/yyyy'}}</label>
+                            </ng-template>
+                        </p-column>
+                        <p-column header="Data">
+                            <ng-template let-col let-report="rowData" pTemplate="body">
+                                <div class="form-group" *ngFor="let data of report.MeasureColumnData">
+                                    <label><h6>{{data.ColumnName}}</h6></label>&nbsp;:&nbsp;
+                                    <input type="text" readonly [ngModel]="data.ColumnValue" />
+                                </div>
+                            </ng-template>
+                        </p-column>
+                    </p-dataTable>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Column Data Form-->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal-data" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Add Data</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Date</label>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control validation-field" [(ngModel)]="columnDataDate" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-addon" (click)="d.toggle()">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                        <small [hidden]="columnDataDate" class="text-danger">
+                            Date is required
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div *ngFor="let column of measureColumnsData;let i=index;">
+                        <div class="form-group">
+                            <label><b>{{column.ColumnName}} </b></label>
+                            <div class="form-group">
+                                <input type="number" min="0" class="form-control" rows="5" [(ngModel)]="column.ColumnValue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" #closeDialog data-dismiss="modal" class="btn btn-primary" value="Save" (click)="saveMeasureColumnData()" [disabled]="!columnDataDate" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lg-modalChart" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display:none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Measure Chart </h4>
+                <button #closeDialogChart type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" style="overflow:scroll">
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="startDate" [(ngModel)]="startDate" ngbDatepicker #p="ngbDatepicker">
+                            <div class="input-group-addon" (click)="p.toggle()">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="endDate" ngbDatepicker #p1="ngbDatepicker">
+                            <div class="input-group-addon" (click)="p1.toggle()">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="filterChartData();" class="btn btn-primary">Get Data</button>
+
+
+                </div>
+                <p-chart type="line" [data]="measureColumnsChartData" [options]="options"></p-chart>
+            </div>
+
+        </div>
+    </div>
+</div>

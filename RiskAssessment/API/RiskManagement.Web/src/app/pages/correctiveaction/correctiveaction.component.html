@@ -1,0 +1,224 @@
+﻿<div class="modal-body">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="saveeventformdata(myForm.value)">
+
+        <div style="border: 1px solid black;margin-top:10px;">
+            <div style="margin:20px;">
+                <div>
+                    <div class="form-group">
+                        <label>Action</label>
+                        <!--<input type="text" formControlName="title" class="form-control">-->
+                        <textarea [attr.disabled]="disabledAllControl? true : null" formControlName="Title" id="Title" rows="6" class="form-control validation-field"></textarea>
+                        <!--display error message if agenda is not valid-->
+                        <small [hidden]="myForm.controls.Title.valid" class="text-danger">
+                            Action is required
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label>Due Date</label>
+                        <!--<input type="text" formControlName="duedate" type="date" class="form-control">-->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input [attr.disabled]="disabledAllControl? true : null" class="form-control validation-field" placeholder="yyyy-mm-dd" name="dueDate" formControlName="dueDateStruct" ngbDatepicker #d="ngbDatepicker">
+                                <div class="input-group-addon" (click)="d.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--display error message if agenda is not valid-->
+                        <small [hidden]="myForm.controls.dueDateStruct.valid" class="text-danger">
+                            Due date is required
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label>Assigned By</label>
+                        <select [attr.disabled]="disabledAllControl? true : null" formControlName="AssignedBy" class="form-control validation-field">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let evebtStatus of responsiblePersonOptions"
+                                    value={{evebtStatus.id}}>
+                                {{evebtStatus.name}}
+                            </option>
+                        </select>
+                        <small [hidden]="myForm.controls.AssignedBy.valid" class="text-danger">
+                            Assigned By is required .
+                        </small>
+                    </div>
+                    <!--<div style="" class="form-group">
+                        <label>Category</label>
+                        <select [attr.disabled]="disabledAllControl? true : null" formControlName="CategoryID" class="form-control validation-field">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let evebtStatus of categoryList"
+                                    value={{evebtStatus.CategoryID}}>
+                                {{evebtStatus.CategoryName}}
+                            </option>
+                        </select>
+                      
+                        <small [hidden]="myForm.controls.CategoryID.valid" class="text-danger">
+                            Category is required .
+                        </small>
+                    </div>-->
+                    <!--<div class="form-group">
+                        <label>Source</label>
+                        <select [attr.disabled]="disabledAllControl? true : null" formControlName="ActionSourceID" class="form-control validation-field">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let evebtStatus of actionSourceList"
+                                    value={{evebtStatus.ActionSourceID}}>
+                                {{evebtStatus.Source}}
+                            </option>
+                        </select>
+                       
+                        <small [hidden]="myForm.controls.ActionSourceID.valid" class="text-danger">
+                            Action Source is required .
+                        </small>
+                    </div>-->
+                    <div>
+                        <label>Root Cause</label>
+                        <textarea [attr.disabled]="disabledAllControl? true : null" formControlName="RootCause" rows="6" class="form-control validation-field"></textarea>
+                        <!--<input type="text" formControlName="title" class="form-control">-->
+                        <!--display error message if agenda is not valid-->
+
+                    </div>
+                    <div class="form-group">
+                        <label>Action Taken</label>
+                        <!--<input type="text" formControlName="title" class="form-control">-->
+                        <textarea [attr.disabled]="disabledAllControl? true : null" formControlName="ActionTaken" rows="6" class="form-control validation-field"></textarea>
+                        <!--display error message if agenda is not valid-->
+                        <small [hidden]="myForm.controls.ActionTaken.valid" class="text-danger">
+                            Action Taken is required
+                        </small>
+                    </div>
+                    <div class="form-group" [hidden]="hiddenControl">
+                        <div class="custom-controls-stacked">
+                            <label class="custom-control custom-checkbox">
+                                <input formControlName="CorrectiveActionNeeded" type="checkbox" class="custom-control-input" checked>
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Corrective Action Needed</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" [hidden]="hiddenControl">
+                        <label>Identified Corrective Action</label>
+                        <!--<input type="text" formControlName="title" class="form-control">-->
+                        <textarea rows="6" formControlName="IdentifiedCorrectiveAction" class="form-control validation-field" ></textarea>
+                        <!--display error message if agenda is not valid-->
+                    </div>
+                    <div class="form-group" [hidden]="hiddenControl">
+                        <label>Risk Level</label>
+                        <select formControlName="RiskLevel" class="form-control validation-field">
+                            <option value="">--Select--</option>
+                            <option value="1">High</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Low</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Assigned To</label>
+                        <ss-multiselect-dropdown [options]="responsiblePersonOptions" [texts]="responsiblePersonTexts" [settings]="responsiblePersonSettings" formControlName="actionResponsiblePersonDataModel"
+                                                 ></ss-multiselect-dropdown>
+                        <small [hidden]="myForm.controls.actionResponsiblePersonDataModel.valid" class="text-danger">
+                            Assigned To is required
+                        </small>
+                    </div>
+                    <div class="form-group" [hidden]="hiddenControl">
+                        <label>Responsible Party</label>
+                        <select formControlName="ResponsibleParty" class="form-control validation-field">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let evebtStatus of responsiblePersonOptions"
+                                    value={{evebtStatus.id}}>
+                                {{evebtStatus.name}}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="form-group" >
+                        <label>Corrective Action Due Date</label>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control" placeholder="yyyy-mm-dd" name="CorrectiveActionDueDateStruct" formControlName="CorrectiveActionDueDateStruct" ngbDatepicker #d1="ngbDatepicker">
+                                <div class="input-group-addon" (click)="d1.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                            <small [hidden]="myForm.controls.CorrectiveActionDueDateStruct.valid" class="text-danger">
+                                Corrective Action Due Date is required
+                            </small>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Date resolved</label>
+                        <!--<input type="text" formControlName="duedate" type="date" class="form-control">-->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control validation-field" placeholder="yyyy-mm-dd" name="dateResolved" formControlName="dateResolved" ngbDatepicker #d2="ngbDatepicker">
+                                <div class="input-group-addon" (click)="d2.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!--display error message if agenda is not valid-->
+                        <small [hidden]="myForm.controls.dueDateStruct.valid" class="text-danger">
+                            Due resolved is required
+                        </small>
+                    </div>
+
+                    <div style="border:1px solid black;margin-top:10px;" [hidden]="hiddenControl">
+                        <div style="margin:20px;" formArrayName="resultList">
+                            <span class="fa fa-plus-square pull-right" (click)="AddMoreResultList()"></span>
+                            <div style="border-bottom:1px solid black;" *ngFor="let agnda of myForm['controls'].resultList['controls']; let i=index">
+                                <div>
+                                    <!--<span>Agenda {{i + 1}}</span>-->
+                                    
+
+
+                                    <span class="fa fa-remove pull-right" *ngIf="myForm.controls.resultList.controls.length > 0" (click)="RemoveList(i)">
+                                    </span>
+                                </div>
+                                <div [formGroupName]="i">
+                                    <!--agenda-->
+                                    <div>
+
+                                        <label>Corrective Action result</label>
+                                        <!--<a (click)="AddMoreAgenda()" style="cursor: default;float:right;">
+                                            +
+                                        </a>-->
+
+                                        <input type="text" formControlName="Result" class="form-control">
+                                        <!--display error message if agenda is not valid-->
+                                        <small [hidden]="myForm.controls.resultList.controls[i].controls.Result.valid" class="text-danger">
+                                            Corrective Action result is required
+                                        </small>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div style="margin:20px;" class="margin-20">
+                            <a (click)="AddMoreAgenda()" style="cursor: default">
+                                Add another Agenda +
+                            </a>
+                        </div>-->
+                    </div>
+
+                    <div class="form-group" [hidden]="hiddenControl">
+                        <div class="custom-controls-stacked">
+                            <label class="custom-control custom-checkbox">
+                                <input formControlName="IssueResolved" type="checkbox" class="custom-control-input" checked>
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Issue Resolved</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- we will place our fields here -->
+        <!--<button type="submit" [disabled]="!myForm.valid">Submit</button>-->
+
+        <div class="modal-footer">
+            <button type="submit" #buttonSubmit class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+        </div>
+    </form>
+</div>

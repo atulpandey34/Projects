@@ -1,0 +1,109 @@
+﻿<form [formGroup]="myFormAudit" novalidate>
+    <!--<div style="margin-top:10px;">
+        <div style="margin:20px;">-->
+    <!--<div class="form-group">
+        <label>Audit</label>
+        <input type="text" formControlName="Title" maxlength="200" class="form-control validation-field" />
+        <small [hidden]="myFormAudit.controls.Title.valid" class="text-danger">
+            Audit is required
+        </small>
+    </div>-->
+
+    <div class="card border-0 box-shadow rounded-0" style="margin-top:5px;">
+        <div class="card-block pt-0">
+            <div style="margin-top:10px;">
+                <div style="margin:20px;">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" formControlName="Subject" readonly="readonly" maxlength="200" class="form-control validation-field" />
+                        <!--<small [hidden]="myFormAudit.controls.Subject.valid" class="text-danger">
+                            Subject is required
+                        </small>-->
+                    </div>
+                    <!--<div class="row">
+                        <div class="col-sm-6">-->
+                    <div class="form-group">
+                        <label>Audit Date</label>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control validation-field" placeholder="yyyy-mm-dd" name="AuditDateStruct" formControlName="AuditDateStruct" ngbDatepicker #d="ngbDatepicker">
+                                <div class="input-group-addon" (click)="d.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <small [hidden]="myFormAudit.controls.AuditDateStruct.valid" class="text-danger">
+                            Audit Date is required
+                        </small>
+                    </div>
+                    <!--</div>
+                    <div class="col-sm-6">-->
+                    <div class="form-group">
+                        <label>Auditee</label>
+                        <select formControlName="AuditeeID" class="form-control">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let al of auditeeList"
+                                    value={{al.id}}>
+                                {{al.name}}
+                            </option>
+                        </select>
+                        <small [hidden]="myFormAudit.controls.AuditeeID.valid" class="text-danger">
+                            Auditee is required
+                        </small>
+                    </div>
+                    <!--</div>
+                    </div>-->
+
+                    <div formArrayName="AuditSubjectQuestionResponses" *ngFor="let auditsubjectquestionform of AuditSubjectQuestionResponses.controls; let j=index">
+                        <div [formGroupName]="j">
+                            <input type="hidden" formControlName="QuestionText" class="form-control validation-field" />
+                            <div class="form-group">
+                                <div>{{ auditsubjectquestionform.controls.QuestionText.value }}</div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <textarea formControlName="Comment" style="width:100%;"></textarea>
+                                    </div>
+                                    <!--<button type="button" pButton icon="fa-camera" style="margin-left:1%;"></button>-->
+                                    <div class="col-sm-1">
+                                        <button type="button" [ngClass]="auditsubjectquestionform.controls.NonComplianceClass.value" pButton icon="fa-wrench" id="buttonNC" label="NC" style="margin-left:1%;margin-bottom:1%;" (click)="toggleNCOB(j,'NC')"></button>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button type="button" [ngClass]="auditsubjectquestionform.controls.ObservationClass.value" pButton icon="fa-bullseye" id="buttonOB" label="OB" style="margin-left:1%;margin-bottom:1%;" (click)="toggleNCOB(j,'OB')"></button>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button type="button" [ngClass]="auditsubjectquestionform.controls.NoneClass.value" pButton icon="fa-ban" id="buttonNone" label="None" style="margin-left:1%;margin-bottom:1%;" (click)="toggleNCOB(j,'NONE')"></button>
+                                    </div>
+                                </div>
+                                <div class="input-group file-upload" style="margin-top:5px;">
+                                    <input type="file" (change)="fileChange(input,j)" #input class="file-upload-btn" />
+                                    <input type="text" class="form-control" placeholder="Choose a file..." value="{{auditsubjectquestionform.controls.fileName.value}}">
+                                    <i class="fa fa-times delete-file" (click)="removeFile(j)" *ngIf="auditsubjectquestionform.controls.fileToUpload.value"></i>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <small [hidden]="auditsubjectquestionform.controls.Comment.valid" class="text-danger">
+                                Comment is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Comment</label>
+                        <textarea formControlName="Comment" style="width:100%;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-toggle="modal" class="btn btn-primary" (click)="SaveAuditReviewFormData(myFormAudit.value)" [disabled]="!myFormAudit.valid">Save</button>
+    </div>
+
+    <!--</div>
+    </div>-->
+</form>
+

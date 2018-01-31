@@ -1,0 +1,24 @@
+﻿<p-dataTable [value]="data" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             #dt resizableColumns="true" reorderableColumns="true" [responsive]="true"  [totalRecords]="totalRecords" (onLazyLoad)="loadCarsLazy($event)">
+    <!--<p-footer>
+    
+    </p-footer>-->
+    <p-column field="Title" [filter]="true" header="Title" [sortable]="true"></p-column>
+    <p-column field="Duedate" [filter]="true" header="Due Date" [sortable]="true"></p-column>
+    <p-column field="EventActionStatusText" [filter]="true" header="Status" [sortable]="true"></p-column>
+    <p-column field="SourceText" header="Source" [sortable]="true"></p-column>
+    <p-column field="AddedBy" [filter]="true" header="Organizer" [sortable]="true"></p-column>
+    <p-column field="AssignedTo" header="Assigned To"></p-column>
+    <p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-plus" style="float:left" (click)="redirectToNewPage()" label="Add"></button>
+            </div>
+        </ng-template>
+        <ng-template let-meeting="rowData" pTemplate="body">
+            <button type="button" title="Edit" pButton (click)="redirectToEditPage(meeting)" icon="fa fa-pencil-square-o"></button>
+            <button type="button" title="Cancel" pButton (click)="deleteAction(meeting)" icon="fa fa-trash-o"></button>
+        </ng-template>
+
+    </p-column>
+</p-dataTable>

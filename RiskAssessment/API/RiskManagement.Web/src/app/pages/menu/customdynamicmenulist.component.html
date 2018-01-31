@@ -1,0 +1,23 @@
+﻿<p-dataTable [value]="data" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadCarsLazy($event)">
+    <!--<p-footer></p-footer>-->
+    <p-column field="Title" header="Title" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="RouterLink" header="Router Link" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="Href" header="Href" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="Icon" header="Icon" [sortable]="true"></p-column>
+    <p-column field="Target" [filter]="true" header="Target" [sortable]="true"></p-column>
+    <p-column field="ParentMenu" header="Parent Menu" [filter]="true" [sortable]="true"></p-column>
+    <p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-plus" (click)="redirectToNewPage()" label="Add"></button>
+            </div>
+        </ng-template>
+        <ng-template let-meeting="rowData" pTemplate="body">
+            <button type="button" title="Edit" pButton (click)="redirectToEditPage(meeting)" icon="fa fa-pencil-square-o"></button>
+            <button type="button" title="Delete" pButton (click)="deleteMenu(meeting)" icon="fa fa-trash-o"></button>
+            <button type="button"  title="Inactive" pButton (click)="inactiveMenu(meeting)" icon="fa fa-ban"></button>
+        </ng-template>
+
+    </p-column>
+</p-dataTable>

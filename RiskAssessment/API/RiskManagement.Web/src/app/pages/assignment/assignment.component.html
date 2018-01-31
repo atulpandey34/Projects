@@ -1,0 +1,179 @@
+﻿<form [formGroup]="myFormAssignment" novalidate (ngSubmit)="SaveAssignmentFormData(myFormAssignment.value,'save')">
+    <div style="margin-top:10px;">
+        <div style="margin:20px;">
+            <div class="form-group">
+                <label>Assignment</label>
+                <input type="text" formControlName="Title" class="form-control validation-field" />
+                <small [hidden]="myFormAssignment.controls.Title.valid" class="text-danger">
+                    Title is required
+                </small>
+            </div>
+            <div class="form-group">
+                <p-checkbox label="Is Active" binary="true"
+                            formControlName="Active"></p-checkbox>
+                <!--<div class="custom-controls-stacked">
+                    <label class="custom-control custom-checkbox">
+                        <input formControlName="Active" type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Is Active</span>
+                    </label>
+                </div>-->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-toggle="modal" class="btn btn-primary" (click)="SaveAssignmentFormData(myFormAssignment.value,'submit')" [disabled]="!myFormAssignment.valid">Save</button>
+            <!--<button type="button" data-toggle="modal" class="btn btn-primary" (click)="SaveAssignmentFormData(myFormAssignment.value)" data-target="#lg-modal" [disabled]="!myFormAssignment.valid" label="Add Question">Add Question</button>-->
+        </div>
+
+    </div>
+</form>
+
+<div class="modal fade" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Question</h4>
+                <button #closeDialog type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" style="overflow:scroll">
+                <form [formGroup]="myFormQuestionAssignment" novalidate (ngSubmit)="SaveAssignmentQuestionFormData(myFormQuestionAssignment.value,'submit')">
+                    <div style="margin-top:10px;">
+                        <div style="margin:20px;">
+                            <div class="form-group">
+                                <label>Question</label>
+                                <input type="text" formControlName="QuestionText" class="form-control validation-field" />
+                                <small [hidden]="myFormQuestionAssignment.controls.QuestionText.valid" class="text-danger">
+                                    Question is required
+                                </small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Score</label>
+                                <input type="text" formControlName="Score" class="form-control validation-field" />
+                                <small [hidden]="myFormQuestionAssignment.controls.Score.valid" class="text-danger">
+                                    Score is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label>Order</label>
+                                <input type="text" formControlName="Order" class="form-control validation-field" />
+                                <small [hidden]="myFormQuestionAssignment.controls.Order.valid" class="text-danger">
+                                    Order is required
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <!--<label>Status</label>
+                                <input type="checkbox" formControlName="Active" class="form-control checkbox validation-field" />-->
+                                <p-checkbox label="Is Active" binary="true"
+                                            formControlName="Active"></p-checkbox>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Question Type</label>
+                                <select formControlName="QuestionType" class="form-control validation-field">
+                                    <option value="">--Select--</option>
+                                    <option value="1">Single Option</option>
+                                    <option value="2">Multiple Option</option>
+                                </select>
+                            </div>
+
+                            <div *ngIf="myFormQuestionAssignment.get('QuestionType').value==2">
+                                <div class="form-group">
+                                    <div class="col-md-4 col-md-offset-2">
+                                        <span>
+                                            <button class="btn btn-primary"
+                                                    type="button"
+                                                    [disabled]="!QuestionOption.valid"
+                                                    (click)="addQuestion()">
+                                                Add Another Option
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div formArrayName="QuestionOption" *ngFor="let address of QuestionOption.controls; let i=index">
+                                    <div>
+                                        <span class="fa fa-remove pull-right" (click)="RemoveQuestion(i)">
+                                        </span>
+                                    </div>
+                                    <div [formGroupName]="i">
+                                        <div class="form-group">
+                                            <label>Option</label>
+                                            <input type="text" formControlName="OptionText" class="form-control validation-field" />
+                                            <small [hidden]="myFormQuestionAssignment.controls.OptionText.valid" class="text-danger">
+                                                Option is required
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="custom-control custom-radio">
+                                                <input name="IsCorrectAnswer" type="radio" (click)="setIsCorrectAnswer(i)"  formControlName="IsCorrectAnswer" class="custom-control-input radio-primary">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Is Corrective Answer</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary"
+                                        type="button"
+                                        (click)="SaveAssignmentQuestionFormData(myFormQuestionAssignment.value,'save')"
+                                        [disabled]="!myFormQuestionAssignment.valid">
+                                    Save
+                                </button>
+                                <button class="btn btn-primary"
+                                        type="button"
+                                        (click)="SaveAssignmentQuestionFormData(myFormQuestionAssignment.value,'saveandadd')"
+                                        [disabled]="!myFormQuestionAssignment.valid">
+                                    Save and Add
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-body">
+    <div class="form-group">
+        <p-dataTable [editable]="true" [value]="questionList" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                     resizableColumns="true" #dtscheduleResult [responsive]="true">
+
+
+            <p-column field="QuestionText" header="Question Text"></p-column>
+            <p-column [style]="{'width':'50px'}" field="Score" header="Score"></p-column>
+            <p-column [style]="{'width':'50px'}" field="Order" header="Order"></p-column>
+            <p-column field="MultipleOptionSet" header="MultipleOptionSet">
+                <ng-template let-options="rowData" pTemplate="body">
+                    <ul>
+                        <li *ngFor="let option of options.AssignmentQuestionOptions">
+                            {{ option.OptionText }}
+                        </li>
+                    </ul>
+                </ng-template>
+            </p-column>
+            <p-column [style]="{'width':'100px'}" field="QuestionType" header="QuestionType">
+                <ng-template let-options="rowData" pTemplate="body">
+                    {{options.QuestionType == 1? 'Single Option' : 'Multiple Option'}}
+                </ng-template>
+                </p-column>
+            <p-column styleClass="col-button">
+                <ng-template pTemplate="header">
+                    <div class="ui-helper-clearfix" style="width:100%">
+                        <button #buttonAddQuestion type="button" pButton icon="fa-plus" data-toggle="modal" (click)="SaveAssignmentFormData(myFormAssignment.value,'addquestion')" data-target="#lg-modal" [disabled]="AssignmentId == 0" label="Add"></button>
+                    </div>
+                </ng-template>
+                <ng-template let-meeting="rowData" pTemplate="body">
+                    <button type="button" title="Edit" pButton (click)="redirectToEditPage(meeting)" icon="fa fa-pencil-square-o"></button>
+                    <button type="button" title="Cancel" pButton (click)="deleteQuestion(meeting)" icon="fa fa-trash-o"></button>
+                </ng-template>
+            </p-column>
+        </p-dataTable>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿.toggleTrue {
+    color: green !important;
+    border-color: black !important;
+    border: 1px !important;
+}
+
+.toggleFalse {
+    color: red !important;
+    border-color: grey !important;
+    border: 0px !important;
+}

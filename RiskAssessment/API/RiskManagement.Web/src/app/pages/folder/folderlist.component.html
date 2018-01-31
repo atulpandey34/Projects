@@ -1,0 +1,67 @@
+﻿<p-dataTable [value]="data" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords" 
+             (onLazyLoad)="loadDocumentFolderList($event)">
+    <p-column field="FolderName" header="Folder Name" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="TotalDocuments" header="Total Documents"></p-column>
+    <p-column field="RoleName" header="Role" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="UserName" header="User" [filter]="true"  [sortable]="true"></p-column>
+    <p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            <div class="ui-helper-clearfix" style="width:100%">
+                <button #buttonFolder type="button" pButton icon="fa-plus" data-toggle="modal" data-target="#lg-modal" label="Add" (click)="clearFolderPopupForm()" ></button>
+             </div>
+        </ng-template>
+        <ng-template let-meeting="rowData" pTemplate="body">
+            <button type="button" (click)="EditFolderDetail(meeting)" title="Edit" pButton icon="fa fa-pencil-square-o" data-toggle="modal" data-target="#lg-modal"></button>
+            
+            <button type="button" title="Cancel" pButton (click)="deleteAction(meeting)" icon="fa fa-trash-o"></button>
+        </ng-template>
+
+    </p-column>
+</p-dataTable>
+
+<div class="modal fade" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Add</h4>
+                <button #closeDialog type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" style="overflow:scroll;height:400px;">
+                <form [formGroup]="folderAddPopup" novalidate (ngSubmit)="SaveFolderFormData(folderAddPopup.value)">
+                    <div style="margin-top:10px;">
+                        <div style="margin:20px;">
+                            <div class="form-group">
+                                <label>Folder Name</label>
+                                <input type="text" formControlName="FolderName" class="form-control validation-field" />
+                                <small [hidden]="folderAddPopup.controls.FolderName.valid" class="text-danger">
+                                    Folder Name is required and must be unique
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label>Role</label>
+                                <ss-multiselect-dropdown [options]="rolesOptions" [texts]="multiselectTexts" [settings]="multiselectSettings" formControlName="Roles"></ss-multiselect-dropdown>
+                            </div>
+                            <div class="form-group">
+                                <label>User</label>
+                                <ss-multiselect-dropdown [options]="userOptions" [texts]="usermultiselectTexts" [settings]="usermultiselectSettings" formControlName="Users"></ss-multiselect-dropdown>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary"
+                                        type="button"
+                                        (click)="SaveFolderFormData(folderAddPopup.value)"
+                                        [disabled]="!folderAddPopup.valid" >
+                                        
+                                    Save
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

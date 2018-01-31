@@ -1,0 +1,259 @@
+﻿<div class="row">
+    <div style="width:100%;">
+        <h6 class="mt-4"></h6>
+        <div class="clearfix">
+            <ul class="nav nav-tabs custom top">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#tabTraining">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.disabled]="disableTabSchedule ? true : null" data-toggle="tab" href="#tabSchedule">Schedule</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="tab-content top">
+            <div class="tab-pane active" id="tabTraining">
+                <div class="modal-body">
+                    <form [formGroup]="myForm" novalidate (ngSubmit)="SaveTraining(myForm.value)">
+                        <div class="form-group">
+                            <label>Training Need</label>
+                            <input type="text" formControlName="TrainingNeed" class="form-control validation-field">
+                            <small *ngIf="!myForm.controls.TrainingNeed.valid" class="text-danger">
+                                Training Need is required.
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-controls-stacked">
+                                <label class="custom-control custom-checkbox">
+                                    <input formControlName="TrainerRequired" type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Is Trainer required?</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Training Type</label>
+                            <div class="custom-controls-stacked">
+                                <label class="custom-control custom-radio">
+                                    <input #trainingTypeEvent name="TrainingType" formControlName="TrainingType" type="radio" (click)="EnableDisableTrainingEvent(1)" [value]="1" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Event</span>
+                                </label>
+                                <select style="width:30%;" formControlName="TrainingEventID" #dropDownTrainingEvent class="form-control">
+                                    <option value="0">--Select--</option>
+                                    <option value="1">Event 1</option>
+                                    <option value="2">Event 2</option>
+                                </select>
+                                <label class="custom-control custom-radio">
+                                    <input #trainingTypeUser name="TrainingType" formControlName="TrainingType" type="radio" [value]="2" (click)="EnableDisableTrainingEvent(2)" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Trainee Specific</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-controls-stacked">
+                                <label class="custom-control custom-checkbox">
+                                    <input #assigmentResuiredCheckBox (click)="EnableDisableAssignmentDropDown()" formControlName="IsAssignmentRequired" type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Is Assigment required?</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Assignment</label>
+                            <select #assignmentDropDown formControlName="AssignmentID" class="form-control">
+                                <option value="0">--Select--</option>
+                                <option *ngFor="let evebtStatus of assignmentList"
+                                        value={{evebtStatus.AssignmentID}}>
+                                    {{evebtStatus.Title}}
+                                </option>
+                            </select>                            
+                        </div>
+                        <div class="form-group">
+                            <label>You Tube Link</label>
+
+                            <input type="text" #youtubelinktextbox formControlName="YouTubeLink" class="form-control validation-field">
+
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group file-upload">
+                                <input type="file" multiple (change)="fileChange($event)" #input class="file-upload-btn" />
+                                <input type="text" class="form-control" placeholder="Choose a file..." value="{{fileName}}">
+                                <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="fileToUpload"></i>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+                            <!--<button type="button" #buttonMaterial data-toggle="modal" data-target="#lg-modal" class="btn btn-primary" [disabled]="!myForm.valid">Add Material</button>-->
+                        </div>
+                    </form>
+                </div>
+
+                <p-dataTable [value]="trainingMaterialList" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                             resizableColumns="true" #dtMaterial [responsive]="true">
+
+
+                    <p-column field="YouTubeLink" header="Link">
+                        <ng-template let-col let-car="rowData" pTemplate="body">
+                            <div class="form-group" [hidden]="car.YouTubeLink ==''">
+                                <a style="text-decoration:underline;" target="_blank" href="{{car.YouTubeLink}}">{{car.YouTubeLink}}</a>
+                            </div>
+                            <div class="form-group" [hidden]="car.FilePath ==null">
+                                <a (click)="downloadMaterial(car.TrainingMaterialId, car.FileName)" *ngIf="car.FilePath !=null" style="text-decoration:underline;" href="javascript:void(0)" >
+                                   <!--href="{{apiEndPoint+'training/DownLoadMaterial?id='+car.TrainingMaterialId}}">-->
+                                {{car.FileName}}</a>
+                            </div>
+                        </ng-template>
+                    </p-column>
+                    <p-column styleClass="col-button">
+                        <ng-template let-meeting="rowData" pTemplate="body">
+                            <button type="button" title="Delete" pButton (click)="deleteMaterial(meeting)" icon="fa fa-trash-o"></button>
+                        </ng-template>
+
+                    </p-column>
+
+                </p-dataTable>
+
+            </div>
+            <div class="tab-pane" id="tabSchedule">
+                <div #divMaterial class="modal-body">
+                    <form [formGroup]="scheduleForm" novalidate (ngSubmit)="saveSchedule(scheduleForm.value)">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <!--<input type="text" formControlName="duedate" type="date" class="form-control">-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control validation-field" placeholder="yyyy-mm-dd" name="StartDateStruct" formControlName="StartDateStruct" ngbDatepicker #d="ngbDatepicker">
+                                    <div class="input-group-addon" (click)="d.toggle()">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--display error message if agenda is not valid-->
+                            <small [hidden]="scheduleForm.controls.StartDateStruct.valid" class="text-danger">
+                                Start date is required
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <!--<input type="text" formControlName="duedate" type="date" class="form-control">-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control validation-field" placeholder="yyyy-mm-dd" name="EndDateStruct" formControlName="EndDateStruct" ngbDatepicker #d1="ngbDatepicker">
+                                    <div class="input-group-addon" (click)="d1.toggle()">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--display error message if agenda is not valid-->
+                            <small [hidden]="scheduleForm.controls.EndDateStruct.valid" class="text-danger">
+                                End date is required
+                            </small>
+                        </div>
+                        <div class="form-group" *ngIf="myForm.controls.TrainerRequired.value">
+                            <label>Trainer</label>
+                            <select  formControlName="Trainer" class="form-control validation-field">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let evebtStatus of trainersList"
+                                        value={{evebtStatus.id}}>
+                                    {{evebtStatus.name}}
+                                </option>
+                            </select>
+                            <!--display error message if name is not valid-->
+                            <small [hidden]="scheduleForm.controls.Trainer.valid" class="text-danger">
+                                Action Status is required .
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>Assigned To</label>
+                            <label class="custom-control custom-radio">
+                                <input #assignedToTrainee [disabled]="myForm.controls.TrainingType.value === 1" type="radio" name="assignedToRadio" (click)="EnableDisableAssignedTo(1)" value="1" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Trainee</span>
+                            </label>
+                            <ss-multiselect-dropdown #userDropdown [options]="usersOptions" [texts]="responsiblePersonTexts" [settings]="responsiblePersonSettings" formControlName="Users"></ss-multiselect-dropdown>
+                            <label class="custom-control custom-radio">
+                                <input [disabled]="myForm.controls.TrainingType.value === 1" type="radio" name="assignedToRadio" (click)="EnableDisableAssignedTo(2)" value="2" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Roles</span>
+                            </label>
+                            <ss-multiselect-dropdown #roleDropdown [options]="rolesOptions" [texts]="rolesTexts" [settings]="rolesSettings" formControlName="Roles"></ss-multiselect-dropdown>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" [disabled]="!scheduleForm.valid && myForm.controls.TrainerRequired.value" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+                <p-dataTable [value]="scheduleListData" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                             resizableColumns="true" sortField="StartDate" #dt [responsive]="true">
+
+
+                    <p-column field="StartDate" header="Start Date"></p-column>
+                    <p-column field="EndDate" header="End Date"></p-column>
+                    <p-column field="Trainer" header="Trainer"></p-column>
+                    <p-column field="UserCount" header="Trainee">
+                        <ng-template let-col let-car="rowData" pTemplate="body">
+                            <div class="form-group" [hidden]="car.UserCount ==0">
+                                <span>{{car.UserCount}} &nbsp;Trainee &nbsp; <i data-toggle="modal" (click)="getTrainingScheduleUserList(car.TrainingScheduleId)" data-target="#lg-modal" class="fa fa-info" aria-hidden="true"></i></span>
+                            </div>
+                            <div class="form-group" [hidden]="car.RoleCount ==0">
+                                <span>{{car.RoleCount}} &nbsp;Users &nbsp; <i data-toggle="modal" (click)="getTrainingScheduleUserList(car.TrainingScheduleId)" data-target="#lg-modal" class="fa fa-info" aria-hidden="true"></i></span>
+                            </div>
+                        </ng-template>
+                    </p-column>
+                    <p-column field="Status" header="Status"></p-column>
+                    <p-column field="Rating" header="Rating"></p-column>
+                    <p-column styleClass="col-button">
+                        <ng-template pTemplate="header">
+                            <div class="ui-helper-clearfix" style="width:100%">
+
+                            </div>
+                        </ng-template>
+                        <ng-template let-meeting="rowData" pTemplate="body">
+                            <button type="button" title="Delete" pButton (click)="deleteSchedule(meeting)" icon="fa fa-trash-o"></button>
+                        </ng-template>
+                    </p-column>
+                </p-dataTable>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<div class="modal fade" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Trainee List</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p-dataTable [value]="trainingScheduleUserList" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                             resizableColumns="true" sortField="UserName" #dt [responsive]="true">
+
+
+                    <p-column field="UserName" header="Trainee"></p-column>
+                    <p-column field="Attended" header="Attended"></p-column>
+                    <p-column field="Signed" header="Signed"></p-column>
+                    <p-column field="UserRating" header="Rating"></p-column>
+                    <p-column field="TraineeComment" header="Trainee Comment"></p-column>
+                    <p-column field="TrainerComment" header="Trainer Comment"></p-column>
+                </p-dataTable>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<iframe  style="display:none;" #iframeDownload src=""></iframe>

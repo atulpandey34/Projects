@@ -1,0 +1,104 @@
+﻿<div class="modal-body">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="saveeventformdata(myForm.value)">
+        <div class="form-group">
+            <label>User Name</label>
+            <input type="text" formControlName="UserName" class="form-control">
+            <small *ngIf="!myForm.controls.UserName.valid" class="text-danger">
+                User Name is required and must be unique.
+            </small>
+        </div>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" formControlName="FirstName" class="form-control">
+            <small *ngIf="!myForm.controls.FirstName.valid" class="text-danger">
+                First Name is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" formControlName="LastName" class="form-control">
+            <small *ngIf="!myForm.controls.LastName.valid" class="text-danger">
+                Last Name is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" formControlName="EmailID" class="form-control">
+            <small *ngIf="!myForm.controls.EmailID.valid" class="text-danger">
+                Email is required and must be unique.
+            </small>
+        </div>
+        <div style="display:none;" class="form-group">
+            <label>Organization</label>
+            <select formControlName="OrganizationID" class="form-control">
+                <option value="">--Select--</option>
+                <option *ngFor="let subtitle of organizationList "
+                        value={{subtitle.OrganizationID}}>
+                    {{subtitle.OrganizationName}}
+                </option>
+            </select>
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.OrganizationID.valid" class="text-danger">
+                Organization is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Role</label>
+            <ss-multiselect-dropdown [options]="multiroleList" 
+                                     [texts]="responsiblePersonTexts" 
+                                     [settings]="responsiblePersonSettings" 
+                                     formControlName="RoleList">
+
+            </ss-multiselect-dropdown>
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.RoleList.valid" class="text-danger">
+                Role is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Security Question 1</label>
+            <select formControlName="SecurityQuestion1" class="form-control" (change)="SecurityQuestion1Changesd($event.target.value)">
+                <option value="">--Select--</option>
+                <option *ngFor="let subtitle of securityQuestionList1 "
+                        value={{subtitle.SecurityQuestionID}}>
+                    {{subtitle.Question}}
+                </option>
+            </select>
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.SecurityQuestion1.valid" class="text-danger">
+                Security Question 1 is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Security Answer 1</label>
+            <input type="text" formControlName="SecurityAnswer1" class="form-control">
+            <small *ngIf="!myForm.controls.SecurityAnswer1.valid" class="text-danger">
+                Security Answer 1 is required.
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Security Question 2</label>
+            <select formControlName="SecurityQuestion2" class="form-control" (change)="SecurityQuestion2Changesd($event.target.value)">
+                <option value="">--Select--</option>
+                <option *ngFor="let subtitle of securityQuestionList2 "
+                        value={{subtitle.SecurityQuestionID}}>
+                    {{subtitle.Question}}
+                </option>
+            </select>
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.SecurityQuestion2.valid" class="text-danger">
+                Security Question 2 is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Security Answer 2</label>
+            <input type="text" formControlName="SecurityAnswer2" class="form-control">
+            <small *ngIf="!myForm.controls.SecurityAnswer2.valid" class="text-danger">
+                Security Answer 2 is required.
+            </small>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+        </div>
+    </form>
+</div>

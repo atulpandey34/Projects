@@ -1,0 +1,354 @@
+﻿<div class="modal-body">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="saveeventformdata(myForm.value)">
+        <div [hidden]="true" class="form-group">
+            <label>Meeting</label>
+            <select formControlName="subTitle" class="form-control">
+                <option value="">--Select--</option>
+                <option *ngFor="let subtitle of subTitleList "
+                        value={{subtitle.id}}>
+                    {{subtitle.name}}
+                </option>
+            </select>
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.subTitle.valid" class="text-danger">
+                Sub title is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Reviewee</label>
+            <select formControlName="Reviewee" class="form-control" #revieweeDropDown (change)="getRevieweeData($event.target.value)">
+                <option value="">--Select--</option>
+                <option *ngFor="let subtitle of userWithRoleList "
+                        value={{subtitle.UserID}}>
+                    {{subtitle.UserName}}
+                </option>
+            </select>
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.Reviewee.valid" class="text-danger">
+                Reviewee is required .
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <select formControlName="location" class="form-control">
+                <option value="">--Select--</option>
+                <option *ngFor="let location of locationList "
+                        value={{location.LocationID}}>
+                    {{location.LocationName }}-{{ location.RoomName}}
+                </option>
+            </select>
+            <!--display error message if name is not valid-->
+            <small *ngIf="!myForm.controls.subTitle.valid" class="text-danger">
+                Location is required .
+            </small>
+        </div>
+
+
+        <div class="form-group">
+            <label>Date</label>
+            <!--<input type="text" formControlName="date" class="form-control" type="date" />-->
+            <!--<form class="form-inline">-->
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="eventDate" formControlName="date" ngbDatepicker #p="ngbDatepicker">
+                    <div class="input-group-addon" (click)="p.toggle()">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+                <small *ngIf="!myForm.controls.date.valid" class="text-danger">
+                    Date is required .
+                </small>
+            </div>
+            <!--</form>-->
+
+        </div>
+        <div class="form-group" style="width:48%;float:right;">
+            <label>End Time</label>
+            <!--<input type="text" class="form-control" formControlName="endTime" />-->
+            <ngb-timepicker formControlName="endTime" class="form-control"></ngb-timepicker>
+            <small *ngIf="!myForm.controls.endTime.valid" class="text-danger">
+                End Time is required .
+            </small>
+        </div>
+        <div class="form-group" style="width:48%;">
+            <label>Start Time</label>
+            <!--<input type="text" class="form-control" formControlName="startTime" />-->
+            <ngb-timepicker formControlName="startTime" class="form-control"></ngb-timepicker>
+            <small *ngIf="!myForm.controls.startTime.valid" class="text-danger">
+                Start Time is required .
+            </small>
+        </div>
+
+        <!--<div>
+            <label>Event Attendees</label>
+            <ss-multiselect-dropdown [options]="myOptions" [texts]="myTexts" [settings]="mySettings" formControlName="eventAttendees"></ss-multiselect-dropdown>
+            <small *ngIf="!myForm.controls.eventAttendees.valid" class="text-danger">
+                Event Attendees is required .
+            </small>
+
+        </div>-->
+        <div style="border:1px solid black;margin-top:10px;">
+            <div style="margin:20px;" formArrayName="agendalist">
+                <span class="fa fa-plus-square pull-right" (click)="AddMoreAgenda()"></span>
+                <div style="border-bottom:1px solid black;" *ngFor="let agnda of myForm['controls'].agendalist['controls']; let i=index">
+                    <div>
+                        <!--<span>Agenda {{i + 1}}</span>-->
+
+
+                        <span class="fa fa-remove pull-right" *ngIf="myForm.controls.agendalist.controls.length > 0" (click)="RemoveAgenda(i)">
+                        </span>
+                    </div>
+                    <div [formGroupName]="i">
+                        <!--agenda-->
+                        <div>
+
+                            <label>Agenda</label>
+                            <!--<a (click)="AddMoreAgenda()" style="cursor: default;float:right;">
+                                +
+                            </a>-->
+
+                            <input type="text" formControlName="title" class="form-control">
+                            <!--display error message if agenda is not valid-->
+                            <small [hidden]="myForm.controls.agendalist.controls[i].controls.title.valid" class="text-danger">
+                                Agenda is required
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--<div style="margin:20px;" class="margin-20">
+                <a (click)="AddMoreAgenda()" style="cursor: default">
+                    Add another Agenda +
+                </a>
+            </div>-->
+        </div>
+        <div style="border:1px solid black;margin-top:10px;" [hidden]="getRoleResponsibilityViewModel.length==0">
+            <div class="form-group">
+                <b>Job Responsibilities</b>
+                <br />
+                <div class="spanWordWrap" *ngFor="let objective of getRoleResponsibilityViewModel">
+
+
+                    <div class="form-group" [hidden]="objective.DocumentPath !=null">
+                        &nbsp;&nbsp;<b>{{objective.SectionName}}</b>
+
+
+                        &nbsp;&nbsp;<div style="margin-left:20px;" [innerHTML]="objective.SectionDetails"></div>
+                    </div>
+
+                    <div class="form-group" [hidden]="objective.DocumentPath ==null">
+                        <a (click)="downloadMaterial(objective.RoleResponsibilityVersionID, objective.DocumentName)" *ngIf="objective.DocumentPath !=null" style="text-decoration:underline;" href="javascript:void(0)">
+                            {{objective.DocumentName}}
+                        </a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div style="border:1px solid black;margin-top:10px;">
+            <div class="form-group" [hidden]="revieweeActionViewModel.length==0">
+                <div class="spanWordWrap" *ngFor="let objective of revieweeActionViewModel">
+                    &nbsp;<b>Actions from {{ objective.CreatedDate}}</b>
+                    <br />
+                    <div class="spanWordWrap" *ngFor="let objective1 of objective.Text">
+                        <b>&nbsp;*&nbsp;</b> {{ objective1}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="border: 1px solid black;margin-top:10px;">
+            <div style="margin:20px;" formArrayName="actionlist">
+                <span class="fa fa-plus-square pull-right" (click)="AddMoreAction()"></span>
+                <div style="border-bottom:1px solid black;" *ngFor="let acton of myForm['controls'].actionlist['controls']; let i=index">
+                    <div>
+                        <!--<span>Agenda {{i + 1}}</span>-->
+
+
+
+
+                        <span class="fa fa-remove pull-right" *ngIf="myForm.controls.actionlist.controls.length > 0" (click)="RemoveAction(i)">
+                        </span>
+                    </div>
+                    <div [formGroupName]="i">
+                        <!--agenda-->
+                        <div>
+                            <label>Minutes</label>
+                            <!--<a (click)="AddMoreAction()" style="cursor: default;float:right;">
+                                +
+                            </a>-->
+
+                            <input type="text" formControlName="title" class="form-control">
+
+
+                            <!--display error message if agenda is not valid-->
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.title.valid" class="text-danger">
+                                Action is required
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>Action required </label>
+                            <input style="float:right;width:90%;" id="chkboxactionrequired" type="checkbox" formControlName="actionRequired" class="form-control">
+                            <!--display error message if agenda is not valid-->
+
+                        </div>
+                        <div *ngIf="myForm.controls.actionlist.controls[i].controls.actionRequired.value">
+                            <label>Due Date</label>
+                            <!--<input type="text" formControlName="duedate" type="date" class="form-control">-->
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" name="dueDate" formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
+                                    <div class="input-group-addon" (click)="d.toggle()">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                                <small *ngIf="!myForm.controls.actionlist.controls[i].controls.dueDate.valid" class="text-danger">
+                                    Due Date is required
+                                </small>
+                            </div>
+                            <!--display error message if agenda is not valid-->
+
+                        </div>
+                        <div *ngIf="myForm.controls.actionlist.controls[i].controls.actionRequired.value">
+                            <label>Responsible Persons</label>
+                            <ss-multiselect-dropdown [options]="responsiblePersonOptions" [texts]="responsiblePersonTexts" [settings]="responsiblePersonSettings" formControlName="responsiblePerson"></ss-multiselect-dropdown>
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.responsiblePerson.valid" class="text-danger">
+                                Responsible Person is required
+                            </small>
+                            <!--<ss-multiselect-dropdown [options]="responsiblePersonOptions" [texts]="responsiblePersonTexts" [settings]="responsiblePersonSettings" formControlName="responsiblePerson" (ngModelChange)="onResponsiblePersonChange($event)"></ss-multiselect-dropdown>
+                            -->
+                        </div>
+                        <div *ngIf="myForm.controls.actionlist.controls[i].controls.actionRequired.value" class="form-group">
+                            <label>Status</label>
+                            <select formControlName="EventActionStatusID" class="form-control">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let evebtStatus of eventActionStatusList "
+                                        value={{evebtStatus.EventActionStatusID}}>
+                                    {{evebtStatus.ActionName}}
+                                </option>
+                            </select>
+                            <!--display error message if name is not valid-->
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.EventActionStatusID.valid" class="text-danger">
+                                Status is required
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div style="margin:20px;" class="margin-20">
+                <a (click)="AddMoreAction()" style="cursor: default">
+                    Add another Minute +
+                </a>
+            </div>-->
+        </div>
+        <!-- we will place our fields here -->
+        <!--<button type="submit" [disabled]="!myForm.valid">Submit</button>-->
+
+        <div style="border:1px solid black;margin-top:10px;">
+            <div class="form-group" [hidden]="revieweeObjectiveViewModel.length==0">
+                <div class="spanWordWrap" *ngFor="let objective of revieweeObjectiveViewModel">
+                    &nbsp;<b>Objectives from {{ objective.CreatedDate}}</b>
+                    <br />
+                    <div class="spanWordWrap" *ngFor="let objective1 of objective.Text">
+                        <b>&nbsp;*&nbsp;</b> {{ objective1}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="border:1px solid black;margin-top:10px;">
+            <div style="margin:20px;" formArrayName="objectivelist">
+                <span class="fa fa-plus-square pull-right" (click)="AddMoreObjective()"></span>
+                <div style="border-bottom:1px solid black;" *ngFor="let agnda of myForm['controls'].objectivelist['controls']; let i=index">
+
+                    <div>
+                        <!--<span>Agenda {{i + 1}}</span>-->
+
+
+
+                        <span class="fa fa-remove pull-right" *ngIf="myForm.controls.objectivelist.controls.length > 0" (click)="RemoveObjective(i)">
+                        </span>
+                    </div>
+                    <div [formGroupName]="i">
+                        <!--agenda-->
+                        <div>
+
+                            <label>Add New Objective</label>
+
+
+                            <input type="text" formControlName="Text" class="form-control">
+                            <!--display error message if agenda is not valid-->
+                            <small [hidden]="myForm.controls.objectivelist.controls[i].controls.Text.valid" class="text-danger">
+                                Objective is required
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>Recurrence End Date</label>
+            <!--<input type="text" formControlName="date" class="form-control" type="date" />-->
+            <!--<form class="form-inline">-->
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="recurrenceEndDate" formControlName="RecurrenceEndDate" ngbDatepicker #p1="ngbDatepicker">
+                    <div class="input-group-addon" (click)="p1.toggle()">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+                <small *ngIf="!myForm.controls.RecurrenceEndDate.valid" class="text-danger">
+                    Recurrence End  Date is required .
+                </small>
+            </div>
+            <!--</form>-->
+
+        </div>
+
+
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+
+
+        </div>
+    </form>
+
+
+
+</div>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <cron-editor [(cron)]="cronExpression" [(options)]="cronOptions"></cron-editor>
+        <!--<div class="row alert alert-info" style="text-align:center">
+            <h3>
+                <b>{{cronExpression}}</b>
+            </h3>
+            <hr />
+            <input [(ngModel)]="cronExpression" />
+        </div>
+        <div class="row alert alert-info" style="text-align:center">
+            <h3>
+                <b>{{parsedExpression}}</b>
+            </h3>
+            <hr />
+            <button type="button" class="btn btn-primary" (click)="generateExpression()">Parse Expression</button>
+            
+        </div>
+        <div class="" style="text-align:center">
+            <h3>
+                <b>{{generatedDate}}</b>
+            </h3>
+            <hr />
+            <button type="button" class="btn btn-primary" (click)="generateAllOcuurence()">Generate Dates</button>
+           
+        </div>-->
+    </div>
+    <div class="col-sm-2"></div>
+</div>

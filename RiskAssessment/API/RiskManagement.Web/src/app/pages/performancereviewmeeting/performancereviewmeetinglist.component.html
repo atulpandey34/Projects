@@ -1,0 +1,79 @@
+﻿<p-dataTable [value]="data" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             #dt resizableColumns="true" reorderableColumns="true" [responsive]="true"  [totalRecords]="totalRecords" (onLazyLoad)="loadCarsLazy($event)">
+    <!--<p-footer>
+    
+    </p-footer>-->
+     <p-headerColumnGroup>
+        <p-row>
+            <!--<p-column field="SubTitleName" header="Sub Title" [sortable]="true" [filter]="true" rowspan="2"></p-column>-->
+
+            <p-column field="MeetingDate" header="Date" [sortable]="true" [filter]="true" rowspan="2"></p-column>
+            <p-column rowspan="2" field="NextReviewDate" header="Due Date" [filter]="false" [sortable]="false">
+                
+            </p-column>
+             <p-column header="Time Slot" rowspan="2"></p-column>
+            <p-column field="Reviewee" header="Reviewee User" [sortable]="true" [filter]="true" rowspan="2"></p-column>
+            <p-column field="AddedBy" header="Reviewer" [filter]="true" [sortable]="true" rowspan="2"></p-column>
+             <p-column field="LocationName" header="Location" [sortable]="true" [filter]="true" rowspan="2"></p-column>
+            <!--<p-column field="Attendees" header="Attendees" rowspan="2">
+               
+            </p-column>-->
+           
+            <p-column field="Actions" header="Actions" [filter]="true" colspan="3">
+                <ng-template pTemplate="filter" let-col>
+                    <br/>
+                    <p-checkbox name="actionfilter" (onChange)="dt.filter($event.value)" value="2,1" label="In-Completed" inputId="2" [(ngModel)]="selectedAction"></p-checkbox>
+                    <p-checkbox name="actionfilter" (onChange)="dt.filter($event.value)" value="3" label="Completed" inputId="3" [(ngModel)]="selectedAction"></p-checkbox>
+                </ng-template>
+            </p-column>
+            <p-column  rowspan="2">
+                <ng-template pTemplate="header">
+                    <div class="ui-helper-clearfix" style="width:100%">
+                        <button type="button" pButton icon="fa-plus" (click)="redirectToNewPage()" label="Add"></button>
+                    </div>
+                </ng-template>
+            </p-column>
+
+        </p-row>
+        <p-row>
+            <p-column header="Total"></p-column>
+            <p-column header="In-Completed"></p-column>
+            <p-column header="Completed"></p-column>
+        </p-row>
+
+    </p-headerColumnGroup>
+    <!--<p-column field="SubTitleName" [sortable]="true"></p-column>-->
+
+
+
+    <p-column field="MeetingDate" header="Meeting Date" [sortable]="true"></p-column>
+    <p-column  field="NextReviewDate" header="Due Date" [filter]="false" [sortable]="false">
+        <ng-template let-col let-car="rowData" pTemplate="body">
+            <span [style.color]="car.RecurrenceDateColor">{{car[col.field]}}</span>
+
+        </ng-template>
+    </p-column>
+    <p-column header="Meeting Slot">
+        <ng-template let-col let-meeting="rowData" pTemplate="body">
+            <span>{{meeting.StartTime }} To {{ meeting.EndTime}}</span>
+        </ng-template>
+    </p-column>
+    <p-column field="Reviewee" [sortable]="true"></p-column>
+    <p-column field="AddedBy" header="Reviewer" [sortable]="true"></p-column>
+    <!--<p-column field="StartTime" header="Start Time" [sortable]="true"></p-column>
+    <p-column field="EndTime" header="End Time" [sortable]="true"></p-column>-->
+    <p-column field="LocationName" header="Location" [sortable]="true"></p-column>
+    <!--<p-column field="Attendees"></p-column>-->
+    
+    <p-column field="TotalAction" [sortable]="true"></p-column>
+    <p-column field="InCompleteAction" [sortable]="true"></p-column>
+    <p-column field="CompleteAction" [sortable]="true"></p-column>
+    <p-column styleClass="col-button">
+        
+        <ng-template let-meeting="rowData" pTemplate="body">
+            <button type="button" title="Edit" pButton (click)="editMeeting(meeting)" icon="fa fa-pencil-square-o"></button>
+            <button type="button" title="Cancel" pButton (click)="deletingMeeting(meeting)" icon="fa fa-trash-o"></button>
+        </ng-template>
+
+    </p-column>
+</p-dataTable>

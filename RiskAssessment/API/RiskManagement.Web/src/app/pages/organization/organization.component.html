@@ -1,0 +1,56 @@
+﻿<form [formGroup]="myFormOrganization" novalidate (ngSubmit)="SaveOrganizationFormData(myFormOrganization.value)">
+    <div style="margin-top:10px;">
+        <div style="margin:20px;">
+            <div class="form-group">
+                <label>Organization Name</label>
+                <input type="text" formControlName="OrganizationName" maxlength="200" class="form-control validation-field" />
+                <small [hidden]="myFormOrganization.controls.OrganizationName.valid" class="text-danger">
+                    Organization Name is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label>Address Line</label>
+                <input type="text" formControlName="AddressLine" maxlength="200" class="form-control validation-field" />
+                <small [hidden]="myFormOrganization.controls.AddressLine.valid" class="text-danger">
+                    Address Line is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" formControlName="City" maxlength="200" class="form-control validation-field" />
+                <small [hidden]="myFormOrganization.controls.City.valid" class="text-danger">
+                    City is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" formControlName="State" maxlength="200" class="form-control validation-field" />
+                <small [hidden]="myFormOrganization.controls.State.valid" class="text-danger">
+                    State is required
+                </small>
+            </div>
+            <div class="form-group">
+                <p-checkbox label="Is Active" binary="true"
+                            formControlName="IsActive"></p-checkbox>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label>Logo</label>
+                    <div class="input-group file-upload">
+                        <input type="file" (change)="fileChange(input)" #input class="file-upload-btn" />
+                        <input type="text" class="form-control" placeholder="Choose a file..." value="{{fileName}}">
+                        <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="fileToUpload"></i>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-toggle="modal" class="btn btn-primary" (click)="AddUserToOrganization()" [disabled]="((!myFormOrganization.valid) || OrganizationID==0)">Add User</button>
+            <button type="button" data-toggle="modal" class="btn btn-primary" (click)="SaveOrganizationFormData(myFormOrganization.value)" [disabled]="!myFormOrganization.valid">Save</button>
+        </div>
+
+    </div>
+</form>

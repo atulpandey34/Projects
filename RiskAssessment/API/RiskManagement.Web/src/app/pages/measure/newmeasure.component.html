@@ -1,0 +1,118 @@
+﻿<div style="margin-top:10px;">
+    <div style="margin:20px;">
+        <div class="form-group">
+            <label>Measure</label>
+            <input name="description" type="text" class="form-control" [(ngModel)]="measure.Description" />
+            <small [hidden]="measure.Description" class="text-danger">
+                Measure is required
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Frequency</label>
+            <select [(ngModel)]="measure.FrequencyId" class="form-control">
+                <option value="0">--Select--</option>
+                <option *ngFor="let frequency of frequencyList"
+                        value={{frequency.FrequencyId}}>
+                    {{frequency.Description}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Target</label>
+            <input name="target" type="number" class="form-control" [(ngModel)]="measure.Target" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="onSaveMeasure()" class="btn btn-primary" [disabled]="measure.Description && measure.FrequencyId ===0">Save</button>
+    </div>
+</div>
+
+<div class="form-group" *ngIf="measureId>0">
+    <h4>Column List</h4>
+    <p-dataTable [editable]="true" [value]="measureColumns" [responsive]="true" *ngIf="refreshGrid">
+        <p-column field="ColumnName" header="Column Names" ></p-column>
+        <p-column styleClass="col-button">
+            <ng-template pTemplate="header">
+                <div class="ui-helper-clearfix" style="width:100%">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lg-modal" (click)="addEditMeasureColumn(null,'addmeasure')" [disabled]="measureId == 0" label="Add">Add</button>
+                </div>
+            </ng-template>
+            <ng-template let-measure="rowData" pTemplate="body">
+                <div class="ui-helper-clearfix" style="width:100%">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lg-modal" (click)="addEditMeasureColumn(measure,'editmeasure')" [disabled]="measureId == 0" label="Add">Edit</button>
+                </div>
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+</div>
+
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Add Column</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Column</label>
+                    <input name="column" type="text" class="form-control" [(ngModel)]="measureColumn.ColumnName" />
+                    <small [hidden]="measureColumn.ColumnName" class="text-danger">
+                        Column is required
+                    </small>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" #closeDialog data-dismiss="modal" (click)="onSaveColumn('')" data-toggle="modal" class="btn btn-primary" [disabled]="!measureColumn.ColumnName">Save</button>
+                    <button type="button" (click)="onSaveColumn('SaveAndAdd')" data-toggle="modal" class="btn btn-primary" [disabled]="!measureColumn.ColumnName">Save and Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Objectives-->
+<div class="form-group" *ngIf="measureId>0">
+    <h4>Objectives</h4>
+    <p-dataTable [editable]="true" [value]="measureObjectives" [responsive]="true" *ngIf="refreshGrid">
+        <p-column field="Description" header="Objectives"></p-column>
+        <p-column styleClass="col-button">
+            <ng-template pTemplate="header">
+                <div class="ui-helper-clearfix" style="width:100%">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lg-modal-objective" (click)="addEditObjective(null,'addobjective')" [disabled]="measureId == 0" label="Add">Add</button>
+                </div>
+            </ng-template>
+            <ng-template let-measure="rowData" pTemplate="body">
+                <div class="ui-helper-clearfix" style="width:100%">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lg-modal-objective" (click)="addEditObjective(measure,'editobjective')" [disabled]="measureId == 0" label="Add">Edit</button>
+                </div>
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+</div>
+
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal-objective" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Add Objective</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Objective</label>
+                    <input name="column" type="text" class="form-control" [(ngModel)]="measureObjective.Description" />
+                    <small [hidden]="measureObjective.Description" class="text-danger">
+                        Objective is required
+                    </small>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" #closeDialog data-dismiss="modal" (click)="onSaveObjective('')" data-toggle="modal" class="btn btn-primary" [disabled]="!measureObjective.Description">Save</button>
+                    <button type="button" (click)="onSaveObjective('SaveAndAdd')" data-toggle="modal" class="btn btn-primary" [disabled]="!measureObjective.Description">Save and Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

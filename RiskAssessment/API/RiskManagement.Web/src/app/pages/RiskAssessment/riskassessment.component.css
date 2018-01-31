@@ -1,0 +1,6 @@
+﻿.spanWordWrap {
+    word-break: break-all;
+    display: block;
+    /* width: 5px; */
+    white-space: normal;
+}

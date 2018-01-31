@@ -1,0 +1,54 @@
+﻿
+<div style="margin-top:10px;">
+    <button #buttonDownloadPdf type="button" class="pull-right" pButton icon="fa-download"  label="Download" (click)="downloadPdf()" ></button>
+    <div style="margin:20px;" class="auditreport" id="divauditreport">
+        <div class="form-group">
+            <label>Name of audit :</label>
+            <label>{{AuditReportObj.Title}}</label>
+        </div>
+        <div class="form-group">
+            <label>Auditors :</label>
+            <label>{{AuditReportObj.Auditors}}</label>
+        </div>
+        <div class="form-group">
+            <label>Auditee main contact :</label>
+            <label>{{AuditReportObj.AuditeeMainContact}}</label>
+        </div>
+        <div class="form-group">
+            <label>Audit Scope :</label>
+            <label>{{AuditReportObj.Scope}}</label>
+        </div>
+
+        <!--for loop-->
+        <div *ngFor="let asub of AuditReportObj.AuditReportSubjectList;">
+            <div class="form-group" style="margin-top:12px;font-weight:900;">
+                <label>Subject :</label>
+                <label>{{asub.Subject}}</label>
+            </div>
+            <!--<div class="form-group">
+                <label>Audit dates :</label>
+                <div class="form-group" *ngFor="let auditdates of asub.AuditSubjectReviewList">{{auditdates.AuditDate}}</div>
+            </div>-->
+
+            <p-dataTable [editable]="true" [value]="asub.AuditReportSubjectQuestionResponseList" [paginator]="false"
+                         [responsive]="true">
+                <p-column [style]="{'width':'10%'}" field="AuditDate" header="Date"></p-column>
+                <!--<p-column [style]="{'width':'20%'}" field="Subject" header="Subject"></p-column>-->
+                <p-column [style]="{'width':'35%'}" field="QuestionText" header="Question"></p-column>
+                <p-column [style]="{'width':'10%'}" field="ActionCode" header="Action Code"></p-column>
+                <p-column [style]="{'width':'35%'}" field="Comment" header="Finding"></p-column>
+                <p-column [style]="{'width':'10%'}" styleClass="col-button">
+                    <ng-template let-col let-car="rowData" pTemplate="body">
+                        <a class="btn btn-primary" (click)="downloadMaterial(car.AuditSubjectQuestionResponseID,car.ImageName)" *ngIf="car.ImagePath !=null" style="text-decoration:underline;" href="javascript:void(0)">
+                            View
+                        </a>
+
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+
+</div>
+
+

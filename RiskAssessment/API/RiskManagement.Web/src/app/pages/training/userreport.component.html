@@ -1,0 +1,45 @@
+﻿<div style="margin-top:10px;">
+    <div style="margin:20px;">
+        <div>
+            <div class="form-group">
+                <label>Trainee</label>
+                <select [(ngModel)]="userId" class="form-control">
+                    <option value="0">--Select--</option>
+                    <option *ngFor="let user of userList"
+                            value={{user.UserId}}>
+                        {{user.UserName}}
+                    </option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary" value="Filter" (click)="getUserReport()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+            <p-dataTable [value]="trainingUserReportData" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                         #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords"
+                         sortField="TrainingNeed" [lazy]="true"  (onLazyLoad)="loadTrainingUserReportLazy($event)">
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <button type="button" pButton icon="fa-file-o" iconPos="left" label="Download" (click)="exportCSV()" style="float:left"></button>
+                    </div>
+                </p-header>
+                <!--<p-footer></p-footer>-->
+                <p-column field="TrainingNeed" header="Training" [sortable]="true"></p-column>
+                <p-column field="TraineeName" header="Trainee" [sortable]="true"></p-column>
+                <p-column field="TrainerName" header="Trainer" [sortable]="true"></p-column>                
+                <p-column field="StartDate" header="Attempt Date" [sortable]="true">
+                    <ng-template let-col let-report="rowData" pTemplate="body">
+                        <span>{{report.StartDate}}</span>
+                    </ng-template>
+                </p-column>
+                <p-column field="IsUserAttendedTraining" header="Attended" [sortable]="true"></p-column>
+                <p-column field="Score" header="Score" [sortable]="true">
+                    <ng-template let-report="rowData" pTemplate="body">
+                        <span>{{report.Score != null?  report.Score + '/' + report.TotalScore: ''}}</span>
+                    </ng-template>
+                </p-column>
+                <p-column field="TrainerComment" header="Trainer Comment" [sortable]="true"></p-column>
+</p-dataTable>

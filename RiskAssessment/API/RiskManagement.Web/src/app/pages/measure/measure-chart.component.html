@@ -1,0 +1,59 @@
+﻿<div style="margin-top:10px;">
+    <div style="margin:20px;">
+        <div>
+            <div class="form-group">
+                <label>Measure</label>
+                <select [(ngModel)]="measureId" class="form-control">
+                    <option value="0">--Select--</option>
+                    <option *ngFor="let measure of measureList"
+                            value={{measure.MeasureId}}>
+                        {{measure.Description}}
+                    </option>
+                </select>
+            </div>
+            <div style="display:none;" class="form-group">
+                <label>Column</label>
+                <select [(ngModel)]="measureColumnId" class="form-control"
+                        (change)="onMeasureColumnChange()">
+                    <option value="0">--Select--</option>
+                    <option *ngFor="let column of measureColumns"
+                            value={{column.MeasureColumnId}}>
+                        {{column.ColumnName}}
+                    </option>
+                </select>
+                <!--<p-multiSelect  [options]="measureColumns" [(ngModel)]="selectedMeasureIds" (change)="onMeasureColumnChange($event.value)"></p-multiSelect>-->
+            </div>
+            <div class="form-group">
+                <label>Start Date</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="startDate" [(ngModel)]="startDate" ngbDatepicker #p="ngbDatepicker">
+                        <div class="input-group-addon" (click)="p.toggle()">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>End Date</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" [(ngModel)]="endDate" ngbDatepicker #p1="ngbDatepicker">
+                        <div class="input-group-addon" (click)="p1.toggle()">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="onMeasureColumnChange();" class="btn btn-primary">Get Data</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p-chart type="line" [data]="measureColumnsChartData" [options]="options"></p-chart>
+</div>

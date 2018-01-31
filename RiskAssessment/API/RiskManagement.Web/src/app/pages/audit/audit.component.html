@@ -1,0 +1,236 @@
+﻿<form [formGroup]="myFormAudit" novalidate>
+    <div style="margin-top:10px;">
+        <div style="margin:20px;">
+            <div class="form-group">
+                <label>Audit</label>
+                <input type="text" formControlName="Title" maxlength="200" class="form-control validation-field" />
+                <small [hidden]="myFormAudit.controls.Title.valid" class="text-danger">
+                    Audit is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label>Scope</label>
+                <input type="text" formControlName="Scope" class="form-control validation-field" />
+                <small [hidden]="myFormAudit.controls.Scope.valid" class="text-danger">
+                    Scope is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label>Due Date</label>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control validation-field" placeholder="yyyy-mm-dd" name="DueDateStruct" formControlName="DueDateStruct" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-addon" (click)="d.toggle()">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+                <small [hidden]="myFormAudit.controls.DueDateStruct.valid" class="text-danger">
+                    Due date is required
+                </small>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Enter subject name to add" formControlName="SubjectTemp" class="form-control" />
+            </div>
+            <div>
+                <div style="width:100%;">
+                    <button class="pull-right" type="button" pButton icon="fa-plus" label="Add Subject" (click)="AddMoreAuditSubjectForm(myFormAudit.value)"></button>
+                </div>
+            </div>
+            <div class="card border-0 box-shadow rounded-0" style="margin-top:57px;">
+                <div class="card-block pt-0" formArrayName="AuditSubjects">
+                    <div style="margin-top:10px;">
+                        <ul class="nav nav-tabs custom top">
+                            <li class="nav-item" *ngFor="let auditsubjectform of AuditSubjects.controls; let i=index">
+                                <a *ngIf="auditsubjectform.controls.IsTabActive.value==true" (click)="HandleTab(i);" class="nav-link active" data-toggle="tab" href="#tab-{{i}}" role="tab" aria-controls="active" aria-expanded="true">{{auditsubjectform.controls.Subject.value}} &nbsp;<i class="la la-user la-lg"></i></a>
+                                <a *ngIf="auditsubjectform.controls.IsTabActive.value!=true" (click)="HandleTab(i);" class="nav-link" data-toggle="tab" href="#tab-{{i}}" role="tab" aria-controls="inactive" aria-expanded="false">{{auditsubjectform.controls.Subject.value}} &nbsp;<i class="la la-gear la-lg"></i></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content top" *ngFor="let auditsubjectform of AuditSubjects.controls; let i=index">
+
+                            <div *ngIf="auditsubjectform.controls.IsTabActive.value==true" class="tab-pane active" aria-expanded="true" id="tab-{{i}}" style="border:1px solid black;margin-top:5px;">
+                                <div style="margin:20px;">
+                                    <div>
+                                        <i class="fa fa-trash text-danger pull-right" [hidden]="i==0" (click)="RemoveAuditSubjectForm(i);"></i>
+                                    </div>
+                                    <div [formGroupName]="i">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" formControlName="Subject" maxlength="200" class="form-control validation-field" />
+                                            <small [hidden]="auditsubjectform.controls.Subject.valid" class="text-danger">
+                                                Subject is required
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Auditor</label>
+                                            <select formControlName="AuditorID" class="form-control">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let al of auditorList"
+                                                        value={{al.id}}>
+                                                    {{al.name}}
+                                                </option>
+                                            </select>
+                                            <small [hidden]="auditsubjectform.controls.AuditorID.valid" class="text-danger">
+                                                Auditor is required
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Auditee</label>
+                                            <select formControlName="AuditeeID" class="form-control">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let al of auditeeList"
+                                                        value={{al.id}}>
+                                                    {{al.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Location</label>
+                                            <select formControlName="Location" class="form-control">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let location of locationList "
+                                                        value={{location.LocationID}}>
+                                                    {{location.LocationName }}-{{ location.RoomName}}
+                                                </option>
+                                            </select>
+                                            <small [hidden]="auditsubjectform.controls.Location.valid" class="text-danger">
+                                                Location is required
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Frequency</label>
+                                            <div class="row">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-8">
+                                                    <cron-editor (cronChange)="auditsubjectform.controls.FrequencyRecurrence.setValue($event);" [(cron)]="auditsubjectform.controls.FrequencyRecurrence.value" [(options)]="cronOptions"></cron-editor>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" value="" formControlName="InsertQuestion" maxlength="200" class="form-control" placeholder="Add Question" />
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-primary" type="button" (click)="AddMoreAuditSubjectQuestionForm(i,auditsubjectform.controls.InsertQuestion.value);">
+                                                    <i class="fa fa-plus add-item-icon"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div formArrayName="AuditSubjectQuestions" *ngFor="let auditsubjectquestionform of auditsubjectform.controls.AuditSubjectQuestions.controls; let j=index">
+                                            <div [formGroupName]="j">
+                                                <input type="hidden" formControlName="QuestionText" class="form-control validation-field" />
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item justify-content-between">
+                                                        {{ auditsubjectquestionform.controls.QuestionText.value }}
+                                                        <i class="fa fa-trash text-danger" (click)="RemoveAuditSubjectQuestionForm(i,j);"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="auditsubjectform.controls.IsTabActive.value!=true" class="tab-pane" aria-expanded="false" id="tab-{{i}}" style="border:1px solid black;margin-top:5px;">
+                                <div style="margin:20px;">
+                                    <div>
+                                        <i class="fa fa-trash text-danger pull-right" [hidden]="i==0" (click)="RemoveAuditSubjectForm(i);"></i>
+                                    </div>
+                                    <div [formGroupName]="i">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" formControlName="Subject" maxlength="200" class="form-control validation-field" />
+                                            <small [hidden]="auditsubjectform.controls.Subject.valid" class="text-danger">
+                                                Subject is required
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Auditor</label>
+                                            <select formControlName="AuditorID" class="form-control">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let al of auditorList"
+                                                        value={{al.id}}>
+                                                    {{al.name}}
+                                                </option>
+                                            </select>
+                                            <small [hidden]="auditsubjectform.controls.AuditorID.valid" class="text-danger">
+                                                Auditor is required
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Auditee</label>
+                                            <select formControlName="AuditeeID" class="form-control">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let al of auditeeList"
+                                                        value={{al.id}}>
+                                                    {{al.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Location</label>
+                                            <select formControlName="Location" class="form-control">
+                                                <option value="">--Select--</option>
+                                                <option *ngFor="let location of locationList "
+                                                        value={{location.LocationID}}>
+                                                    {{location.LocationName }}-{{ location.RoomName}}
+                                                </option>
+                                            </select>
+                                            <small [hidden]="auditsubjectform.controls.Location.valid" class="text-danger">
+                                                Location is required
+                                            </small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Frequency</label>
+                                            <div class="row">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-8">
+                                                    <cron-editor (cronChange)="auditsubjectform.controls.FrequencyRecurrence.setValue($event);" [(cron)]="auditsubjectform.controls.FrequencyRecurrence.value" [(options)]="cronOptions"></cron-editor>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" value="" formControlName="InsertQuestion" maxlength="200" class="form-control" placeholder="Add Question" />
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-primary" type="button" (click)="AddMoreAuditSubjectQuestionForm(i,auditsubjectform.controls.InsertQuestion.value);">
+                                                    <i class="fa fa-plus add-item-icon"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div formArrayName="AuditSubjectQuestions" *ngFor="let auditsubjectquestionform of auditsubjectform.controls.AuditSubjectQuestions.controls; let j=index">
+                                            <div [formGroupName]="j">
+                                                <input type="hidden" formControlName="QuestionText" class="form-control validation-field" />
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item justify-content-between">
+                                                        {{ auditsubjectquestionform.controls.QuestionText.value }}
+                                                        <i class="fa fa-trash text-danger" (click)="RemoveAuditSubjectQuestionForm(i,j);"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-left:10px;">
+                    <p-checkbox formControlName="TermsCondition" label="Auditors are independent of the processes being audited ?" binary="true"></p-checkbox>
+                    <small [hidden]="myFormAudit.controls.TermsCondition.valid" class="text-danger">
+                        Terms Condition is required
+                    </small>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" data-toggle="modal" class="btn btn-primary" (click)="SaveAuditFormData(myFormAudit.value)" [disabled]="!myFormAudit.valid">Save</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+

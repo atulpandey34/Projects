@@ -1,0 +1,60 @@
+﻿<p-dataTable [value]="data" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadAuditorList($event)">
+    <p-column [style]="{'width':'30%'}" field="Title" header="Audit" [filter]="true" [sortable]="true"></p-column>
+    <p-column [style]="{'width':'40%'}" field="Scope" header="Scope" [filter]="true" [sortable]="true"></p-column>
+    <p-column [style]="{'width':'10%'}" header="Subject">
+        <ng-template let-audit="rowData" pTemplate="body">
+            <div class="dropdown d-inline-block">
+                {{audit.AuditSubjectCount}}
+                <a class="dropdown-toggle no-caret pl-2 pr-2" id="auditsubjects" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i data-toggle="modal" (click)="getAuditSubjectsData(audit.AuditID)" data-target="#lg-modal-dataview" class="fa fa-info" aria-hidden="true" title="{{audit.AuditSubjects}}"></i>
+                </a>
+             </div>
+        </ng-template>
+    </p-column>
+    <p-column [style]="{'width':'20%'}" styleClass="col-button">
+        <ng-template pTemplate="header">
+            <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-plus" (click)="redirectToNewPage()" label="Add"></button>
+            </div>
+        </ng-template>
+        <ng-template let-meeting="rowData" pTemplate="body">
+            <button type="button" title="Edit" pButton (click)="redirectToEditPage(meeting)" icon="fa fa-pencil-square-o"></button>
+            <button type="button" title="View Report" pButton (click)="redirectToViewReportPage(meeting)" icon="fa fa-bar-chart"></button>
+            <button type="button" title="Cancel" pButton (click)="deleteAudit(meeting)" icon="fa fa-trash"></button>
+            <!--<button type="button" title="Edit" pButton (click)="redirectToAuditReviewPage(meeting)" icon="fa fa-compress"></button>-->
+        </ng-template>
+
+    </p-column>
+</p-dataTable>
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal-dataview" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Audit Subjects</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                      <p-dataTable [editable]="true" [value]="AuditSubjectsReviewModel" [responsive]="true">
+                          <p-column field="Subject" header="Subject" ></p-column>
+                           <p-column field="PlannedAuditDate" header="Due Date">
+                            <ng-template let-col let-report="rowData" pTemplate="body">
+                                <label>{{report.PlannedAuditDate | date: 'MM/dd/yyyy'}}</label>
+                            </ng-template>
+                        </p-column>
+                          <p-column field="Status" header="Status">
+                              <ng-template let-col let-report="rowData" pTemplate="body">
+                                  <label *ngIf="report.Status==false">Pending</label>
+                                  <label *ngIf="report.Status==true">Completed</label>
+                              </ng-template>
+                          </p-column>
+                      
+                    </p-dataTable>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿<p-dataTable [value]="data" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadAuditorSubjectList($event)">
+    <p-column [style]="{'width':'20%'}" field="Subject" header="Subject" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="Auditee" header="Auditee" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="Location" header="Location" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="PlannedAuditDate" header="Planned AuditDate" [filter]="false" [sortable]="false"></p-column>
+    <p-column field="ReviewStatus" header="Review Status" ></p-column>
+    <p-column  styleClass="col-button">
+    
+        <ng-template let-meeting="rowData" pTemplate="body">
+            <button type="button" title="Edit" pButton *ngIf="meeting.AuditSubjectReviewID>0" (click)="redirectToEditAuditReviewPage(meeting)" icon="fa fa-pencil-square-o"></button>
+        </ng-template>
+
+    </p-column>
+</p-dataTable>

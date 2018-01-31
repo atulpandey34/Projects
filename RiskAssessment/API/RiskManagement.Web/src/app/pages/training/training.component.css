@@ -1,0 +1,13 @@
+﻿a.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.trainee-response {
+    border-style: groove;
+}
+
+.trainee-option {
+    margin: 10px;
+}
+

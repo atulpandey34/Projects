@@ -1,0 +1,374 @@
+﻿<form [formGroup]="myForm" novalidate (ngSubmit)="SaveRiskAssessmentFormData(myForm.value,'submit')">
+    <div style="margin-top:10px;">
+        <div style="margin:20px;">
+            <div>
+
+
+                <div class="form-group">
+                    <label>Subject</label>
+                    <!--<input type="text" formControlName="title" class="form-control">-->
+                    <input type="text" formControlName="Area" class="form-control validation-field" />
+                    <!--display error message if agenda is not valid-->
+                    <small [hidden]="myForm.controls.Area.valid" class="text-danger">
+                        Subject is required
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Responsible Team</label>
+                    <ss-multiselect-dropdown [options]="responsiblePersonOptions" [texts]="responsiblePersonTexts" [settings]="responsiblePersonSettings" formControlName="RiskAssessmentTeam"></ss-multiselect-dropdown>
+                    <small [hidden]="myForm.controls.RiskAssessmentTeam.valid" class="text-danger">
+                        Responsible Team is required
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Assessment Date</label>
+                    <!--<input type="text" formControlName="duedate" type="date" class="form-control">-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control validation-field" placeholder="yyyy-mm-dd" name="dueDate" formControlName="AssessmentDateDateStruct" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-addon" (click)="d.toggle()">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                        <small [hidden]="myForm.controls.AssessmentDateDateStruct.valid" class="text-danger">
+                            Assessment date is required
+                        </small>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="form-group">
+                    <label>Review Duration Unit</label>
+                    <select formControlName="ReviewDurationUnit" class="form-control">
+                        <option value="">--Select--</option>
+                        <option *ngFor="let location of reviewDurationUnitList"
+                                value={{location.DurationUnitId}}>
+                            {{location.Text }}
+                        </option>
+                    </select>
+                    <!--display error message if name is not valid-->
+                    <small *ngIf="!myForm.controls.ReviewDurationUnit.valid" class="text-danger">
+                        Review Duration Unit is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Review Duration</label>
+                    <!--<input type="text" formControlName="title" class="form-control">-->
+                    <input type="number" formControlName="ReviewDuration" max="500" min="1" step="5" class="form-control validation-field" />
+                    <!--display error message if agenda is not valid-->
+                    <small [hidden]="myForm.controls.ReviewDuration.valid" class="text-danger">
+                        Review Duration is required
+                    </small>
+                </div>
+
+                <div class="form-group" [hidden]="riskAssessmentId ==0">
+                    <label>Signed By User</label>
+                    <div class="dropdown d-inline-block">
+                        <a class="dropdown-toggle no-caret pl-2 pr-2" id="signedUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right rounded-0 mt-3 p-0 box-shadow" aria-labelledby="signedUser">
+                            <div class="list">
+
+                                <a class="dropdown-item" *ngFor="let user of signedUserList"><i class=""></i>{{user.Column1}}-{{user.SignedDateString}}</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div [hidden]="isArchivedRiskAssessment" class="modal-footer">
+                    <button type="button" data-toggle="modal" data-target="#lg-modalTraining" class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+                    <button type="button" #buttonComplete (click)="CompleteRiskAssessment()" class="btn btn-primary" [disabled]="!myForm.valid">Complete</button>
+                    <button type="button" #buttonReview (click)="ReviewRiskAssessment()" class="btn btn-primary" [disabled]="!myForm.valid">Review</button>
+                    <button type="button" #buttonTraining (click)="SetTrainingRequired()" class="btn btn-primary" [disabled]="!myForm.valid">Trainig required</button>
+                    <button type="button" #buttonSignature data-toggle="modal" (click)="OpenSignatureDialog()" [disabled]="!myForm.valid" data-target="#lg-modalSignature" class="btn btn-primary">Verify Signature</button>
+                    <button type="button" data-toggle="modal" class="btn btn-primary" (click)="SaveRiskAssessmentFormData(myForm.value,'hazard')" data-target="#lg-modal" [disabled]="!myForm.valid" label="Add Hazard">Add Hazard</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="modal fade" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Hazard</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="CloseDialog()" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="RiskAssessmentHazardViewModelForm" novalidate (ngSubmit)="SaveHazardForm(RiskAssessmentHazardViewModelForm.value)">
+                    <div class="form-group">
+                        <label>Hazard</label>
+                        <select #hazardDropdown formControlName="HazardId" class="form-control validation-field">
+                            <option value="">--Select--</option>
+                            <option *ngFor="let location of hazardsListV1"
+                                    value={{location.HazardId}}>
+                                {{location.Text }}
+                            </option>
+                        </select>
+                        <!--display error message if name is not valid-->
+                        <small [hidden]="RiskAssessmentHazardViewModelForm.controls.HazardId.valid" class="text-danger">
+                            Hazard is required.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input #hazardDescription type="text" formControlName="Description" class="form-control validation-field" />
+                        <!--display error message if name is not valid-->
+                        <small [hidden]="RiskAssessmentHazardViewModelForm.controls.Description.valid" class="text-danger">
+                            Description is required.
+                        </small>
+                    </div>
+                    <div style="border: 1px solid black;margin-top:10px;">
+                        <span class="fa fa-plus-square pull-right" (click)="AddMoreMeasure()"></span>
+                        <div style="margin:20px;" formArrayName="RiskAssessmentHazardMeasureViewModel">
+
+                            <div style="border-bottom:1px solid black;" *ngFor="let acton of RiskAssessmentHazardViewModelForm['controls'].RiskAssessmentHazardMeasureViewModel['controls']; let i=index">
+                                <div>
+                                    <span class="fa fa-remove pull-right" *ngIf="RiskAssessmentHazardViewModelForm.controls.RiskAssessmentHazardMeasureViewModel.controls.length > 0" (click)="RemoveMeasure(i)">
+                                    </span>
+                                </div>
+                                <div [formGroupName]="i">
+                                    <div class="form-group">
+                                        <label>Control</label>
+                                        <input type="text" formControlName="Text" class="form-control validation-field" />
+                                        <!--display error message if name is not valid-->
+                                        <small [hidden]="RiskAssessmentHazardViewModelForm.controls.RiskAssessmentHazardMeasureViewModel.controls[i].controls.Text.valid" class="text-danger">
+                                            Control is required.
+                                        </small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label></label>
+                                        <select formControlName="ActionId" class="form-control validation-field">
+                                            <option value="">--Select--</option>
+                                            <option value="1">Action</option>
+                                            <option value="2">Rule</option>
+
+                                        </select>
+                                        <!--display error message if name is not valid-->
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="border:1px solid black;margin-top:10px;" class="form-group">
+                        <div style="margin:20px;" formArrayName="RiskAssessmentHazardReviewViewModel">
+                            <div style="border-bottom:1px solid black;" *ngFor="let agnda1 of RiskAssessmentHazardViewModelForm['controls'].RiskAssessmentHazardReviewViewModel['controls']; let j=index">
+                                <div>
+
+                                </div>
+                                <div [formGroupName]="j">
+                                    <div class="form-group">
+                                        <label>Consequence</label>
+                                        <select formControlName="Consequence" class="form-control validation-field">
+                                            <option value="">--Select--</option>
+                                            <option value="1">Significant</option>
+                                            <option value="2">Minor</option>
+                                            <option value="3">Moderate</option>
+                                            <option value="4">Major</option>
+                                            <option value="5">Calastrophic</option>
+                                        </select>
+                                        <!--display error message if name is not valid-->
+                                        <small [hidden]="RiskAssessmentHazardViewModelForm.controls.RiskAssessmentHazardReviewViewModel.controls[j].controls.Consequence.valid" class="text-danger">
+                                            Consequence is required.
+                                        </small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Likelihood</label>
+                                        <select formControlName="Likelihood" class="form-control validation-field">
+                                            <option value="">--Select--</option>
+                                            <option value="1">Extremely UnLikely</option>
+                                            <option value="2">UnLikely</option>
+                                            <option value="3">Possible</option>
+                                            <option value="4">Likely</option>
+                                            <option value="5">Almost Certain</option>
+                                        </select>
+                                        <!--display error message if name is not valid-->
+                                        <small [hidden]="RiskAssessmentHazardViewModelForm.controls.RiskAssessmentHazardReviewViewModel.controls[j].controls.Likelihood.valid" class="text-danger">
+                                            Likelihood is required.
+                                        </small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Monitoring Method</label>
+                                        <select formControlName="MonitoringMethodId" class="form-control validation-field">
+                                            <option value="">--Select--</option>
+                                            <option *ngFor="let location of monitorinMethodList"
+                                                    value={{location.MonitoringMethodId}}>
+                                                {{location.Method }}
+                                            </option>
+                                        </select>
+                                        <!--display error message if name is not valid-->
+                                        <small [hidden]="RiskAssessmentHazardViewModelForm.controls.RiskAssessmentHazardReviewViewModel.controls[j].controls.MonitoringMethodId.valid" class="text-danger">
+                                            Monitoring Method is required.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" [disabled]="!RiskAssessmentHazardViewModelForm.valid">Save</button>
+                        <button type="button" class="btn btn-default" (click)="CloseDialog()" #closeDialog data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<p-dataTable [value]="hazardList" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             scrollable="true" rowGroupMode="rowspan" groupField="HazardText" resizableColumns="true" sortField="HazardText" #dt reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadCarsLazy($event)">
+
+    <p-column [style]="{'width':'300px'}" scope="rowgroup" field="HazardText" header="Hazard">
+        <ng-template let-col let-car="rowData" pTemplate="body">
+            <div>
+                <span>{{car[col.field]}}</span>
+                <br />
+                <label><b>Description :</b></label>
+                <span class="spanWordWrap">{{car.Description}}</span>
+            </div>
+        </ng-template>
+    </p-column>
+    <p-column [style]="{'width':'90px'}" field="CreatedDate" header="Date Added">
+    </p-column>
+    <!--<p-column [style]="{'width':'90px'}" field="Description" scope="rowgroup" header="Description"></p-column>-->
+    <p-column [style]="{'width':'300px'}" field="MeasureText" header="Control">
+        <ng-template let-col let-car="rowData" pTemplate="body">
+            <div class="form-group" [hidden]="car.MeasureTextWithReviewDate ==''">
+                <label>Existing :</label>
+                <div class="spanWordWrap" *ngFor="let text of car.MeasureTextWithReviewDateArray; let i=index">
+                    {{i + 1}}. {{text}}
+                </div>
+            </div>
+            <div class="form-group" [hidden]="car.MeasureText ==''">
+                <label>Additional controls if needed :</label>
+                <div class="spanWordWrap" *ngFor="let text of car.MeasureTextArray  ; let i=index">
+                    {{i + 1}}. {{text}}
+                </div>
+            </div>
+        </ng-template>
+    </p-column>
+    <p-column [style]="{'width':'40px'}" field="Consequence" header="Consequence"></p-column>
+    <p-column [style]="{'width':'40px'}" field="Likelihood" header="Likelihood"></p-column>
+    <p-column [style]="{'width':'40px'}" field="Source" header="Score">
+        <ng-template let-col let-car="rowData" pTemplate="body">
+            <div [style.background-color]="car.ScoreColor"><span>{{car[col.field]}}</span></div>
+        </ng-template>
+    </p-column>
+    <p-column [style]="{'width':'100px'}" field="Method" header="Monitoring method(s)"></p-column>
+    <p-column [style]="{'width':'90px'}" bodyStyle="">
+        <ng-template let-col let-car="rowData" pTemplate="body">
+            <!--<div [hidden]="car.CreatedDate==''">
+                <span>{{car[col.field]}}</span>
+            </div>-->
+            <button type="button" [hidden]="isArchivedRiskAssessment" title="Edit" pButton data-target="#lg-modal" data-toggle="modal" (click)="OpenHazard(car)" icon="fa fa-file-text-o"></button>
+
+        </ng-template>
+    </p-column>
+    <!--<p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            <div class="ui-helper-clearfix" style="width:100%">
+
+            </div>
+        </ng-template>
+        <ng-template let-meeting="rowData" pTemplate="body">
+
+
+        </ng-template>
+
+    </p-column>-->
+</p-dataTable>
+
+
+<div class="modal fade" id="lg-modalSignature" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Signature</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="CloseSignatureDialog()" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="signatureForm" novalidate (ngSubmit)="SaveSignature()">
+
+                    <div class="form-group">
+                        <label>Password </label>
+                        <input formControlName="OldPassword" class="form-control validation-field" placeholder="Password" type="password">
+                        <small [hidden]="signatureForm['controls'].OldPassword.valid" class="text-danger">
+                            Password is required.
+                        </small>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" [disabled]="!signatureForm.valid">Save</button>
+                        <button type="button" class="btn btn-default" (click)="CloseSignatureDialog()" #closeDialogSignature data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lg-modalTraining" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Training</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="CloseSignatureDialog()" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="form-group">
+                    <div class="custom-controls-stacked">
+                        <label class="custom-control custom-checkbox">
+                            <input #trainingRequiredCheckbox type="checkbox" class="custom-control-input" checked>
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Training required</span>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" (click)="SaveRiskAssessmentFormData(myForm.value,'training')" [disabled]="!myForm.valid">Save</button>
+                    <button type="button" class="btn btn-default" #closeDialogTraining data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

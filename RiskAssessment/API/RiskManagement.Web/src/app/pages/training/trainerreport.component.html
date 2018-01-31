@@ -1,0 +1,38 @@
+﻿<div style="margin-top:10px;">
+    <div style="margin:20px;">
+        <div>
+            <div class="form-group">
+                <label>Trainer</label>
+                <select [(ngModel)]="trainerId" class="form-control">
+                    <option value="0">--Select--</option>
+                    <option *ngFor="let trainer of trainerList"
+                            value={{trainer.UserId}}>
+                        {{trainer.UserName}}
+                    </option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary" value="Filter" (click)="getTrainerReport()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+            <p-dataTable [value]="trainerReportData" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                         #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords"
+                         sortField="TrainingNeed" [lazy]="true"  (onLazyLoad)="loadTrainerReportLazy($event)">
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <button type="button" pButton icon="fa-file-o" iconPos="left" label="Download" (click)="exportCSV()" style="float:left"></button>
+                    </div>
+                </p-header>
+                <!--<p-footer></p-footer>-->
+                <p-column field="TrainingNeed" header="Training" [sortable]="true"></p-column>
+                <p-column field="StartDate" header="Training Date" [sortable]="true">
+                    <ng-template let-col let-report="rowData" pTemplate="body">
+                        <span>{{report.StartDate}}</span>
+                    </ng-template>
+                </p-column>
+                <p-column field="UsersAttended" header="Number of Trainees" [sortable]="true"></p-column>
+                <p-column field="AverageRating" header="Overall rating" [sortable]="true"></p-column>
+</p-dataTable>

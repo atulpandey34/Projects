@@ -1,0 +1,186 @@
+﻿<div class="modal-body">
+    <div class="form-group">
+        <p-dataTable [value]="scheduleListData" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                     resizableColumns="true" sortField="StartDate" #dt [responsive]="true">
+
+            <p-column field="TrainingNeed" header="Subject" [filter]="true" [sortable]="true"></p-column>
+            <p-column field="StartDate" header="Start Date" [filter]="true" [sortable]="true"></p-column>
+            <p-column field="EndDate" header="End Date" [filter]="true" [sortable]="true"></p-column>
+
+            <p-column field="UserCount" header="Trainee">
+                <ng-template let-col let-car="rowData" pTemplate="body">
+                    <div class="form-group" [hidden]="car.UserCount ==0">
+                        <span>{{car.UserCount}} &nbsp;Trainee &nbsp; <i data-toggle="modal" (click)="getuserScheduleResultList(car.TrainingScheduleId)" data-target="#lg-modal" class="fa fa-info" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="form-group" [hidden]="car.RoleCount ==0">
+                        <span>{{car.RoleCount}} &nbsp;Trainee &nbsp; <i data-toggle="modal" (click)="getuserScheduleResultList(car.TrainingScheduleId)" data-target="#lg-modal" class="fa fa-info" aria-hidden="true"></i></span>
+                    </div>
+                </ng-template>
+            </p-column>
+            <p-column field="MaterialCount" header="Material">
+                <ng-template let-col let-car="rowData" pTemplate="body">
+                    <div class="form-group" [hidden]="car.MaterialCount ==0 || car.MaterialCount == null">
+                        <span>{{car.MaterialCount}} &nbsp;Files &nbsp;<i data-toggle="modal" (click)="getMaterialListData(car.TrainingId)" data-target="#lg-modal-training" class="fa fa-info" aria-hidden="true"></i></span>
+                    </div>
+                </ng-template>
+            </p-column>
+            <p-column field="Status" header="Status">
+                <ng-template let-col let-car="rowData" pTemplate="body">
+                    <div class="form-group" [hidden]="car.Completed===true">
+                        <button type="button" title="Complete" class="btn btn-primary" (click)="updateTrainingScheduleStatus(car,true)">Mark as Complete</button>
+                    </div>
+                    <div class="form-group" [hidden]="car.Completed===false">
+                        <button type="button" title="Save" class="btn btn-primary" (click)="updateTrainingScheduleStatus(car,false)">Mark as Incomplete</button>
+                    </div>
+                </ng-template>
+            </p-column>
+
+
+        </p-dataTable>
+
+    </div>
+
+</div>
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Trainee List</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" [hidden]="userScheduleResultList.length ==0" *ngIf="!ShowAssignment ; else hideAssignment">
+                    <p-dataTable  [editable]="true" [value]="userScheduleResultList" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                                 resizableColumns="true" #dtscheduleResult [responsive]="true">
+
+
+                        <p-column field="UserName" header="Trainee Name"></p-column>
+                        <p-column field="IsUserAttendedTraining" [editable]="true" header="Attended Training">
+                            <ng-template let-col let-car="rowData" pTemplate="editor">
+                                <p-checkbox appendTo="body" label="Attended By User" binary="true"
+                                            [(ngModel)]="car[col.field]"></p-checkbox>
+                            </ng-template>
+                            <template let-col let-car="rowData" pTemplate="body">
+                                 {{car.IsUserAttendedTraining ? 'Yes' : ''}}
+                            </template>
+                        </p-column>
+                        <p-column field="ReviewerComment" [editable]="true" header="Reviewer Comment">
+
+                        </p-column>
+                        <p-column styleClass="col-button">
+                            <ng-template pTemplate="header">
+                                <div class="ui-helper-clearfix" style="width:100%">
+                                    <button type="button" pButton icon="fa-floppy-o fa" (click)="updateAllTrainerUserRecords()" label="Save All"></button>
+                                </div>
+                            </ng-template>
+                            <ng-template let-meeting="rowData" pTemplate="body">
+                                <button type="button" title="Save" pButton (click)="UpdateScheduleResult(meeting)" label="Save" icon="fa-floppy-o fa"></button>
+                            </ng-template>
+
+                        </p-column>
+                        <p-column field="TrainingAssignmentAttemptId" header="Assignment">
+                            <ng-template let-col let-assignment="rowData" pTemplate="body">
+                                <ng-template [ngIf]="assignment.TrainingAssignmentAttemptId != null"><button pButton type="button" (click)="onShowAssignment(assignment.TrainingAssignmentAttemptId, assignment.UserId)" label="Assignment"></button></ng-template>
+                            </ng-template>
+                        </p-column>
+                        <!--<p-column field="UserComment" header="Trainee Comment">
+                        </p-column>
+                        <p-column field="UserRating" header="Trainee Rating">
+
+                        </p-column>-->
+                    </p-dataTable>
+                </div>
+                <div class="form-group">
+                    <ng-template #hideAssignment>
+                        <div *ngIf="assignmentData">
+                            <h4>Trainee response</h4><br />
+                            <div class="container trainee-response">
+                                <div *ngFor="let questionary of assignmentData.TrainingAssignmentAnswers;let i=index">
+                                    <div class="form-group">
+                                        <label><b>Q{{i+1}}. {{questionary.QuestionText}}</b></label>
+                                        <div *ngIf="questionary.QuestionType === 2">
+                                            <div class="trainee-option">
+                                                <div *ngFor="let multiple of questionary.AssignmentQuestionOptions; let i = index">
+                                                    <p-radioButton disabled="true" [value]="multiple.QuestionOptionID" [label]="multiple.OptionText" [(ngModel)]="questionary.QuestionOptionId"></p-radioButton>
+                                                </div>
+                                            </div>
+                                                <b>Score: </b>
+                                                <input readonly type="number" [value]="questionary.IsCorrectAnswer ? questionary.QuestionScore: 0" (change)="onScoreChange()" />
+                                        </div>
+                                        <div *ngIf="questionary.QuestionType === 1">
+                                            <div class="trainee-option">
+                                                <textarea class="form-control" pInputTextarea [(ngModel)]="questionary.AnswerText" readonly></textarea>
+                                            </div>
+                                            <b>Score: </b>
+                                            <input type="number" [(ngModel)]="questionary.QuestionScore" [max]="questionary.QuestionScore"
+                                                          (change)="onScoreChange()" />
+                                        </div>
+                                    </div>
+                                </div><br />
+                                <!--<div class="form-group">
+                                    <label><b>Comment</b></label>
+                                    <div class="trainee-option">
+                                        <textarea class="form-control" rows="5" [(ngModel)]="assignmentData.CommentText" readonly></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label><b>Rating</b></label>
+                                    <div class="trainee-option">
+                                        <p-rating [(ngModel)]="assignmentData.Rating" stars="5" [cancel]="false" [readonly]="true"></p-rating>
+                                    </div>
+                                </div>-->  
+                            </div>
+                            <br/>
+                            <hr/>
+                            <div class="form-group">
+                                <b>Score: </b><input type="number" [(ngModel)]="assignmentData.Score" />
+                            </div>
+                            <div class="form-group">
+                                <b>Retest : </b><input type="checkbox" [(ngModel)]="assignmentData.Retest" />
+                            </div>
+                        </div>
+                        <br/>
+                        <button pButton type="button" (click)="SaveAssignmentScoreForUser()" label="Submit"></button>
+                    </ng-template>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="lg-modal-training" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Training Material List</h4>
+                <button type="button" #closeDialog class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" [hidden]="trainingMaterialList.length ==0" >
+                    <p-dataTable [value]="trainingMaterialList" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                                 resizableColumns="true" #dtMaterial [responsive]="true">
+
+
+                        <p-column field="YouTubeLink" header="Link">
+                            <ng-template let-col let-car="rowData" pTemplate="body">
+                                <div class="form-group" [hidden]="car.YouTubeLink ==''">
+                                    <a style="text-decoration:underline;" target="_blank" href="{{car.YouTubeLink}}">{{car.YouTubeLink}}</a>
+                                </div>
+                                <div class="form-group" [hidden]="car.FilePath ==null">
+                                    <a (click)="downloadMaterial(car.TrainingMaterialId, car.FileName)" *ngIf="car.FilePath !=null" style="text-decoration:underline;" href="javascript:void(0)">
+                                        <!--href="{{apiEndPoint+'training/DownLoadMaterial?id='+car.TrainingMaterialId}}">-->
+                                        {{car.FileName}}
+                                    </a>
+                                </div>
+                            </ng-template>
+                        </p-column>
+                    </p-dataTable>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

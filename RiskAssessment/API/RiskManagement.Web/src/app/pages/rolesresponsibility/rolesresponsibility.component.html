@@ -1,0 +1,166 @@
+﻿<form [formGroup]="rolesResponsibilityForm" novalidate (ngSubmit)="SaveRoleResponsibilityFormData(rolesResponsibilityForm.value)">
+    <div style="margin-top:10px;">
+        <div style="margin:20px;">
+            <div class="form-group" style="text-align:right;">
+                <button *ngIf="RoleResponsibilityVersionID>0 && IsLatestVersionApproved==false" type="button" data-toggle="modal" class="btn btn-primary" (click)="approveVersion();" [disabled]="!rolesResponsibilityForm.valid">Approve</button>
+                <button *ngIf="IsLatestVersionApproved" type="button" data-toggle="modal" class="btn btn-primary" (click)="showNewVersionForm();" [disabled]="!rolesResponsibilityForm.valid">New Version</button>
+                <button type="button" data-toggle="modal" class="btn btn-primary" (click)="SaveRoleResponsibilityFormData(rolesResponsibilityForm.value)" [disabled]="!rolesResponsibilityForm.valid">Save</button>
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select formControlName="RoleID" (change)="GetRoleResponsibility($event.target.value)">
+                    <option>--Select--</option>
+                    <option *ngFor="let role of roles "
+                            value={{role.id}}>
+                        {{role.name}}
+                    </option>
+                </select>
+                <!--<small [hidden]="myFormDocument.controls.DocumentName.valid" class="text-danger">
+                    Document Name is required
+                </small>-->
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                <label class="custom-control custom-radio">
+                    <input type="radio" name="Type"  value="1" formControlName="Type" [checked]="Type ===1" class="custom-control-input" >
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Template</span>
+                </label>
+                <label class="custom-control custom-radio">
+                    <input type="radio" name="Type" value="2" formControlName="Type" [checked]="Type ===2" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Document</span>
+                </label>
+                <!--<small [hidden]="myFormDocument.controls.DocumentName.valid" class="text-danger">
+            Document Name is required
+        </small>-->
+            </div>
+                <div *ngIf="IsNewVersion==true || IsLatestVersionApproved==false">
+                    <div class="form-group" *ngIf="RoleResponsibilityVersionID>0">
+                        <label>Version</label>
+                        <input type="text" maxlength="9" formControlName="LatestVersion" class="form-control" />
+                    </div>
+                    <div class="form-group" *ngIf="RoleResponsibilityVersionID>0">
+                        <label>Changes</label>
+                        <input type="text" maxlength="8000" formControlName="LatestChanges" class="form-control" />
+                    </div>
+                </div>
+            <div #dynamicContainer>
+                <div id="sectiontemplate" [hidden]="rolesResponsibilityForm.controls.Type.value!=1">
+                    <div class="form-group">
+                        <label>Job Section</label>
+                        <select formControlName="SectionID">
+                            <option value="0">--Select--</option>
+                            <option *ngFor="let mrs of masterRoleSectionList "
+                                    value={{mrs.MasterRoleSectionID}}>
+                                {{mrs.SectionName}}
+                            </option>
+                        </select>
+                        <button type="button" data-toggle="modal" pButton icon="fa-plus" data-target="#lg-modal" (click)="clearMasterJobSectionPopupForm();" label="Add New Section"></button>
+                        <button type="button" data-toggle="modal" pButton icon="fa-plus" (click)="addSectionDetails()" label="Add"></button>
+                        <!--<small [hidden]="myFormDocument.controls.DocumentName.valid" class="text-danger">
+                    Document Name is required
+                </small>-->
+                    </div>
+                    <div class="form-group">
+
+                    </div>
+                    <div formArrayName="SectionDetailForm" *ngFor="let address of SectionDetailForm.controls; let i=index">
+                        <div>
+                            <span class="fa fa-remove pull-right" (click)="RemoveSectionDetails(i,address.controls.SectionID.value)">
+                            </span>
+                        </div>
+                        <div [formGroupName]="i">
+                            <div class="form-group">
+                                <input type="hidden" formControlName="SectionName" />
+                                <input type="hidden" formControlName="SectionID" />
+                                <label>{{address.controls.SectionName.value}}:</label>
+                                <p-editor formControlName="SectionDetails" [style]="{'height':'180px'}">
+
+                                </p-editor>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sectionrolerespnsibility" [hidden]="rolesResponsibilityForm.controls.Type.value!=2">
+                    <div class="form-group">
+                        <div class="input-group file-upload">
+                            <input type="file" (change)="fileChange(input)" #input class="file-upload-btn" />
+                            <input type="text" class="form-control" placeholder="Choose a file..." value="{{fileName}}">
+                            <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="fileToUpload"></i>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="form-group">
+                    <p-dataTable [editable]="true" [value]="roleresponsibilityVersionListData" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                                 resizableColumns="true" [responsive]="true">
+
+
+                        <p-column [style]="{'width':'10%'}" field="Version" header="Version"></p-column>
+                        <p-column [style]="{'width':'12.5%'}" field="ApprovedByName" header="Approved By"></p-column>
+                        <p-column [style]="{'width':'12.5%'}" field="ApprovedDate" header="Approved Date"></p-column>
+                        <p-column [style]="{'width':'30%'}" field="Changes" header="Changes"></p-column>
+                        <p-column [style]="{'width':'10%'}" field="ModifiedByName" header="Modified By"></p-column>
+                        <p-column [style]="{'width':'10%'}" field="ModifiedDate" header="Modified Date"></p-column>
+                        <p-column [style]="{'width':'15%'}" styleClass="col-button">
+                            <ng-template let-col let-car="rowData" pTemplate="body">
+                                <button type="button" title="View" class="btn btn-primary" *ngIf="rolesResponsibilityForm.controls.Type.value==1" (click)="ViewRoleResponsibilityVersion(car)">View</button>
+                                <div class="form-group" *ngIf="rolesResponsibilityForm.controls.Type.value==2">
+                                    <a class="btn btn-primary" (click)="downloadMaterial(car.RoleResponsibilityVersionID, car.DocumentName)" *ngIf="car.DocumentPath !=null" style="text-decoration:underline;" href="javascript:void(0)">
+                                        View
+                                    </a>
+                                </div>
+                            </ng-template>
+                        </p-column>
+                    </p-dataTable>
+                </div>
+           </div>
+        <div class="modal-footer">
+
+        </div>
+
+    </div>
+</form>
+
+
+<div class="modal fade" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Add </h4>
+                <button #closeDialog type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" style="overflow:scroll">
+                <form [formGroup]="myFormPopup" novalidate (ngSubmit)="SaveMasterJobSectionFormData(myFormPopup.value)">
+                    <div style="margin-top:10px;">
+                        <div style="margin:20px;">
+                            <div class="form-group">
+                                <label>Section</label>
+                                <input type="text" formControlName="SectionName" class="form-control validation-field" />
+                                <small *ngIf="!myFormPopup.controls.SectionName.valid" class="text-danger">
+                                    Section Name is required and must be unique
+                                </small>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-primary"
+                                        type="button"
+                                        (click)="SaveMasterJobSectionFormData(myFormPopup.value)"
+                                        [disabled]="!myFormPopup.valid">
+                                    Save
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

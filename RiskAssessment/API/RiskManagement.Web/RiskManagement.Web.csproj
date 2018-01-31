@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F580F20B-DA2F-4158-9EDC-1ED18C7EFC43}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RiskManagement.Web</RootNamespace>
+    <AssemblyName>RiskManagement.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="e2e\tsconfig.e2e.json" />
+    <Content Include="src\app\app.component.scss" />
+    <Content Include="src\app\pages\assignment\assignment.component.html" />
+    <Content Include="src\app\pages\assignment\assignmentlist.component.html" />
+    <Content Include="src\app\pages\audit\auditsubjectreviewlist.component.html" />
+    <Content Include="src\app\pages\audit\auditreport.component.html" />
+    <Content Include="src\app\pages\audit\auditreview.component.html" />
+    <Content Include="src\app\pages\audit\audit.component.html" />
+    <Content Include="src\app\pages\audit\auditlist.component.html" />
+    <Content Include="src\app\pages\audit\auditreview.component.css" />
+    <Content Include="src\app\pages\blank\blank.component.scss" />
+    <Content Include="src\app\pages\correctiveaction\correctiveaction.actionrequired.conmponent.html" />
+    <Content Include="src\app\pages\correctiveaction\correctiveaction.component.html" />
+    <Content Include="src\app\pages\correctiveaction\correctiveactionlist.component.html" />
+    <Content Include="src\app\pages\cron-editor\cron-editor.component.css" />
+    <Content Include="src\app\pages\cron-editor\cron-editor.template.html" />
+    <Content Include="src\app\pages\cron-editor\cron-time-picker.template.html" />
+    <Content Include="src\app\pages\dashboard\todo\todo.component.scss" />
+    <Content Include="src\app\pages\dashboard\visitors\visitors.component.scss" />
+    <Content Include="src\app\pages\document\document.component.html" />
+    <Content Include="src\app\pages\document\documentlist.component.html" />
+    <Content Include="src\app\pages\errors\not-found\not-found.component.scss" />
+    <Content Include="src\app\pages\eventactions\eventaction.component.html" />
+    <Content Include="src\app\pages\eventactions\eventaction.list.component.html" />
+    <Content Include="src\app\pages\measure\measure-chart.component.html" />
+    <Content Include="src\app\pages\measure\measure-list.component.html" />
+    <Content Include="src\app\pages\measure\measure.component.css" />
+    <Content Include="src\app\pages\measure\newmeasure.component.html" />
+    <Content Include="src\app\pages\menu\customdynamicmenu.component.html" />
+    <Content Include="src\app\pages\menu\customdynamicmenulist.component.html" />
+    <Content Include="src\app\pages\menu\dynamicrole.component.html" />
+    <Content Include="src\app\pages\organization\organization.component.html" />
+    <Content Include="src\app\pages\organization\organizationlist.component.html" />
+    <Content Include="src\app\pages\performancereviewmeeting\performancereviewmeeting.component.css" />
+    <Content Include="src\app\pages\performancereviewmeeting\performancereviewmeeting.component.html" />
+    <Content Include="src\app\pages\performancereviewmeeting\performancereviewmeetinglist.component.html" />
+    <Content Include="src\app\pages\rolesresponsibility\rolesresponsibility.component.html" />
+    <Content Include="src\app\pages\folder\folderlist.component.html" />
+    <Content Include="src\app\pages\form-elements\controls\controls.component.scss" />
+    <Content Include="src\app\pages\form-elements\controls\file-uploader\file-uploader.component.scss" />
+    <Content Include="src\app\pages\form-elements\controls\image-uploader\image-uploader.component.scss" />
+    <Content Include="src\app\pages\form-elements\controls\multiple-image-uploader\multiple-image-uploader.component.scss" />
+    <Content Include="src\app\pages\form-elements\wizard\wizard.component.scss" />
+    <Content Include="src\app\pages\login\forgotpassword.component.html" />
+    <Content Include="src\app\pages\login\login.component.scss" />
+    <Content Include="src\app\pages\login\resetpassword.component.html" />
+    <Content Include="src\app\pages\mailbox\mailbox.component.scss" />
+    <Content Include="src\app\pages\meeting\meeting.component.css" />
+    <Content Include="src\app\pages\meeting\meeting.component.html" />
+    <Content Include="src\app\pages\meeting\meetinglist.component.html" />
+    <Content Include="src\app\pages\membership\membership.component.scss" />
+    <Content Include="src\app\pages\pages.component.scss" />
+    <Content Include="src\app\pages\register\register.component.scss" />
+    <Content Include="src\app\pages\RiskAssessment\riskassessment.component.css" />
+    <Content Include="src\app\pages\RiskAssessment\riskassessment.component.html" />
+    <Content Include="src\app\pages\RiskAssessment\riskassessmentlist.component.html" />
+    <Content Include="src\app\pages\search\search.component.scss" />
+    <Content Include="src\app\pages\tools\drag-drop\drag-drop.component.scss" />
+    <Content Include="src\app\pages\tools\resizable\resizable.component.scss" />
+    <Content Include="src\app\pages\training\trainer.component.html" />
+    <Content Include="src\app\pages\training\userreport.component.html" />
+    <Content Include="src\app\pages\training\training.component.css" />
+    <Content Include="src\app\pages\training\training.component.html" />
+    <Content Include="src\app\pages\training\traininglist.component.html" />
+    <Content Include="src\app\pages\training\trainerreport.component.html" />
+    <Content Include="src\app\pages\training\trainingreport.component.html" />
+    <Content Include="src\app\pages\ui\buttons\buttons.component.scss" />
+    <Content Include="src\app\pages\ui\components\components.component.scss" />
+    <Content Include="src\app\pages\ui\icons\icons.component.scss" />
+    <Content Include="src\app\pages\ui\list-group\list-group.component.scss" />
+    <Content Include="src\app\pages\ui\tabs-accordions\tabs-accordions.component.scss" />
+    <Content Include="src\app\pages\ui\typography\typography.component.scss" />
+    <Content Include="src\app\pages\user\user.changepassword.component.html" />
+    <Content Include="src\app\pages\user\user.component.html" />
+    <Content Include="src\app\pages\user\userlist.component.html" />
+    <Content Include="src\app\theme\components\applications\applications.component.scss" />
+    <Content Include="src\app\theme\components\back-top\back-top.component.scss" />
+    <Content Include="src\app\theme\components\favorites\favorites.component.scss" />
+    <Content Include="src\app\theme\components\flags-menu\flags-menu.component.scss" />
+    <Content Include="src\app\theme\components\footer\footer.component.scss" />
+    <Content Include="src\app\theme\components\header\header.component.scss" />
+    <Content Include="src\app\theme\components\menu\horizontal-menu\horizontal-menu.component.scss" />
+    <Content Include="src\app\theme\components\menu\vertical-menu\vertical-menu.component.scss" />
+    <Content Include="src\app\theme\components\messages\messages.component.scss" />
+    <Content Include="src\app\theme\components\side-chat\side-chat.component.scss" />
+    <Content Include="src\app\theme\components\sidebar\sidebar.component.scss" />
+    <Content Include="src\app\theme\components\user-menu\user-menu.component.scss" />
+    <Content Include="src\app\theme\styles\skins\_blue.scss" />
+    <Content Include="src\app\theme\styles\skins\_brown.scss" />
+    <Content Include="src\app\theme\styles\skins\_combined.scss" />
+    <Content Include="src\app\theme\styles\skins\_dark.scss" />
+    <Content Include="src\app\theme\styles\skins\_green.scss" />
+    <Content Include="src\app\theme\styles\skins\_grey.scss" />
+    <Content Include="src\app\theme\styles\skins\_light.scss" />
+    <Content Include="src\app\theme\styles\skins\_orange.scss" />
+    <Content Include="src\app\theme\styles\skins\_pink.scss" />
+    <Content Include="src\app\theme\styles\skins\_purple.scss" />
+    <Content Include="src\app\theme\styles\_base.scss" />
+    <Content Include="src\app\theme\styles\_bootstrap-override.scss" />
+    <Content Include="src\app\theme\styles\_fonts.scss" />
+    <Content Include="src\app\theme\styles\_libs-override.scss" />
+    <Content Include="src\app\theme\styles\_mixins.scss" />
+    <Content Include="src\app\theme\styles\_theme.scss" />
+    <Content Include="src\app\theme\styles\_variables.scss" />
+    <Content Include="src\assets\data\company.json" />
+    <Content Include="src\assets\data\users.json" />
+    <Content Include="src\assets\fonts\moonhouse.eot" />
+    <Content Include="src\assets\fonts\moonhouse.ttf" />
+    <Content Include="src\styles.scss" />
+    <Content Include="src\tsconfig.app.json" />
+    <Content Include="src\tsconfig.spec.json" />
+    <Content Include=".angular-cli.json" />
+    <Content Include=".editorconfig" />
+    <Content Include="package.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tslint.json" />
+    <Content Include="src\assets\data\Action.json" />
+    <Content Include="src\app\pages\training\trainee.component.html" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="karma.conf.js" />
+    <Content Include="protractor.conf.js" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\pages\blank\blank.component.html" />
+    <Content Include="src\app\pages\calendar\app-calendar.component.html" />
+    <Content Include="src\app\pages\charts\bar\bar.component.html" />
+    <Content Include="src\app\pages\charts\bubble\bubble.component.html" />
+    <Content Include="src\app\pages\charts\line\line.component.html" />
+    <Content Include="src\app\pages\charts\pie\pie.component.html" />
+    <Content Include="src\app\pages\dashboard\cost\cost.component.html" />
+    <Content Include="src\app\pages\dashboard\dashboard.component.html" />
+    <Content Include="src\app\pages\dashboard\disk-space\disk-space.component.html" />
+    <Content Include="src\app\pages\dashboard\info-cards\info-cards.component.html" />
+    <Content Include="src\app\pages\dashboard\info-panels\info-panels.component.html" />
+    <Content Include="src\app\pages\dashboard\todo\todo.component.html" />
+    <Content Include="src\app\pages\dashboard\visitors\visitors.component.html" />
+    <Content Include="src\app\pages\dynamic-menu\dynamic-menu.component.html" />
+    <Content Include="src\app\pages\errors\not-found\not-found.component.html" />
+    <Content Include="src\app\pages\form-elements\controls\controls.component.html" />
+    <Content Include="src\app\pages\form-elements\controls\file-uploader\file-uploader.component.html" />
+    <Content Include="src\app\pages\form-elements\controls\image-uploader\image-uploader.component.html" />
+    <Content Include="src\app\pages\form-elements\controls\multiple-image-uploader\multiple-image-uploader.component.html" />
+    <Content Include="src\app\pages\form-elements\editor\editor.component.html" />
+    <Content Include="src\app\pages\form-elements\layouts\layouts.component.html" />
+    <Content Include="src\app\pages\form-elements\validations\validations.component.html" />
+    <Content Include="src\app\pages\form-elements\wizard\wizard.component.html" />
+    <Content Include="src\app\pages\login\login.component.html" />
+    <Content Include="src\app\pages\mailbox\mailbox.component.html" />
+    <Content Include="src\app\pages\maps\google-maps\google-maps.component.html" />
+    <Content Include="src\app\pages\maps\leaflet-maps\leaflet-maps.component.html" />
+    <Content Include="src\app\pages\membership\membership.component.html" />
+    <Content Include="src\app\pages\pages.component.html" />
+    <Content Include="src\app\pages\register\register.component.html" />
+    <Content Include="src\app\pages\search\search.component.html" />
+    <Content Include="src\app\pages\tables\basic-tables\basic-tables.component.html" />
+    <Content Include="src\app\pages\tables\dynamic-tables\ngx\ngx.component.html" />
+    <Content Include="src\app\pages\tables\dynamic-tables\smart\smart.component.html" />
+    <Content Include="src\app\pages\tools\drag-drop\drag-drop.component.html" />
+    <Content Include="src\app\pages\tools\resizable\resizable.component.html" />
+    <Content Include="src\app\pages\tools\toaster\toaster.component.html" />
+    <Content Include="src\app\pages\ui\buttons\buttons.component.html" />
+    <Content Include="src\app\pages\ui\cards\cards.component.html" />
+    <Content Include="src\app\pages\ui\components\components.component.html" />
+    <Content Include="src\app\pages\ui\icons\icons.component.html" />
+    <Content Include="src\app\pages\ui\list-group\list-group.component.html" />
+    <Content Include="src\app\pages\media-objects\media-objects.component.html" />
+    <Content Include="src\app\pages\ui\tabs-accordions\tabs-accordions.component.html" />
+    <Content Include="src\app\pages\ui\typography\typography.component.html" />
+    <Content Include="src\app\theme\components\applications\applications.component.html" />
+    <Content Include="src\app\theme\components\breadcrumb\breadcrumb.component.html" />
+    <Content Include="src\app\theme\components\favorites\favorites.component.html" />
+    <Content Include="src\app\theme\components\flags-menu\flags-menu.component.html" />
+    <Content Include="src\app\theme\components\footer\footer.component.html" />
+    <Content Include="src\app\theme\components\header\header.component.html" />
+    <Content Include="src\app\theme\components\menu\horizontal-menu\horizontal-menu.component.html" />
+    <Content Include="src\app\theme\components\menu\vertical-menu\vertical-menu.component.html" />
+    <Content Include="src\app\theme\components\messages\messages.component.html" />
+    <Content Include="src\app\theme\components\side-chat\side-chat.component.html" />
+    <Content Include="src\app\theme\components\sidebar\sidebar.component.html" />
+    <Content Include="src\app\theme\components\user-menu\user-menu.component.html" />
+    <Content Include="src\assets\img\app\1.jpg" />
+    <Content Include="src\assets\img\app\2.jpg" />
+    <Content Include="src\assets\img\app\3.jpg" />
+    <Content Include="src\assets\img\app\4.jpg" />
+    <Content Include="src\assets\img\app\5.jpg" />
+    <Content Include="src\assets\img\app\6.jpg" />
+    <Content Include="src\assets\img\app\7.jpg" />
+    <Content Include="src\assets\img\app\bluehost.jpg" />
+    <Content Include="src\assets\img\app\envato.jpg" />
+    <Content Include="src\assets\img\app\google-platform.png" />
+    <Content Include="src\assets\img\app\mailchimp.jpg" />
+    <Content Include="src\assets\img\app\no-image.png" />
+    <Content Include="src\assets\img\app\sample.jpg" />
+    <Content Include="src\assets\img\app\sky-full.jpg" />
+    <Content Include="src\assets\img\app\sky.jpg" />
+    <Content Include="src\assets\img\app\snow.jpg" />
+    <Content Include="src\assets\img\app\vs.jpg" />
+    <Content Include="src\assets\img\avatars\avatar-1.png" />
+    <Content Include="src\assets\img\avatars\avatar-10.png" />
+    <Content Include="src\assets\img\avatars\avatar-2.png" />
+    <Content Include="src\assets\img\avatars\avatar-3.png" />
+    <Content Include="src\assets\img\avatars\avatar-4.png" />
+    <Content Include="src\assets\img\avatars\avatar-5.png" />
+    <Content Include="src\assets\img\avatars\avatar-6.png" />
+    <Content Include="src\assets\img\avatars\avatar-7.png" />
+    <Content Include="src\assets\img\avatars\avatar-8.png" />
+    <Content Include="src\assets\img\avatars\avatar-9.png" />
+    <Content Include="src\assets\img\flags\de.svg" />
+    <Content Include="src\assets\img\flags\fr.svg" />
+    <Content Include="src\assets\img\flags\gb.svg" />
+    <Content Include="src\assets\img\flags\ru.svg" />
+    <Content Include="src\assets\img\flags\tr.svg" />
+    <Content Include="src\assets\img\profile\adam.jpg" />
+    <Content Include="src\assets\img\profile\ashley.jpg" />
+    <Content Include="src\assets\img\profile\bruno.jpg" />
+    <Content Include="src\assets\img\profile\julia.jpg" />
+    <Content Include="src\assets\img\profile\michael.jpg" />
+    <Content Include="src\assets\img\profile\tereza.jpg" />
+    <Content Include="src\assets\img\users\default-user.jpg" />
+    <Content Include="src\assets\img\users\user.jpg" />
+    <Content Include="src\assets\img\vendor\leaflet\marker-icon-2x.png" />
+    <Content Include="src\assets\img\vendor\leaflet\marker-icon.png" />
+    <Content Include="src\assets\img\vendor\leaflet\marker-shadow.png" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\app.po.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\app.routing.ts" />
+    <TypeScriptCompile Include="src\app\app.settings.model.ts" />
+    <TypeScriptCompile Include="src\app\app.settings.ts" />
+    <TypeScriptCompile Include="src\app\pages\assignment\assignment.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\assignment\assignment.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\assignment\assignment.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\assignment\assignment.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\assignment\assignmentlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\auditsubjectreviewlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\auditreport.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\audit.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\auditreview.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\audit.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\audit.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\audit.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\audit\auditlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\blank\blank.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\calendar\app-calendar.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\calendar\app-calendar.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\calendar\formeventdata.ts" />
+    <TypeScriptCompile Include="src\app\pages\calendar\Mastereventdata.ts" />
+    <TypeScriptCompile Include="src\app\pages\charts\bar\bar.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\charts\bubble\bubble.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\charts\charts.data.ts" />
+    <TypeScriptCompile Include="src\app\pages\charts\charts.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\charts\line\line.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\charts\pie\pie.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\correctiveaction\correctiveaction.actionrequired.conmponent.ts" />
+    <TypeScriptCompile Include="src\app\pages\correctiveaction\correctiveaction.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\correctiveaction\correctiveaction.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\correctiveaction\correctiveaction.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\correctiveaction\correctiveaction.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\correctiveaction\correctiveactionlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\cron-editor\cron-editor.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\cron-editor\cron-editor.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\cron-editor\cron-time-picker.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\cron-editor\CronOptions.ts" />
+    <TypeScriptCompile Include="src\app\pages\cron-editor\enums.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\cost\cost.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\dashboard.data.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\disk-space\disk-space.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\info-cards\info-cards.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\info-panels\info-panels.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\todo\todo.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\todo\todo.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\dashboard\visitors\visitors.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\document\document.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\document\document.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\document\document.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\document\document.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\document\documentlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dynamic-menu\dynamic-menu.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\dynamic-menu\dynamic-menu.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\errors\401.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\errors\not-found\not-found.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\eventactions\eventaction.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\eventactions\eventaction.list.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\eventactions\eventaction.list.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\eventactions\eventaction.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\eventactions\eventaction.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\measure\measure-chart.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\measure\measure-list.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\measure\measure.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\measure\measure.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\measure\measure.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\measure\newmeasure.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\menu\customdynamicmenu.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\menu\customdynamicmenu.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\menu\customdynamicmenu.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\menu\customdynamicmenu.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\menu\customdynamicmenulist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\menu\dynamicrole.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\organization\organization.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\organization\organization.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\organization\organization.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\organization\organization.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\organization\organizationlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\performancereviewmeeting\performancereviewmeeting.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\performancereviewmeeting\performancereviewmeeting.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\performancereviewmeeting\performancereviewmeeting.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\performancereviewmeeting\performancereviewmeeting.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\performancereviewmeeting\performancereviewmeetinglist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\rolesresponsibility\rolesresponsibility.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\rolesresponsibility\rolesresponsibility.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\rolesresponsibility\rolesresponsibility.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\rolesresponsibility\rolesresponsibility.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\folder\folder.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\folder\folder.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\folder\folder.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\folder\folderlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\controls\controls.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\controls\file-uploader\file-uploader.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\controls\image-uploader\image-uploader.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\controls\multiple-image-uploader\multiple-image-uploader.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\editor\editor.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\form-elements.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\layouts\layouts.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\validations\validations.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\form-elements\wizard\wizard.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\login\forgotpassword.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\login\login.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\login\login.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\login\login.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\login\resetpassword.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\mailbox\mailbox.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\mailbox\mailbox.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\mailbox\mailbox.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\maps\google-maps\google-maps.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\maps\leaflet-maps\leaflet-maps.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\maps\maps.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\meeting\actionstatus.directive.ts" />
+    <TypeScriptCompile Include="src\app\pages\meeting\meeting.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\meeting\meeting.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\meeting\meeting.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\meeting\meeting.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\meeting\meetinglist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\meeting\NgbDateISOParserFormatter.ts" />
+    <TypeScriptCompile Include="src\app\pages\membership\membership.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\membership\membership.data.ts" />
+    <TypeScriptCompile Include="src\app\pages\membership\membership.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\membership\membership.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\membership\membership.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\pages.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\pages.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\pages.routing.ts" />
+    <TypeScriptCompile Include="src\app\pages\register\register.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\register\register.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\RiskAssessment\riskassessment.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\RiskAssessment\riskassessment.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\RiskAssessment\riskassessment.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\RiskAssessment\riskassessment.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\RiskAssessment\riskassessmentlist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\search\search.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\tables\basic-tables\basic-tables.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\tables\dynamic-tables\dynamic-tables.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\tables\dynamic-tables\ngx\ngx.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\tables\dynamic-tables\smart\smart.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\tables\tables.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\tools\drag-drop\drag-drop.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\tools\resizable\resizable.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\tools\toaster\toaster.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\tools\tools.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\trainee.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\trainer.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\trainerreport.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\training.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\training.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\training.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\training.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\traininglist.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\userreport.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\training\trainingreport.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\buttons\buttons.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\cards\cards.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\components\components.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\icons\icons.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\icons\icons.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\list-group\list-group.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\media-objects\media-objects.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\tabs-accordions\tabs-accordions.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\typography\typography.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\ui\ui.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\user\user.changepassword.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\user\user.component.ts" />
+    <TypeScriptCompile Include="src\app\pages\user\user.model.ts" />
+    <TypeScriptCompile Include="src\app\pages\user\user.module.ts" />
+    <TypeScriptCompile Include="src\app\pages\user\user.service.ts" />
+    <TypeScriptCompile Include="src\app\pages\user\userlist.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\applications\applications.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\back-top\back-top.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\breadcrumb\breadcrumb.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\favorites\favorites.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\flags-menu\flags-menu.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\footer\footer.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\fullscreen\fullscreen.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\header\header.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\menu\horizontal-menu\horizontal-menu.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\menu\menu.model.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\menu\menu.service.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\menu\menu.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\menu\vertical-menu\vertical-menu.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\messages\messages.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\messages\messages.model.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\messages\messages.service.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\side-chat\side-chat.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\side-chat\side-chat.model.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\side-chat\side-chat.service.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\sidebar\sidebar.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\user-menu\user-menu.component.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\user-menu\user-menu.model.ts" />
+    <TypeScriptCompile Include="src\app\theme\components\user-menu\user-menu.service.ts" />
+    <TypeScriptCompile Include="src\app\theme\directives\directives.module.ts" />
+    <TypeScriptCompile Include="src\app\theme\directives\widget\widget.directive.ts" />
+    <TypeScriptCompile Include="src\app\theme\pipes\pipes.module.ts" />
+    <TypeScriptCompile Include="src\app\theme\pipes\profilePicture\profilePicture.pipe.ts" />
+    <TypeScriptCompile Include="src\app\theme\pipes\search\chat-person-search.pipe.ts" />
+    <TypeScriptCompile Include="src\app\theme\pipes\search\mail-search.pipe.ts" />
+    <TypeScriptCompile Include="src\app\theme\pipes\search\user-search.pipe.ts" />
+    <TypeScriptCompile Include="src\app\theme\pipes\truncate\truncate.pipe.ts" />
+    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="src\environments\environment.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\test.ts" />
+    <TypeScriptCompile Include="src\typings.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52922</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52922/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

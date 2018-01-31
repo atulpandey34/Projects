@@ -1,0 +1,32 @@
+﻿<p-dataTable [value]="data" [lazy]="true" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+             #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="totalRecords" (onLazyLoad)="loadDocumentList($event)">
+    <p-column field="DocumentName" header="Document Name" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="UploadedBy" header="Upload By" [filter]="true"  [sortable]="true"></p-column>
+    <p-column field="FolderName" header="Folder" [filter]="true" [sortable]="true"></p-column>
+    <p-column field="VersionNumber" header="Version" [filter]="true"  [sortable]="true"></p-column>
+    <p-column field="Review" header="Review" [filter]="true"  [sortable]="true"></p-column>
+    <p-column field="DocumentType" header="Type" [filter]="true"  [sortable]="true"></p-column>
+    <p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-plus" (click)="redirectToNewPage()" label="Add"></button>
+            </div>
+        </ng-template>
+        <ng-template let-meeting="rowData" pTemplate="body">
+            <button type="button" title="Edit" pButton (click)="redirectToEditPage(meeting)" icon="fa fa-pencil-square-o"></button>
+            <button type="button" title="Cancel" pButton (click)="deleteAction(meeting)" icon="fa fa-trash-o"></button>
+        </ng-template>
+
+    </p-column>
+</p-dataTable>
+
+
+
+
+
+
+
+
+
+
+

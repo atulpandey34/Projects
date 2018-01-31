@@ -1,0 +1,59 @@
+﻿<div class="modal-body">
+    <div class="form-group">
+        <div *ngIf="!ShowAssignment ; else hideAssignment">
+            <p-dataTable [value]="traineeListData" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
+                         #dt resizableColumns="true" reorderableColumns="true" [responsive]="true" [totalRecords]="traineeListData.length">
+
+                <p-column field="TrainingNeed" header="Training" [filter]="true" [sortable]="true"></p-column>
+                <p-column field="StartDate" header="Start Date" [filter]="true" [sortable]="true"></p-column>
+                <p-column field="EndDate" header="End Date" [filter]="true" [sortable]="true"></p-column>
+                <p-column field="Trainer" header="Trainer" [filter]="true" [sortable]="true"></p-column>
+                <p-column field="Score" header="Score" [filter]="true" [sortable]="true"></p-column>
+                <p-column field="AssignmentId">
+                    <ng-template let-assignment="rowData" pTemplate="body">
+                        <!--<div *ngIf="assignment.AssignmentId == null; else assignmentLink">
+
+                        </div>
+                        <ng-template #assignmentLink><button pButton type="button" (click)="onShowAssignment(assignment.TrainingScheduleId,assignment.AssignmentId)" label="assignment"></button></ng-template>-->
+                        <!--<div *ngIf="!assignmentId ; else assignmentLink"></div>
+                        <ng-template #assignmentLink><a (click)="onShowAssignment()">assignment</a></ng-template>-->
+                        <ng-template [ngIf]="assignment.AssignmentId != null && assignment.Retest == true"><button pButton type="button" (click)="onShowAssignment(assignment.TrainingScheduleId,assignment.AssignmentId, true, assignment.IsAssignmentRequired, assignment.Score)" label="reassessment"></button></ng-template>
+                        <ng-template [ngIf]="assignment.AssignmentId != null && (assignment.Retest == false || assignment.Retest == null)"><button pButton type="button" (click)="onShowAssignment(assignment.TrainingScheduleId,assignment.AssignmentId, false, assignment.IsAssignmentRequired, assignment.Score)" label="assessment"></button></ng-template>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+        <ng-template #hideAssignment>
+            <div *ngIf="assignmentData" class="container">
+                <div *ngFor="let questionary of assignmentData.TrainingAssignmentAnswers;let i=index;">
+                    <div class="form-group">
+                        <label><b>Q{{i+1}}. {{questionary.QuestionText}} </b></label>
+                        <div *ngIf="questionary.QuestionType === 2">
+                            <div class="trainee-option">
+                                <div *ngFor="let multiple of questionary.AssignmentQuestionOptions; let i = index" class="ui-g-12">
+                                    <p-radioButton [disabled]="score != null? true: false" [value]="multiple.QuestionOptionID" [label]="multiple.OptionText" [(ngModel)]="questionary.QuestionOptionId"></p-radioButton>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="questionary.QuestionType === 1" class="form-group trainee-option">
+                                <textarea [readonly]="score != null? true: false" class="form-control" rows="5" [(ngModel)]="questionary.AnswerText"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b>Comment</b></label>
+                    <div class="trainee-option">
+                        <textarea class="form-control" rows="5" [(ngModel)]="assignmentData.CommentText"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><b>Rating</b></label>
+                    <div class="trainee-option">
+                        <p-rating [(ngModel)]="assignmentData.Rating" stars="5" [cancel]="false"></p-rating>
+                    </div>
+                </div>
+                <button pButton type="button" (click)="saveResponse()" label="Submit"></button>
+            </div>
+        </ng-template>
+    </div>
+</div>

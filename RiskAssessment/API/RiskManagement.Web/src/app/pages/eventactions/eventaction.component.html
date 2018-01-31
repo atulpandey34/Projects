@@ -1,0 +1,232 @@
+﻿<div class="modal-body">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="saveeventformdata(myForm.value,'save')">
+
+        <div style="border: 1px solid black;margin-top:10px;">
+            <div style="margin:20px;" formArrayName="actionlist">
+                <div *ngFor="let acton of myForm['controls'].actionlist['controls']; let i=index">
+                    <div>
+                        <!--<span>Agenda {{i + 1}}</span>-->
+                        <span class=" fa fa-remove pull-right" *ngIf="myForm.controls.actionlist.controls.length > 1" (click)="RemoveAction(i)">
+                        </span>
+                    </div>
+                    <div [formGroupName]="i">
+                        <!--agenda-->
+                        <div class="form-group">
+                            <label>Action</label>
+                            <!--<input type="text" formControlName="title" class="form-control">-->
+                            <textarea formControlName="title" id="textAreaTitle" rows="6" class="form-control"></textarea>
+                            <!--display error message if agenda is not valid-->
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.title.value !=''" class="text-danger">
+                                Action is required
+                            </small>
+                        </div>
+                        <div style="display:none;" class="form-group">
+                            <label>Is Correction Action required ?</label>
+                            <input style="float:right;width:90%;" id="chkboxactionrequired" type="checkbox" (change)="SetCorrectionRequired()" formControlName="CorrectionStatusRequired" class="form-control">
+                            <!--display error message if agenda is not valid-->
+
+                        </div>
+                        <div style="display:none;" class="form-group" *ngIf="myForm.controls.actionlist.controls[i].controls.CorrectionStatusRequired.value">
+                            <label>Corrective Action</label>
+                            <select formControlName="CorrectiveActionID" (change)="setActionText($event.target.value)" class="form-control">
+                                <option value="0">--Select--</option>
+                                <option *ngFor="let evebtStatus of correctiveList"
+                                        value={{evebtStatus.CorrectiveActionId}}>
+                                    {{evebtStatus.CorrectiveActionName}}
+                                </option>
+                            </select>
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.CorrectiveActionID.value > 0" class="text-danger">
+                                Corrective action is required
+                            </small>
+                        </div>
+
+                        <div>
+                            <label>Due Date</label>
+                            <!--<input type="text" formControlName="duedate" type="date" class="form-control">-->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" name="dueDate" formControlName="dueDate" ngbDatepicker #d="ngbDatepicker">
+                                    <div class="input-group-addon" (click)="d.toggle()">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--display error message if agenda is not valid-->
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.dueDate.valid" class="text-danger">
+                                Due date is required
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>Assigned To</label>
+                            <ss-multiselect-dropdown [options]="responsiblePersonOptions" [texts]="responsiblePersonTexts" [settings]="responsiblePersonSettings" formControlName="responsiblePerson"
+                                                     (ngModelChange)="onResponsiblePersonChange($event)"></ss-multiselect-dropdown>
+                            <!--<ss-multiselect-dropdown [options]="responsiblePersonOptions" [texts]="responsiblePersonTexts" [settings]="responsiblePersonSettings" formControlName="responsiblePerson" (ngModelChange)="onResponsiblePersonChange($event)"></ss-multiselect-dropdown>
+                            -->
+                        </div>
+                        <div class="form-group">
+                            <label>Assigned By</label>
+                            <select formControlName="AssignedBy" class="form-control">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let evebtStatus of responsiblePersonOptions"
+                                        value={{evebtStatus.id}}>
+                                    {{evebtStatus.name}}
+                                </option>
+                            </select>
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.AssignedBy.valid" class="text-danger">
+                                Assigned By is required .
+                            </small>
+                        </div>
+                        <div style="display:none;" class="form-group">
+                            <label>Status</label>
+                            <select formControlName="EventActionStatusID" class="form-control">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let evebtStatus of eventActionStatusList"
+                                        value={{evebtStatus.EventActionStatusID}}>
+                                    {{evebtStatus.ActionName}}
+                                </option>
+                            </select>
+                            <!--display error message if name is not valid-->
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.EventActionStatusID.valid" class="text-danger">
+                                Action Status is required .
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select formControlName="CategoryId" class="form-control">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let evebtStatus of categoryList"
+                                        value={{evebtStatus.CategoryID}}>
+                                    {{evebtStatus.CategoryName}}
+                                </option>
+                            </select>
+                            <!--display error message if name is not valid-->
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.CategoryId.valid" class="text-danger">
+                                Category is required .
+                            </small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Source</label>
+                            <select formControlName="ActionSourceId" class="form-control">
+                                <option value="">--Select--</option>
+                                <option *ngFor="let evebtStatus of actionSourceList"
+                                        value={{evebtStatus.ActionSourceID}}>
+                                    {{evebtStatus.Source}}
+                                </option>
+                            </select>
+                            <!--display error message if name is not valid-->
+                            <small [hidden]="myForm.controls.actionlist.controls[i].controls.ActionSourceId.valid" class="text-danger">
+                                Action Source is required .
+                            </small>
+                        </div>
+
+                        <div>
+                            <label>Root Cause</label>
+                            <textarea formControlName="RootCause" rows="6" class="form-control"></textarea>
+                            <!--<input type="text" formControlName="title" class="form-control">-->
+                            <!--display error message if agenda is not valid-->
+
+                        </div>
+
+                        <div>
+                            <label>Comments</label>
+                            <textarea formControlName="comments" rows="6" class="form-control"></textarea>
+                            <!--<input type="text" formControlName="title" class="form-control">-->
+                            <!--display error message if agenda is not valid-->
+
+                        </div>
+                        <!--<div>
+                            <table>
+                                <tr>
+                                    <td>Comment Date</td>
+                                    <td>Added By</td>
+                                    <td>Comment</td>
+                                </tr>
+                                <tr *ngFor="let comment of acitonCommentList">
+                                    <td>{{comment.AddedON | date: 'MM/dd/yyyy'}}</td>
+                                    <td>{{comment.AddedBy}}</td>
+                                    <td>{{comment.Comment}}</td>
+                                </tr>
+                            </table>
+                        </div>-->
+
+
+                        <div style="padding-top:10px;">
+                            <label>Previous Comments</label>
+                            <div class="list">
+                                <a *ngFor="let comment of acitonCommentList" href="javascript:void(0);" style="color:black !important; border-bottom-color:black !important" class="transition">
+                                    <div class="list-content">
+                                        <h3 style="font-size:1rem !important;">{{comment.AddedBy}} <span class="pull-right"><i class="fa fa-clock-o"></i> {{comment.AddedON | date: 'MM/dd/yyyy'}}</span></h3>
+                                        <p>
+                                            {{comment.Comment}}
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- we will place our fields here -->
+        <!--<button type="submit" [disabled]="!myForm.valid">Submit</button>-->
+
+        <div class="modal-footer">
+            <button type="submit" #buttonSubmit class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+
+            <button type="button" (click)="saveeventformdata(myForm.value,'complete')" #buttonComplete data-toggle="modal" data-target="#lg-modal" class="btn btn-primary" [disabled]="!myForm.valid">Complete</button>
+
+        </div>
+    </form>
+</div>
+<div class="modal fade" id="lg-modal" tabindex="-1" role="dialog" aria-labelledby="modal-large-label" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-primary">
+                <h4 class="modal-title" id="modal-large-label">Action Taken</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="actionTakenForm" novalidate (ngSubmit)="saveActionTaken(actionTakenForm.value)">
+                    <div class="form-group">
+                        <label>Action Taken</label>
+                        <!--<input type="text" formControlName="title" class="form-control">-->
+                        <textarea formControlName="ActionTaken" rows="6" class="form-control validation-field"></textarea>
+                        <!--display error message if agenda is not valid-->
+                        <small [hidden]="actionTakenForm.controls['ActionTaken'].value !=''" class="text-danger">
+                            Action Taken is required
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-controls-stacked">
+                            <label class="custom-control custom-checkbox">
+                                <input formControlName="IsReportedAction" type="checkbox" class="custom-control-input" checked>
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Add to Corrective Action log</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group file-upload">
+                            <input type="file" (change)="fileChange(input)" #input class="file-upload-btn" />
+                            <input type="text" class="form-control" placeholder="Choose a file..." value="{{fileName}}">
+                            <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="fileToUpload"></i>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" [disabled]="!actionTakenForm.valid">Save</button>
+                        <button type="button" class="btn btn-default" #closeDialog data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
