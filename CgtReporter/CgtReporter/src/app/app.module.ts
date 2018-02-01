@@ -9,6 +9,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CgtreporterviewComponent } from './cgtreporterview/cgtreporterview.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PortfolioDetailComponent } from './portfolio/portfolio-detail.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeroesComponent,
     PortfolioComponent,
     CgtreporterviewComponent,
-    DashboardComponent
+    DashboardComponent,
+    PortfolioDetailComponent
   ],
   imports: [
       BrowserModule,

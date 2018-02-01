@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HEROES } from '../mock-heroes';
 import { Http } from '@angular/http'
-import { PortFolioViewModel } from './heroes.model'
+//import { PortFolioViewModel } from './heroes.model'
 
 import 'rxjs/add/operator/map';
 
@@ -17,15 +17,15 @@ export class HeroesComponent implements OnInit {
         id: 1,
         name: 'Windstorm'
     };
-    portfolioList: PortFolioViewModel[] = [];
+   // portfolioList: PortFolioViewModel[] = [];
 
     constructor(private _httpService: Http) { }
     
     ngOnInit() {
 
-      this._httpService.get('/api/portfolio').map(response => response.json()).subscribe((res: PortFolioViewModel[]) => {
-        this.portfolioList = res;
-      });
+      //this._httpService.get('/api/portfolio').map(response => response.json()).subscribe((res: PortFolioViewModel[]) => {
+      //  this.portfolioList = res;
+      //});
       
   }
     selectedHero: Hero;

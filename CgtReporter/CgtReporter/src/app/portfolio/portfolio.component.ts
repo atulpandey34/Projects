@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http'
-import { PortFolioViewModel } from './heroes.model'
+import { PortFolioViewModel } from './portfolio.model'
 
 @Component({
   selector: 'app-portfolio',

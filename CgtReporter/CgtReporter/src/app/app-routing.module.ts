@@ -4,13 +4,14 @@ import { HeroesComponent } from './heroes/heroes.component'
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { CgtreporterviewComponent } from './cgtreporterview/cgtreporterview.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PortfolioDetailComponent } from './portfolio/portfolio-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'portfolio', component: PortfolioComponent },
+  { path: 'portfolio/:id', component: PortfolioDetailComponent },
   { path: 'cgtreporterview', component: CgtreporterviewComponent },
-  //{ path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes', component: HeroesComponent }
 ];
 
