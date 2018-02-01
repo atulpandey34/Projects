@@ -1,0 +1,11 @@
+C:\TestProjects\Projects\CgtReporter\CgtReporter\bin\Debug\netcoreapp2.0\CgtReporter.deps.json
+C:\TestProjects\Projects\CgtReporter\CgtReporter\bin\Debug\netcoreapp2.0\CgtReporter.runtimeconfig.json
+C:\TestProjects\Projects\CgtReporter\CgtReporter\bin\Debug\netcoreapp2.0\CgtReporter.runtimeconfig.dev.json
+C:\TestProjects\Projects\CgtReporter\CgtReporter\bin\Debug\netcoreapp2.0\CgtReporter.dll
+C:\TestProjects\Projects\CgtReporter\CgtReporter\bin\Debug\netcoreapp2.0\CgtReporter.pdb
+C:\TestProjects\Projects\CgtReporter\CgtReporter\obj\Debug\netcoreapp2.0\CgtReporter.csproj.CoreCompileInputs.cache
+C:\TestProjects\Projects\CgtReporter\CgtReporter\obj\Debug\netcoreapp2.0\CgtReporter.AssemblyInfoInputs.cache
+C:\TestProjects\Projects\CgtReporter\CgtReporter\obj\Debug\netcoreapp2.0\CgtReporter.AssemblyInfo.cs
+C:\TestProjects\Projects\CgtReporter\CgtReporter\obj\Debug\netcoreapp2.0\CgtReporter.dll
+C:\TestProjects\Projects\CgtReporter\CgtReporter\obj\Debug\netcoreapp2.0\CgtReporter.pdb
+C:\TestProjects\Projects\CgtReporter\CgtReporter\obj\Debug\netcoreapp2.0\CgtReporter.csprojResolveAssemblyReference.cache
