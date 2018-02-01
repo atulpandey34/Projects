@@ -13162,11 +13162,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\TestProjects\\helloworld\\CgtReporter\\CgtReporter.csproj",
+      "projectUniqueName": "C:\\TestProjects\\Projects\\CgtReporter\\CgtReporter\\CgtReporter.csproj",
       "projectName": "CgtReporter",
-      "projectPath": "C:\\TestProjects\\helloworld\\CgtReporter\\CgtReporter.csproj",
+      "projectPath": "C:\\TestProjects\\Projects\\CgtReporter\\CgtReporter\\CgtReporter.csproj",
       "packagesPath": "C:\\Users\\Administrator.WIN-OE3C006M71I\\.nuget\\packages\\",
-      "outputPath": "C:\\TestProjects\\helloworld\\CgtReporter\\obj\\",
+      "outputPath": "C:\\TestProjects\\Projects\\CgtReporter\\CgtReporter\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
