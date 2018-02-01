@@ -1,0 +1,4 @@
+dotnet watch run
+ng serve --proxy-config proxy.config.json
+
+Scaffold-DbContext "Data Source=(localdb)\mssqllocaldb;Initial Catalog=CgtReporter;Integrated Security=SSPI;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -f
