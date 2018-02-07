@@ -1,23 +1,23 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class MasterDocumentFolderRepository : RepositoryBase<RiskManagement.Data.MasterDocumentFolder>, IMasterDocumentFolderRepository, IDisposable
+    public class MasterDocumentFolderRepository : RepositoryBase<Angular2_AspDotNet.Data.MasterDocumentFolder>, IMasterDocumentFolderRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IDocumentFolderRoleRepository _IDocumentFolderRoleRepository = null;
         private IDocumentFolderUserRepository _IDocumentFolderUserRepository = null;
         private IDocumentRepository _IDocumentRepository = null;
-        public MasterDocumentFolderRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public MasterDocumentFolderRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._IDocumentFolderRoleRepository = new DocumentFolderRoleRepository(unitOfWork);
@@ -59,10 +59,10 @@ namespace RiskManagement.Repository.Repository
             return folderviewmodel;
         }
 
-        public List<RiskManagement.Models.MasterDocumentFolderViewModel> GetAllMasterDocumentFolder(int LoggedInUserId, int LoggedInOrganizationId)
+        public List<Angular2_AspDotNet.Models.MasterDocumentFolderViewModel> GetAllMasterDocumentFolder(int LoggedInUserId, int LoggedInOrganizationId)
         {
             var userList = base.GetAll(x => x.OrganizationId == LoggedInOrganizationId);
-            return Mapper.Map<IEnumerable<MasterDocumentFolder>, IEnumerable<RiskManagement.Models.MasterDocumentFolderViewModel>>(userList).ToList();
+            return Mapper.Map<IEnumerable<MasterDocumentFolder>, IEnumerable<Angular2_AspDotNet.Models.MasterDocumentFolderViewModel>>(userList).ToList();
         }
 
         public int AddMasterDocumentFolder(string folderValue, int LoggedInUserId, int LoggedInOrganizationId)

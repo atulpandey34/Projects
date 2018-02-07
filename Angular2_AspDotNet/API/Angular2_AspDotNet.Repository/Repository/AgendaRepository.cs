@@ -1,16 +1,16 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class AgendaRepository : RepositoryBase<RiskManagement.Data.Agendum>, IAgendaRepository, IDisposable
+    public class AgendaRepository : RepositoryBase<Angular2_AspDotNet.Data.Agendum>, IAgendaRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
-        public AgendaRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        public AgendaRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RiskManagement.Data
+namespace Angular2_AspDotNet.Data
 {
     using System;
     using System.Collections.Generic;

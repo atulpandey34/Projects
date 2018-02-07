@@ -50,10 +50,9 @@ var PerformanceReviewMeetingDataService = /** @class */ (function () {
     };
     PerformanceReviewMeetingDataService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object])
+        __metadata("design:paramtypes", [http_1.Http])
     ], PerformanceReviewMeetingDataService);
     return PerformanceReviewMeetingDataService;
-    var _a;
 }());
 exports.PerformanceReviewMeetingDataService = PerformanceReviewMeetingDataService;
 //# sourceMappingURL=performancereviewmeeting.service.js.map

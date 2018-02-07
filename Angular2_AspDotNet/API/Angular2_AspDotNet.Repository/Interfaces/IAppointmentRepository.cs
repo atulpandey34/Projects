@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IAppointmentRepository
     {
-        IEnumerable<RiskManagement.Data.Appointment> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.Appointment> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.Appointment entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.Appointment entity, int LoggedInUserId, int LoggedInOrganizationId);
 
-        RiskManagement.Data.Appointment GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
+        Angular2_AspDotNet.Data.Appointment GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        void Update(RiskManagement.Data.Appointment entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.Appointment entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int LoggedInUserId, int LoggedInOrganizationId);
     }

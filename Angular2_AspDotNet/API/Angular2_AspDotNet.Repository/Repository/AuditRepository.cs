@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,19 +12,19 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
 
-    public class AuditRepository : RepositoryBase<RiskManagement.Data.Audit>, IAuditRepository, IDisposable
+    public class AuditRepository : RepositoryBase<Angular2_AspDotNet.Data.Audit>, IAuditRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IAuditSubjectRepository _IAuditSubjectRepository = null;
-        public AuditRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public AuditRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             _IAuditSubjectRepository = new AuditSubjectRepository(_unitOfWork);
         }
-        public void Add(RiskManagement.Data.Audit entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.Audit entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationID = LoggedInOrganizationId;
             base.Insert(entity);

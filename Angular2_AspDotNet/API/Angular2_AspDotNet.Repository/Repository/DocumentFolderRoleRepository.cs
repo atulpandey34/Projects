@@ -1,20 +1,20 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class DocumentFolderRoleRepository : RepositoryBase<RiskManagement.Data.DocumentFolderRole>, IDocumentFolderRoleRepository, IDisposable
+    public class DocumentFolderRoleRepository : RepositoryBase<Angular2_AspDotNet.Data.DocumentFolderRole>, IDocumentFolderRoleRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
-        public DocumentFolderRoleRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        public DocumentFolderRoleRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -27,7 +27,7 @@ namespace RiskManagement.Repository.Repository
             return Get(x => x.DocumentFolderRoleID == id && x.OrganizationId == LoggedInOrganizationId);
         }
 
-        public void Add(RiskManagement.Data.DocumentFolderRole entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.DocumentFolderRole entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationId = LoggedInOrganizationId;
             base.Insert(entity);

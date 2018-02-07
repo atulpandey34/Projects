@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace RiskManagement.API.Models
+namespace Angular2_AspDotNet.API.Models
 {
     // Models used as parameters to AccountController actions.
 

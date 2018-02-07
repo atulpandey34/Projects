@@ -74,10 +74,12 @@ var BreadcrumbComponent = /** @class */ (function () {
             encapsulation: core_1.ViewEncapsulation.None,
             templateUrl: './breadcrumb.component.html'
         }),
-        __metadata("design:paramtypes", [app_settings_1.AppSettings, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object, typeof (_c = typeof platform_browser_1.Title !== "undefined" && platform_browser_1.Title) === "function" && _c || Object])
+        __metadata("design:paramtypes", [app_settings_1.AppSettings,
+            router_1.Router,
+            router_1.ActivatedRoute,
+            platform_browser_1.Title])
     ], BreadcrumbComponent);
     return BreadcrumbComponent;
-    var _a, _b, _c;
 }());
 exports.BreadcrumbComponent = BreadcrumbComponent;
 // import { Component, ViewEncapsulation } from '@angular/core';

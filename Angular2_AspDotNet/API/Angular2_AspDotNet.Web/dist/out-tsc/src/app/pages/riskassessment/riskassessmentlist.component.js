@@ -80,10 +80,9 @@ var RiskAssessmentListComponent = /** @class */ (function () {
                 "../../../../node_modules/primeng/resources/themes/omega/theme.css"],
             providers: [eventaction_service_1.EventActionService, Mastereventdata_1.MasterEventDataService, user_service_1.UserService, riskassessment_service_1.RiskAssessmentService],
         }),
-        __metadata("design:paramtypes", [riskassessment_service_1.RiskAssessmentService, user_service_1.UserService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, eventaction_service_1.EventActionService, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object, Mastereventdata_1.MasterEventDataService])
+        __metadata("design:paramtypes", [riskassessment_service_1.RiskAssessmentService, user_service_1.UserService, router_1.Router, common_1.Location, forms_1.FormBuilder, eventaction_service_1.EventActionService, router_1.ActivatedRoute, Mastereventdata_1.MasterEventDataService])
     ], RiskAssessmentListComponent);
     return RiskAssessmentListComponent;
-    var _a, _b, _c, _d;
 }());
 exports.RiskAssessmentListComponent = RiskAssessmentListComponent;
 //# sourceMappingURL=riskassessmentlist.component.js.map

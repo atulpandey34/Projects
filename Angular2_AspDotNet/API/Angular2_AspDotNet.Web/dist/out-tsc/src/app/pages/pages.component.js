@@ -89,10 +89,9 @@ var PagesComponent = /** @class */ (function () {
             encapsulation: core_1.ViewEncapsulation.None,
             providers: [customdynamicmenu_service_1.CustomDynamicMenuService],
         }),
-        __metadata("design:paramtypes", [customdynamicmenu_service_1.CustomDynamicMenuService, app_settings_1.AppSettings, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+        __metadata("design:paramtypes", [customdynamicmenu_service_1.CustomDynamicMenuService, app_settings_1.AppSettings, router_1.Router])
     ], PagesComponent);
     return PagesComponent;
-    var _a;
 }());
 exports.PagesComponent = PagesComponent;
 //# sourceMappingURL=pages.component.js.map

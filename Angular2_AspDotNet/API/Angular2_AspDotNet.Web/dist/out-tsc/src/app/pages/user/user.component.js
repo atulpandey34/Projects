@@ -154,10 +154,9 @@ var UserComponent = /** @class */ (function () {
             ],
             providers: [eventaction_service_1.EventActionService, Mastereventdata_1.MasterEventDataService, meeting_service_1.MeetingDataService, user_service_1.UserService],
         }),
-        __metadata("design:paramtypes", [user_service_1.UserService, meeting_service_1.MeetingDataService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, eventaction_service_1.EventActionService, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object, Mastereventdata_1.MasterEventDataService])
+        __metadata("design:paramtypes", [user_service_1.UserService, meeting_service_1.MeetingDataService, router_1.Router, common_1.Location, forms_1.FormBuilder, eventaction_service_1.EventActionService, router_1.ActivatedRoute, Mastereventdata_1.MasterEventDataService])
     ], UserComponent);
     return UserComponent;
-    var _a, _b, _c, _d;
 }());
 exports.UserComponent = UserComponent;
 //# sourceMappingURL=user.component.js.map

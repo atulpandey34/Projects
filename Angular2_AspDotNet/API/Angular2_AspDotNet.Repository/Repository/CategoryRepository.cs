@@ -1,22 +1,22 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class CategoryRepository : RepositoryBase<RiskManagement.Data.Category>, ICategoryRepository, IDisposable
+    public class CategoryRepository : RepositoryBase<Angular2_AspDotNet.Data.Category>, ICategoryRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
-        public CategoryRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public CategoryRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
-        public void Add(RiskManagement.Data.Category entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.Category entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationID = LoggedInOrganizationId;
             base.Insert(entity);
@@ -38,10 +38,10 @@ namespace RiskManagement.Repository.Repository
             return base.GetManyQueryable(x => x.OrganizationID == LoggedInOrganizationId);
         }
 
-        public IEnumerable<RiskManagement.Models.CategoryModel> GetAllCategory(int Userid, int OrganizationId)
+        public IEnumerable<Angular2_AspDotNet.Models.CategoryModel> GetAllCategory(int Userid, int OrganizationId)
         {
             var userList = GetAll(Userid, OrganizationId);
-            return Mapper.Map<IEnumerable<Category>, IEnumerable<RiskManagement.Models.CategoryModel>>(userList);
+            return Mapper.Map<IEnumerable<Category>, IEnumerable<Angular2_AspDotNet.Models.CategoryModel>>(userList);
         }
 
         public Category GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId)

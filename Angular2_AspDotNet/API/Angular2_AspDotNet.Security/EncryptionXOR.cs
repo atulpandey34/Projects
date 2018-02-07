@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Security
+namespace Angular2_AspDotNet.Security
 {
     public class EncryptionXOR
     {

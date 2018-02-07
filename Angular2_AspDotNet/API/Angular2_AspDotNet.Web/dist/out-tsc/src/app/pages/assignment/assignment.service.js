@@ -81,10 +81,9 @@ var AssignmentService = /** @class */ (function () {
     };
     AssignmentService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object])
+        __metadata("design:paramtypes", [http_1.Http])
     ], AssignmentService);
     return AssignmentService;
-    var _a;
 }());
 exports.AssignmentService = AssignmentService;
 //# sourceMappingURL=assignment.service.js.map

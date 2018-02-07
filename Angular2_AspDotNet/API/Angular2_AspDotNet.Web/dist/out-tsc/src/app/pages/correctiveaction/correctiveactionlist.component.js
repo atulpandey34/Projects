@@ -88,10 +88,9 @@ var CorrectiveActionListComponent = /** @class */ (function () {
                 "../../../../node_modules/primeng/resources/themes/omega/theme.css"],
             providers: [eventaction_service_1.EventActionService, Mastereventdata_1.MasterEventDataService, user_service_1.UserService, correctiveaction_service_1.CorrectiveActionService],
         }),
-        __metadata("design:paramtypes", [correctiveaction_service_1.CorrectiveActionService, user_service_1.UserService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, eventaction_service_1.EventActionService, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object, Mastereventdata_1.MasterEventDataService])
+        __metadata("design:paramtypes", [correctiveaction_service_1.CorrectiveActionService, user_service_1.UserService, router_1.Router, common_1.Location, forms_1.FormBuilder, eventaction_service_1.EventActionService, router_1.ActivatedRoute, Mastereventdata_1.MasterEventDataService])
     ], CorrectiveActionListComponent);
     return CorrectiveActionListComponent;
-    var _a, _b, _c, _d;
 }());
 exports.CorrectiveActionListComponent = CorrectiveActionListComponent;
 //# sourceMappingURL=correctiveactionlist.component.js.map

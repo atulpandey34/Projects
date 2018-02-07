@@ -25,10 +25,9 @@ var AppComponent = /** @class */ (function () {
             styleUrls: ['./app.component.scss'],
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [app_settings_1.AppSettings, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+        __metadata("design:paramtypes", [app_settings_1.AppSettings, router_1.Router])
     ], AppComponent);
     return AppComponent;
-    var _a;
 }());
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

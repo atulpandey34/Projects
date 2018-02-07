@@ -4,11 +4,11 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Transactions;
 
-namespace RiskManagement.Data.UnitOfWork
+namespace Angular2_AspDotNet.Data.UnitOfWork
 {
     public class UnitOfWork : IDisposable
     {
-        private RiskManagementEntities _context = null;
+        private Angular2_AspDotNetEntities _context = null;
 
         /// <summary>
         /// Constructor to set the context
@@ -16,13 +16,13 @@ namespace RiskManagement.Data.UnitOfWork
         public UnitOfWork()
         {
             if (_context == null)
-                _context = new RiskManagementEntities();
+                _context = new Angular2_AspDotNetEntities();
         }
 
         /// <summary>
         /// Get the current Context
         /// </summary>
-        public RiskManagementEntities Context
+        public Angular2_AspDotNetEntities Context
         {
             get
             {

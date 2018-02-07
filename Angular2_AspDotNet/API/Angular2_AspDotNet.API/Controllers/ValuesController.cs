@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace RiskManagement.API.Controllers
+namespace Angular2_AspDotNet.API.Controllers
 {
     [Authorize]
     [CustomExceptionLogFilter]

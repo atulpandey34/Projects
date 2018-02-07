@@ -1,5 +1,5 @@
-﻿using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,18 +8,18 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class RoleRepository : RepositoryBase<RiskManagement.Data.Role>, IRoleRepository, IDisposable
+    public class RoleRepository : RepositoryBase<Angular2_AspDotNet.Data.Role>, IRoleRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
 
 
-        public RoleRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public RoleRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
 
@@ -71,7 +71,7 @@ namespace RiskManagement.Repository.Repository
         public List<RoleViewModel> GetAllRoleList(int Userid, int OrganizationId)
         {
             var data = base.GetAll(x => x.OrganizationId == OrganizationId).OrderBy(x => x.RoleName);
-            return Mapper.Map<IEnumerable<Role>, IEnumerable<RiskManagement.Models.RoleViewModel>>(data).ToList();
+            return Mapper.Map<IEnumerable<Role>, IEnumerable<Angular2_AspDotNet.Models.RoleViewModel>>(data).ToList();
         }
 
 

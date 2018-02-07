@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace RiskManagement.API.Results
+namespace Angular2_AspDotNet.API.Results
 {
     public class ChallengeResult : IHttpActionResult
     {

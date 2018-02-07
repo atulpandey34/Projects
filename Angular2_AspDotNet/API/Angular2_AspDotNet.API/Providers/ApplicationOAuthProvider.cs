@@ -9,9 +9,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using RiskManagement.API.Models;
+using Angular2_AspDotNet.API.Models;
 
-namespace RiskManagement.API.Providers
+namespace Angular2_AspDotNet.API.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

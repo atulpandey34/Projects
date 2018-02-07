@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 
-namespace RiskManagement.Core
+namespace Angular2_AspDotNet.Core
 {
     public class EmailManagement
     {

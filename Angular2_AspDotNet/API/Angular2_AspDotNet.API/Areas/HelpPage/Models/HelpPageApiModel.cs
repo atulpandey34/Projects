@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using RiskManagement.API.Areas.HelpPage.ModelDescriptions;
+using Angular2_AspDotNet.API.Areas.HelpPage.ModelDescriptions;
 
-namespace RiskManagement.API.Areas.HelpPage.Models
+namespace Angular2_AspDotNet.API.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

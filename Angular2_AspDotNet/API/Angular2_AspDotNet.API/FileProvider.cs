@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public class FileProvider : IFileProvider
     {

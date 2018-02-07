@@ -1,22 +1,22 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface ITrainingRepository
     {
-        IEnumerable<RiskManagement.Data.Training> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.Training> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.Training entity, int OrganizationId);
+        void Add(Angular2_AspDotNet.Data.Training entity, int OrganizationId);
 
-        RiskManagement.Data.Training GetSingle(int id, int OrganizationId);
+        Angular2_AspDotNet.Data.Training GetSingle(int id, int OrganizationId);
 
-        void Update(RiskManagement.Data.Training entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.Training entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int OrganizationId);
 

@@ -49,10 +49,9 @@ var UserMenuComponent = /** @class */ (function () {
             providers: [user_menu_service_1.UserMenuService],
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof ngx_cookie_1.CookieService !== "undefined" && ngx_cookie_1.CookieService) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, user_menu_service_1.UserMenuService])
+        __metadata("design:paramtypes", [ngx_cookie_1.CookieService, router_1.Router, user_menu_service_1.UserMenuService])
     ], UserMenuComponent);
     return UserMenuComponent;
-    var _a, _b;
 }());
 exports.UserMenuComponent = UserMenuComponent;
 //# sourceMappingURL=user-menu.component.js.map

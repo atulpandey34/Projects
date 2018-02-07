@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using RiskManagement.API.Areas.HelpPage.ModelDescriptions;
-using RiskManagement.API.Areas.HelpPage.Models;
+using Angular2_AspDotNet.API.Areas.HelpPage.ModelDescriptions;
+using Angular2_AspDotNet.API.Areas.HelpPage.Models;
 
-namespace RiskManagement.API.Areas.HelpPage.Controllers
+namespace Angular2_AspDotNet.API.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

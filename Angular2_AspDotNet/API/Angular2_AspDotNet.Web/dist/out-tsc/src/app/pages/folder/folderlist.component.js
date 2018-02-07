@@ -186,10 +186,9 @@ var FolderListComponent = /** @class */ (function () {
                 "../../../../node_modules/primeng/resources/themes/omega/theme.css"],
             providers: [folder_service_1.FolderService, Mastereventdata_1.MasterEventDataService, user_service_1.UserService],
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object, folder_service_1.FolderService, Mastereventdata_1.MasterEventDataService, user_service_1.UserService, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _c || Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object])
+        __metadata("design:paramtypes", [forms_1.FormBuilder, folder_service_1.FolderService, Mastereventdata_1.MasterEventDataService, user_service_1.UserService, router_1.Router, common_1.Location, router_1.ActivatedRoute])
     ], FolderListComponent);
     return FolderListComponent;
-    var _a, _b, _c, _d;
 }());
 exports.FolderListComponent = FolderListComponent;
 //# sourceMappingURL=folderlist.component.js.map

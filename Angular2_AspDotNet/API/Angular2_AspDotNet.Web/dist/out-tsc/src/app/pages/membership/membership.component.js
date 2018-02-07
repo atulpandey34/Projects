@@ -191,11 +191,13 @@ var MembershipComponent = /** @class */ (function () {
             encapsulation: core_1.ViewEncapsulation.None,
             providers: [membership_service_1.MembershipService, menu_service_1.MenuService]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object, typeof (_b = typeof ngx_toastr_1.ToastrService !== "undefined" && ngx_toastr_1.ToastrService) === "function" && _b || Object, membership_service_1.MembershipService,
-            menu_service_1.MenuService, typeof (_c = typeof ng_bootstrap_1.NgbModal !== "undefined" && ng_bootstrap_1.NgbModal) === "function" && _c || Object])
+        __metadata("design:paramtypes", [forms_1.FormBuilder,
+            ngx_toastr_1.ToastrService,
+            membership_service_1.MembershipService,
+            menu_service_1.MenuService,
+            ng_bootstrap_1.NgbModal])
     ], MembershipComponent);
     return MembershipComponent;
-    var _a, _b, _c;
 }());
 exports.MembershipComponent = MembershipComponent;
 //# sourceMappingURL=membership.component.js.map

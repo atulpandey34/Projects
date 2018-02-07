@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Owin;
 using RiskMgmtRepository.Services;
 
-[assembly: OwinStartup(typeof(RiskManagement.API.Startup))]
+[assembly: OwinStartup(typeof(Angular2_AspDotNet.API.Startup))]
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public partial class Startup
     {

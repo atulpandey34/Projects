@@ -1,18 +1,18 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class RiskAssessmentRepository : RepositoryBase<RiskManagement.Data.RiskAssessment>, IRiskAssessmentRepository, IDisposable
+    public class RiskAssessmentRepository : RepositoryBase<Angular2_AspDotNet.Data.RiskAssessment>, IRiskAssessmentRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
         private IRiskAssessmentTeamRepository _IRiskAssessmentTeamRepository = null;
         private IRiskAssessmentHazardRepository _IRiskAssessmentHazardRepository = null;
@@ -20,7 +20,7 @@ namespace RiskManagement.Repository.Repository
         private IRiskAssessmentHazardReviewRepository _IRiskAssessmentHazardReviewRepository = null;
         private IActionRepository _IActionRepository = null;
         private IRiskAssessmentReviewRepository _IRiskAssessmentReviewRepository = null;
-        public RiskAssessmentRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public RiskAssessmentRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._IRiskAssessmentTeamRepository = new RiskAssessmentTeamRepository(unitOfWork);
@@ -30,7 +30,7 @@ namespace RiskManagement.Repository.Repository
             this._IActionRepository = new ActionRepository(unitOfWork);
             this._IRiskAssessmentReviewRepository = new RiskAssessmentReviewRepository(unitOfWork);
         }
-        public void Add(RiskManagement.Data.RiskAssessment entity, int Userid, int OrganizationId)
+        public void Add(Angular2_AspDotNet.Data.RiskAssessment entity, int Userid, int OrganizationId)
         {
             entity.OrganizationId = OrganizationId;
             base.Insert(entity);
@@ -214,7 +214,7 @@ namespace RiskManagement.Repository.Repository
                     this._IRiskAssessmentHazardMeasureRepository.Add(riskAssessmentHazardMeasure, Userid, OrganizationId);
                     if (viewModel1.ActionId == 1)
                     {
-                        RiskManagement.Data.Action action = new RiskManagement.Data.Action();
+                        Angular2_AspDotNet.Data.Action action = new Angular2_AspDotNet.Data.Action();
                         action.SourceID = riskAssessmentHazardMeasure.RiskAssessmentHazardMeasureId;
                         action.Title = riskAssessmentHazardMeasure.Text;
                         action.Duedate = DateTime.Now.AddDays(7);

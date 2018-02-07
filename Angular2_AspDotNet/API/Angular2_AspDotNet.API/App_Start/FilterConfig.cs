@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public class FilterConfig
     {

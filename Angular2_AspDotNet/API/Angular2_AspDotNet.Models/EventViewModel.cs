@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace RiskManagement.Models
+namespace Angular2_AspDotNet.Models
 {
     public class EventViewModel
     {

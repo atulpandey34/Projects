@@ -1,22 +1,22 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IEventRepository
     {
-        IEnumerable<RiskManagement.Data.Event> GetAll(int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.Event> GetAll(int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.Event entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.Event entity, int LoggedInUserId, int LoggedInOrganizationId);
 
-        RiskManagement.Data.Event GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
+        Angular2_AspDotNet.Data.Event GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        void Update(RiskManagement.Data.Event entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.Event entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int Userid, int OrganizationId);
 

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Models;
 
 namespace RiskMgmtRepository.Services
 {
@@ -239,8 +239,8 @@ namespace RiskMgmtRepository.Services
             CreateMap<RolesResponsibilityViewModel, RoleResponsibility>();
             CreateMap<RoleResponsibility, RolesResponsibilityViewModel>();
 
-            CreateMap<RoleResponsibilityVersionSectionViewModel, RiskManagement.Data.RoleResponsibilityVersionSection>();
-            CreateMap<RiskManagement.Data.RoleResponsibilityVersionSection, RoleResponsibilityVersionSectionViewModel>();
+            CreateMap<RoleResponsibilityVersionSectionViewModel, Angular2_AspDotNet.Data.RoleResponsibilityVersionSection>();
+            CreateMap<Angular2_AspDotNet.Data.RoleResponsibilityVersionSection, RoleResponsibilityVersionSectionViewModel>();
 
             CreateMap<RoleResponsibilityVersionSectionViewModel, RoleResponsibilityVersion>();
             CreateMap<RoleResponsibilityVersion, RoleResponsibilityVersionSectionViewModel>();

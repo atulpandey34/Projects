@@ -1,24 +1,24 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
-using RiskManagement.Core;
+using Angular2_AspDotNet.Core;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class AuditSubjectRepository : RepositoryBase<RiskManagement.Data.AuditSubject>, IAuditSubjectRepository, IDisposable
+    public class AuditSubjectRepository : RepositoryBase<Angular2_AspDotNet.Data.AuditSubject>, IAuditSubjectRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IAuditSubjectReviewRepository _IAuditSubjectReviewRepository = null;
         private IAuditSubjectQuestionRepository _IAuditSubjectQuestionRepository = null;
 
-        public AuditSubjectRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public AuditSubjectRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             _IAuditSubjectReviewRepository = new AuditSubjectReviewRepository(unitOfWork);

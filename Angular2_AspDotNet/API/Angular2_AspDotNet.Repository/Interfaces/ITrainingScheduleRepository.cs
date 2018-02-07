@@ -1,22 +1,22 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface ITrainingScheduleRepository
     {
-        IEnumerable<RiskManagement.Data.TrainingSchedule> GetAll(int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.TrainingSchedule> GetAll(int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.TrainingSchedule entity, int OrganizationId);
+        void Add(Angular2_AspDotNet.Data.TrainingSchedule entity, int OrganizationId);
 
-        RiskManagement.Data.TrainingSchedule GetSingle(int id, int OrganizationId);
+        Angular2_AspDotNet.Data.TrainingSchedule GetSingle(int id, int OrganizationId);
 
-        void Update(RiskManagement.Data.TrainingSchedule entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.TrainingSchedule entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int OrganizationId);
         int AddUpdateTrainingSchedule(TrainingScheduleViewModel model, int OrganizationId);

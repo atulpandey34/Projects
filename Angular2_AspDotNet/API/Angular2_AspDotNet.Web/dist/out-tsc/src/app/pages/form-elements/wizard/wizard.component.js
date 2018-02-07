@@ -130,10 +130,9 @@ var WizardComponent = /** @class */ (function () {
             styleUrls: ['./wizard.component.scss'],
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object])
+        __metadata("design:paramtypes", [forms_1.FormBuilder])
     ], WizardComponent);
     return WizardComponent;
-    var _a;
 }());
 exports.WizardComponent = WizardComponent;
 //# sourceMappingURL=wizard.component.js.map

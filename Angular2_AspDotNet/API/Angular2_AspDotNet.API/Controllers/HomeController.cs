@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace RiskManagement.API.Controllers
+namespace Angular2_AspDotNet.API.Controllers
 {
     public class HomeController : Controller
     {

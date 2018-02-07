@@ -75,10 +75,9 @@ var ForgotPasswordComponent = /** @class */ (function () {
             providers: [login_service_1.LoginService, user_service_1.UserService],
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [user_service_1.UserService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _b || Object, login_service_1.LoginService])
+        __metadata("design:paramtypes", [user_service_1.UserService, router_1.Router, forms_1.FormBuilder, login_service_1.LoginService])
     ], ForgotPasswordComponent);
     return ForgotPasswordComponent;
-    var _a, _b;
 }());
 exports.ForgotPasswordComponent = ForgotPasswordComponent;
 //# sourceMappingURL=forgotpassword.component.js.map

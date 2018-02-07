@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\Projects\harshgk.visualstudio.com\RiskMgmt\QaRelease\RiskAssessment\API\RiskManagement.Data\RiskManagement.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\Projects\harshgk.visualstudio.com\RiskMgmt\QaRelease\RiskAssessment\API\Angular2_AspDotNet.Data\Angular2_AspDotNet.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

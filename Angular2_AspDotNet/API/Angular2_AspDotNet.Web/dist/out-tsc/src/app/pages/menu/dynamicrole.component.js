@@ -109,10 +109,9 @@ var RolesMenuConponent = /** @class */ (function () {
                 '../form-elements/controls/file-uploader/file-uploader.component.scss',],
             providers: [user_service_1.UserService, customdynamicmenu_service_1.CustomDynamicMenuService],
         }),
-        __metadata("design:paramtypes", [customdynamicmenu_service_1.CustomDynamicMenuService, typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object, user_service_1.UserService, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _c || Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object])
+        __metadata("design:paramtypes", [customdynamicmenu_service_1.CustomDynamicMenuService, forms_1.FormBuilder, user_service_1.UserService, router_1.Router, common_1.Location, router_1.ActivatedRoute])
     ], RolesMenuConponent);
     return RolesMenuConponent;
-    var _a, _b, _c, _d;
 }());
 exports.RolesMenuConponent = RolesMenuConponent;
 //# sourceMappingURL=dynamicrole.component.js.map

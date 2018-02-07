@@ -28,10 +28,9 @@ var NotFoundComponent = /** @class */ (function () {
             styleUrls: ['./not-found.component.scss'],
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+        __metadata("design:paramtypes", [router_1.Router])
     ], NotFoundComponent);
     return NotFoundComponent;
-    var _a;
 }());
 exports.NotFoundComponent = NotFoundComponent;
 //# sourceMappingURL=not-found.component.js.map

@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using RiskManagement.API.Areas.HelpPage.ModelDescriptions;
-using RiskManagement.API.Areas.HelpPage.Models;
+using Angular2_AspDotNet.API.Areas.HelpPage.ModelDescriptions;
+using Angular2_AspDotNet.API.Areas.HelpPage.Models;
 
-namespace RiskManagement.API.Areas.HelpPage
+namespace Angular2_AspDotNet.API.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

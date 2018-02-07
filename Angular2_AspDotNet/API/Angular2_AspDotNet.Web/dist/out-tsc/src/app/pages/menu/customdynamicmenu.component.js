@@ -112,11 +112,13 @@ var CustomDynamicMenuComponent = /** @class */ (function () {
             encapsulation: core_1.ViewEncapsulation.None,
             providers: [menu_service_1.MenuService, customdynamicmenu_service_1.CustomDynamicMenuService]
         }),
-        __metadata("design:paramtypes", [customdynamicmenu_service_1.CustomDynamicMenuService, typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object, typeof (_b = typeof ngx_toastr_1.ToastrService !== "undefined" && ngx_toastr_1.ToastrService) === "function" && _b || Object, app_settings_1.AppSettings,
-            menu_service_1.MenuService, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object])
+        __metadata("design:paramtypes", [customdynamicmenu_service_1.CustomDynamicMenuService, forms_1.FormBuilder,
+            ngx_toastr_1.ToastrService,
+            app_settings_1.AppSettings,
+            menu_service_1.MenuService,
+            router_1.Router, router_1.ActivatedRoute])
     ], CustomDynamicMenuComponent);
     return CustomDynamicMenuComponent;
-    var _a, _b, _c, _d;
 }());
 exports.CustomDynamicMenuComponent = CustomDynamicMenuComponent;
 //# sourceMappingURL=customdynamicmenu.component.js.map

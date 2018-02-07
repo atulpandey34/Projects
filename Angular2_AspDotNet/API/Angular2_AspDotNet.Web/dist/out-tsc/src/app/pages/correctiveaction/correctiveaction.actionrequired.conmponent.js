@@ -115,10 +115,9 @@ var CorrectiveActionRequiredComponent = /** @class */ (function () {
             ],
             providers: [eventaction_service_1.EventActionService, Mastereventdata_1.MasterEventDataService, correctiveaction_service_1.CorrectiveActionService],
         }),
-        __metadata("design:paramtypes", [correctiveaction_service_1.CorrectiveActionService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, eventaction_service_1.EventActionService, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object, Mastereventdata_1.MasterEventDataService])
+        __metadata("design:paramtypes", [correctiveaction_service_1.CorrectiveActionService, router_1.Router, common_1.Location, forms_1.FormBuilder, eventaction_service_1.EventActionService, router_1.ActivatedRoute, Mastereventdata_1.MasterEventDataService])
     ], CorrectiveActionRequiredComponent);
     return CorrectiveActionRequiredComponent;
-    var _a, _b, _c, _d;
 }());
 exports.CorrectiveActionRequiredComponent = CorrectiveActionRequiredComponent;
 //# sourceMappingURL=correctiveaction.actionrequired.conmponent.js.map

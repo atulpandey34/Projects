@@ -1,30 +1,30 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
-using RiskManagement.Security;
+using Angular2_AspDotNet.Security;
 using System.Text;
-using RiskManagement.Core;
+using Angular2_AspDotNet.Core;
 using System.Web;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class UserRepository : RepositoryBase<RiskManagement.Data.User>, IUserRepository, IDisposable
+    public class UserRepository : RepositoryBase<Angular2_AspDotNet.Data.User>, IUserRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IUserRoleRepository _IUserRoleRepository = null;
 
-        public UserRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public UserRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._IUserRoleRepository = new UserRoleRepository(this._unitOfWork);
         }
-        public void Add(RiskManagement.Data.User entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.User entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             base.Insert(entity);
            _unitOfWork.Save();
@@ -45,16 +45,16 @@ namespace RiskManagement.Repository.Repository
             return base.GetAll(x => x.OrganizationID == LoggedInOrganizationId);
         }
 
-        public IEnumerable<RiskManagement.Models.UserModel> GetAllUser(int Userid, int OrganizationId)
+        public IEnumerable<Angular2_AspDotNet.Models.UserModel> GetAllUser(int Userid, int OrganizationId)
         {
             var userList = base.GetAll(x => x.OrganizationID == OrganizationId).OrderBy(u => u.FirstName).ThenBy(x => x.LastName);
-            return Mapper.Map<IEnumerable<User>, IEnumerable<RiskManagement.Models.UserModel>>(userList);
+            return Mapper.Map<IEnumerable<User>, IEnumerable<Angular2_AspDotNet.Models.UserModel>>(userList);
         }
 
-        public IEnumerable<RiskManagement.Models.UserModel> GetAllauditor(int OrganizationId)
+        public IEnumerable<Angular2_AspDotNet.Models.UserModel> GetAllauditor(int OrganizationId)
         {
             var userList = base.GetAll(x => x.OrganizationID == OrganizationId).OrderBy(u => u.FirstName).ThenBy(x => x.LastName);
-            return Mapper.Map<IEnumerable<User>, IEnumerable<RiskManagement.Models.UserModel>>(userList);
+            return Mapper.Map<IEnumerable<User>, IEnumerable<Angular2_AspDotNet.Models.UserModel>>(userList);
         }
 
         public UserViewModel GetSingle(int Userid, int OrganizationId)

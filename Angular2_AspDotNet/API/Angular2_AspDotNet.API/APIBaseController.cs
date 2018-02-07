@@ -1,4 +1,4 @@
-﻿using RiskManagement.API.Common;
+﻿using Angular2_AspDotNet.API.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     [CustomApiAuthorize]
     [CustomExceptionLogFilter]

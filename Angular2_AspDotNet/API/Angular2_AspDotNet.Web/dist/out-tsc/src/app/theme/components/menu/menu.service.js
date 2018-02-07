@@ -276,10 +276,11 @@ var MenuService = /** @class */ (function () {
     };
     MenuService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [typeof (_a = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _a || Object, typeof (_b = typeof core_1.Renderer2 !== "undefined" && core_1.Renderer2) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _d || Object])
+        __metadata("design:paramtypes", [common_1.Location,
+            core_1.Renderer2,
+            router_1.Router, http_1.Http])
     ], MenuService);
     return MenuService;
-    var _a, _b, _c, _d;
 }());
 exports.MenuService = MenuService;
 //# sourceMappingURL=menu.service.js.map

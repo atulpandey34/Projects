@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public class RouteConfig
     {

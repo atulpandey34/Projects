@@ -1,25 +1,25 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class DocumentRepository : RepositoryBase<RiskManagement.Data.Document>, IDocumentRepository, IDisposable
+    public class DocumentRepository : RepositoryBase<Angular2_AspDotNet.Data.Document>, IDocumentRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IDocumentVersionRepository _IDocumentVersionRepository = null;
-        private RiskManagementEntities db = null;
+        private Angular2_AspDotNetEntities db = null;
 
-        public DocumentRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public DocumentRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._IDocumentVersionRepository = new DocumentVersionRepository(unitOfWork);
-            db = new RiskManagementEntities();
+            db = new Angular2_AspDotNetEntities();
         }
         public void Dispose()
         {

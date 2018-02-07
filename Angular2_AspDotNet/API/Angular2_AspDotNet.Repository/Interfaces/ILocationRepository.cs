@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface ILocationRepository
     {
-        IEnumerable<RiskManagement.Data.Location> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.Location> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.Location entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.Location entity, int LoggedInUserId, int LoggedInOrganizationId);
 
-        RiskManagement.Data.Location GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
+        Angular2_AspDotNet.Data.Location GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        void Update(RiskManagement.Data.Location entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.Location entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        IEnumerable<RiskManagement.Models.LocationModel> GetAllLocation(int Userid, int OrganizationId);
+        IEnumerable<Angular2_AspDotNet.Models.LocationModel> GetAllLocation(int Userid, int OrganizationId);
 
 
     }

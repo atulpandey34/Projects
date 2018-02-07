@@ -1,28 +1,28 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
-using RiskManagement.Security;
+using Angular2_AspDotNet.Security;
 using System.Text;
-using RiskManagement.Core;
+using Angular2_AspDotNet.Core;
 using System.Web;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class RoleMenuMappingRepository : RepositoryBase<RiskManagement.Data.RoleMenuMapping>, IRoleMenuMappingRepository, IDisposable
+    public class RoleMenuMappingRepository : RepositoryBase<Angular2_AspDotNet.Data.RoleMenuMapping>, IRoleMenuMappingRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
-        public RoleMenuMappingRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public RoleMenuMappingRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
-        public void Add(RiskManagement.Data.RoleMenuMapping entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.RoleMenuMapping entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.CreatedBy = LoggedInUserId;
             entity.CreatedDate = DateTime.Now;

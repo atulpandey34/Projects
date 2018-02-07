@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RiskManagement.Data
+namespace Angular2_AspDotNet.Data
 {
     using System;
     using System.Data.Entity;
@@ -15,10 +15,10 @@ namespace RiskManagement.Data
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class RiskManagementEntities : DbContext
+    public partial class Angular2_AspDotNetEntities : DbContext
     {
-        public RiskManagementEntities()
-            : base("name=RiskManagementEntities")
+        public Angular2_AspDotNetEntities()
+            : base("name=Angular2_AspDotNetEntities")
         {
         }
     
@@ -262,7 +262,7 @@ namespace RiskManagement.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetMeetingList_Result>("SP_GetMeetingList", pageNoParameter, pageSizeParameter, sortColumnParameter, sortOrderParameter, subTitleParameter, actionParameter, dateParameter, locationParameter, organizationIdParameter, totalRecords);
         }
     
-        [DbFunction("RiskManagementEntities", "FN_SplitStringIntoInteger")]
+        [DbFunction("Angular2_AspDotNetEntities", "FN_SplitStringIntoInteger")]
         public virtual IQueryable<Nullable<int>> FN_SplitStringIntoInteger(string input, string character)
         {
             var inputParameter = input != null ?
@@ -273,7 +273,7 @@ namespace RiskManagement.Data
                 new ObjectParameter("Character", character) :
                 new ObjectParameter("Character", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[RiskManagementEntities].[FN_SplitStringIntoInteger](@Input, @Character)", inputParameter, characterParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[Angular2_AspDotNetEntities].[FN_SplitStringIntoInteger](@Input, @Character)", inputParameter, characterParameter);
         }
     
         public virtual ObjectResult<SP_GetEventActionListV1_Result> SP_GetEventActionListV1(Nullable<int> pageNo, Nullable<int> pageSize, string sortColumn, string sortOrder, string titleFilter, string dueDateFilter, string statusFilter, string organizerFilter, Nullable<int> organizationId, ObjectParameter totalRecords)

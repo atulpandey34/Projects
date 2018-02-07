@@ -1,22 +1,22 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IActionRepository
     {
-        IEnumerable<RiskManagement.Data.Action> GetAll(int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.Action> GetAll(int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.Action entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.Action entity, int LoggedInUserId, int LoggedInOrganizationId);
 
-        RiskManagement.Data.Action GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
+        Angular2_AspDotNet.Data.Action GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        void Update(RiskManagement.Data.Action entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.Action entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int LoggedInUserId, int LoggedInOrganizationId);
 

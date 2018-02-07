@@ -63,7 +63,7 @@ var NgxComponent = /** @class */ (function () {
     };
     __decorate([
         core_1.ViewChild(ngx_datatable_1.DatatableComponent),
-        __metadata("design:type", typeof (_a = typeof ngx_datatable_1.DatatableComponent !== "undefined" && ngx_datatable_1.DatatableComponent) === "function" && _a || Object)
+        __metadata("design:type", ngx_datatable_1.DatatableComponent)
     ], NgxComponent.prototype, "table", void 0);
     NgxComponent = __decorate([
         core_1.Component({
@@ -74,7 +74,6 @@ var NgxComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], NgxComponent);
     return NgxComponent;
-    var _a;
 }());
 exports.NgxComponent = NgxComponent;
 //# sourceMappingURL=ngx.component.js.map

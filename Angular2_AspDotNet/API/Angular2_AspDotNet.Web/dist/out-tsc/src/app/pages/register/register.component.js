@@ -42,10 +42,9 @@ var RegisterComponent = /** @class */ (function () {
             styleUrls: ['./register.component.scss'],
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _b || Object])
+        __metadata("design:paramtypes", [router_1.Router, forms_1.FormBuilder])
     ], RegisterComponent);
     return RegisterComponent;
-    var _a, _b;
 }());
 exports.RegisterComponent = RegisterComponent;
 function emailValidator(control) {

@@ -1,22 +1,22 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class SubTitleRepository : RepositoryBase<RiskManagement.Data.SubTitle>, ISubTitleRepository, IDisposable
+    public class SubTitleRepository : RepositoryBase<Angular2_AspDotNet.Data.SubTitle>, ISubTitleRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
-        public SubTitleRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public SubTitleRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
-        public void Add(RiskManagement.Data.SubTitle entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.SubTitle entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationId = LoggedInOrganizationId;
             base.Insert(entity);
@@ -38,10 +38,10 @@ namespace RiskManagement.Repository.Repository
             return base.GetAll(x => x.OrganizationId == LoggedInOrganizationId);
         }
 
-        public IEnumerable<RiskManagement.Models.SubTitleModel> GetAllSubTitleWithTitleID(int titleId, int Userid, int OrganizationId)
+        public IEnumerable<Angular2_AspDotNet.Models.SubTitleModel> GetAllSubTitleWithTitleID(int titleId, int Userid, int OrganizationId)
         {
             var subTitleList = base.GetAll(x => x.TitleID == titleId && x.OrganizationId == OrganizationId);
-            return Mapper.Map<IEnumerable<SubTitle>, IEnumerable<RiskManagement.Models.SubTitleModel>>(subTitleList);
+            return Mapper.Map<IEnumerable<SubTitle>, IEnumerable<Angular2_AspDotNet.Models.SubTitleModel>>(subTitleList);
         }
 
 

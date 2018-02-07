@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Web;
 
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public class SessionHelper
     {

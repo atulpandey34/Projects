@@ -1,22 +1,22 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IAssignmentRepository
     {
-        IEnumerable<RiskManagement.Data.Assignment> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.Assignment> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.Assignment entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.Assignment entity, int LoggedInUserId, int LoggedInOrganizationId);
 
-        RiskManagement.Data.Assignment GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
+        Angular2_AspDotNet.Data.Assignment GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        void Update(RiskManagement.Data.Assignment entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.Assignment entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int LoggedInUserId, int LoggedInOrganizationId);
 

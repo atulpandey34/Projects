@@ -1,25 +1,25 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class TrainingRepository : RepositoryBase<RiskManagement.Data.Training>, ITrainingRepository, IDisposable
+    public class TrainingRepository : RepositoryBase<Angular2_AspDotNet.Data.Training>, ITrainingRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private ITrainingMaterialRepository _ITrainingMaterialRepository = null;
 
-        public TrainingRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public TrainingRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._ITrainingMaterialRepository = new TrainingMaterialRepository(unitOfWork);
         }
-        public void Add(RiskManagement.Data.Training entity, int OrganizationId)
+        public void Add(Angular2_AspDotNet.Data.Training entity, int OrganizationId)
         {
             entity.OrganisationID = OrganizationId;
             base.Insert(entity);

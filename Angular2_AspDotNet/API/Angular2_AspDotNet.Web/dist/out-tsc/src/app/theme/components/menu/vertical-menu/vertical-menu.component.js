@@ -66,10 +66,11 @@ var VerticalMenuComponent = /** @class */ (function () {
             providers: [menu_service_1.MenuService]
         }),
         __metadata("design:paramtypes", [app_settings_1.AppSettings,
-            menu_service_1.MenuService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _b || Object])
+            menu_service_1.MenuService,
+            router_1.Router,
+            core_1.ElementRef])
     ], VerticalMenuComponent);
     return VerticalMenuComponent;
-    var _a, _b;
 }());
 exports.VerticalMenuComponent = VerticalMenuComponent;
 //# sourceMappingURL=vertical-menu.component.js.map

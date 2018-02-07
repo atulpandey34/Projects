@@ -1,20 +1,20 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class MasterDocumentTypeRepository : RepositoryBase<RiskManagement.Data.MasterDocumentType>, IMasterDocumentTypeRepository, IDisposable
+    public class MasterDocumentTypeRepository : RepositoryBase<Angular2_AspDotNet.Data.MasterDocumentType>, IMasterDocumentTypeRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
-        public MasterDocumentTypeRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        public MasterDocumentTypeRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -27,10 +27,10 @@ namespace RiskManagement.Repository.Repository
             return base.Get(x=>x.MasterDocumentTypeID==id && x.OrganizationId==LoggedInOrganizationId);
         }
 
-        public List<RiskManagement.Models.MasterDocumentTypeViewModel> GetAllDocumentsType(int LoggedInUserId, int LoggedInOrganizationId)
+        public List<Angular2_AspDotNet.Models.MasterDocumentTypeViewModel> GetAllDocumentsType(int LoggedInUserId, int LoggedInOrganizationId)
         {
             var userList = base.GetAll(x=>x.OrganizationId==LoggedInOrganizationId);
-            return Mapper.Map<IEnumerable<MasterDocumentType>, IEnumerable<RiskManagement.Models.MasterDocumentTypeViewModel>>(userList).ToList();
+            return Mapper.Map<IEnumerable<MasterDocumentType>, IEnumerable<Angular2_AspDotNet.Models.MasterDocumentTypeViewModel>>(userList).ToList();
         }
 
         public int AddMasterDocumentType(string documentTypeValue, int LoggedInUserId, int LoggedInOrganizationId)

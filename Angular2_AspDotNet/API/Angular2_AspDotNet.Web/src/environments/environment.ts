@@ -5,5 +5,5 @@
 
 export const environment = {
     production: false,
-    apiEndpoint: 'http://localriskmanagementapi.com/api'
+    apiEndpoint: 'http://localAngular2_AspDotNetapi.com/api'
 };

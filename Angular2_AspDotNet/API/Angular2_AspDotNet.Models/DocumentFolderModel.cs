@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Models
+namespace Angular2_AspDotNet.Models
 {
     // Detail page models
     public class FolderPopupViewModel

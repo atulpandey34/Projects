@@ -61,10 +61,9 @@ var ValidationsComponent = /** @class */ (function () {
             templateUrl: './validations.component.html',
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object])
+        __metadata("design:paramtypes", [forms_1.FormBuilder])
     ], ValidationsComponent);
     return ValidationsComponent;
-    var _a;
 }());
 exports.ValidationsComponent = ValidationsComponent;
 //# sourceMappingURL=validations.component.js.map

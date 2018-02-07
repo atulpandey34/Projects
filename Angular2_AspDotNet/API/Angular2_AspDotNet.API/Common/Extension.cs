@@ -6,7 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 
-namespace RiskManagement.API.Common
+namespace Angular2_AspDotNet.API.Common
 {
 
     public static class Extension

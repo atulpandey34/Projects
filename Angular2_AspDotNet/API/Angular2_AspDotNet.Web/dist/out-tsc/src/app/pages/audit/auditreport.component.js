@@ -74,10 +74,9 @@ var AuditReportComponent = /** @class */ (function () {
                 "../../../../node_modules/primeng/resources/themes/omega/theme.css"],
             providers: [audit_service_1.AuditService, { provide: 'Window', useValue: window }],
         }),
-        __metadata("design:paramtypes", [audit_service_1.AuditService, typeof (_a = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _c || Object])
+        __metadata("design:paramtypes", [audit_service_1.AuditService, router_1.ActivatedRoute, router_1.Router, common_1.Location])
     ], AuditReportComponent);
     return AuditReportComponent;
-    var _a, _b, _c;
 }());
 exports.AuditReportComponent = AuditReportComponent;
 //# sourceMappingURL=auditreport.component.js.map

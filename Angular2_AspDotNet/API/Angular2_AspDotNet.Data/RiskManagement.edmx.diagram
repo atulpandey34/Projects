@@ -5,153 +5,153 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="02f773cbcd784f17b6c56ae32852d002" Name="Diagram1" ZoomLevel="96">
-        <EntityTypeShape EntityType="RiskManagementModel.ActionResponsiblePerson" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RiskManagementModel.EventAttendee" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="RiskManagementModel.Location" Width="1.5" PointX="0.75" PointY="9" />
-        <EntityTypeShape EntityType="RiskManagementModel.SubTitle" Width="1.5" PointX="7.625" PointY="0.875" />
-        <EntityTypeShape EntityType="RiskManagementModel.Title" Width="1.5" PointX="5.375" PointY="1" />
-        <AssociationConnector Association="RiskManagementModel.FK_Title_SubTitle_TitleID" />
-        <EntityTypeShape EntityType="RiskManagementModel.EventActionStatu" Width="1.5" PointX="5.375" PointY="3.875" />
-        <EntityTypeShape EntityType="RiskManagementModel.ActionComment" Width="1.5" PointX="7.375" PointY="3.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.ActionSource" Width="1.5" PointX="0.75" PointY="2.625" />
-        <EntityTypeShape EntityType="RiskManagementModel.Category" Width="1.5" PointX="7.375" PointY="6.875" />
-        <EntityTypeShape EntityType="RiskManagementModel.Role" Width="1.5" PointX="0.75" PointY="11.5" />
-        <EntityTypeShape EntityType="RiskManagementModel.CorrectiveAction" Width="1.5" PointX="7.375" PointY="11.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.ResultOfCorrectiveAction" Width="1.5" PointX="9.375" PointY="11.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.CorrectiveActionAssignedToList" Width="1.5" PointX="11.625" PointY="12" />
-        <AssociationConnector Association="RiskManagementModel.FK_CorrectiveActionAssignedToList_CorrectiveAction_CorrectiveActionId" />
-        <EntityTypeShape EntityType="RiskManagementModel.DurationUnit" Width="1.5" PointX="0.75" PointY="21" />
-        <EntityTypeShape EntityType="RiskManagementModel.MonitoringMethod" Width="1.5" PointX="5.25" PointY="24.25" />
-        <EntityTypeShape EntityType="RiskManagementModel.RiskAssessment" Width="1.5" PointX="3" PointY="20.625" />
-        <EntityTypeShape EntityType="RiskManagementModel.RiskAssessmentHazardMeasure" Width="1.5" PointX="12.375" PointY="4.625" />
-        <EntityTypeShape EntityType="RiskManagementModel.RiskAssessmentHazardReview" Width="1.5" PointX="7.5" PointY="0.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.RiskAssessmentTeam" Width="1.5" PointX="5.25" PointY="21" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessment_DurationUnit_ReviewDurationUnit" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessmentHazardReview_MonitoringMethod_MonitoringMethodId" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessmentTeam_RiskAssessMent_RiskAssessmentId" />
-        <EntityTypeShape EntityType="RiskManagementModel.RiskAssessmentHazard" Width="1.5" PointX="5.25" PointY="17" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessmentHazard_RiskAssessMent_RiskAssessmentId" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessmentHazardReview_RiskAssessmentHazard_RiskAssessmentHazardHazardId" />
-        <EntityTypeShape EntityType="RiskManagementModel.Assignment" Width="1.5" PointX="12.375" PointY="1.375" />
-        <EntityTypeShape EntityType="RiskManagementModel.AssignmentQuestion" Width="1.5" PointX="14.625" PointY="1" />
-        <EntityTypeShape EntityType="RiskManagementModel.Training" Width="1.5" PointX="12.375" PointY="7.75" />
-        <AssociationConnector Association="RiskManagementModel.FK_AssignmentQuestion_Assignment" />
-        <EntityTypeShape EntityType="RiskManagementModel.RiskAssessmentReview" Width="1.5" PointX="5.25" PointY="27.25" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessmentReview_RiskAssessmentReview" />
-        <EntityTypeShape EntityType="RiskManagementModel.TrainingMaterial" Width="1.5" PointX="14.375" PointY="4.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.TrainingSchedule" Width="1.5" PointX="14.375" PointY="7.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.TrainingScheduleUser" Width="1.5" PointX="14.375" PointY="10.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.AssignmentQuestionOption" Width="1.5" PointX="17.25" PointY="1.375" />
-        <AssociationConnector Association="RiskManagementModel.FK_QuestionOption_QuestionId" />
-        <EntityTypeShape EntityType="RiskManagementModel.TrainingAssignmentAnswer" Width="1.5" PointX="14.375" PointY="13.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.TrainingAssignmentAttempt" Width="1.5" PointX="16.375" PointY="4.75" />
-        <AssociationConnector Association="RiskManagementModel.FK_TrainingAssignmentAnswer_TrainingAssignmentAttemptId" />
-        <EntityTypeShape EntityType="RiskManagementModel.TrainingScheduleRole" Width="1.5" PointX="0.75" PointY="16.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.DocumentNotification" Width="1.5" PointX="16.375" PointY="8.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.MasterDocumentType" Width="2.625" PointX="2.625" PointY="30.5" />
-        <EntityTypeShape EntityType="RiskManagementModel.UserScheduleResult" Width="1.5" PointX="10.375" PointY="14.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.DocumentVersion" Width="1.5" PointX="5.25" PointY="33.25" />
-        <EntityTypeShape EntityType="RiskManagementModel.MasterReviewFrequencyUnit" Width="1.5" PointX="16.375" PointY="21.25" />
-        <EntityTypeShape EntityType="RiskManagementModel.DocumentFolderRole" Width="1.5" PointX="18.625" PointY="9.625" />
-        <EntityTypeShape EntityType="RiskManagementModel.DocumentFolderUser" Width="1.5" PointX="18.625" PointY="12.375" />
-        <EntityTypeShape EntityType="RiskManagementModel.MasterNotificationSource" Width="1.5" PointX="6" PointY="30.625" />
-        <EntityTypeShape EntityType="RiskManagementModel.MasterNotificationType" Width="1.5" PointX="6" PointY="37.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.Notification" Width="1.5" PointX="8.25" PointY="18.125" />
-        <AssociationConnector Association="RiskManagementModel.FK_DocumentFolderRole_Role" />
-        <AssociationConnector Association="RiskManagementModel.FK_Notification_MasterNotification" />
-        <AssociationConnector Association="RiskManagementModel.FK_Notification_Notification" />
-        <EntityTypeShape EntityType="RiskManagementModel.MasterDocumentFolder" Width="1.5" PointX="16.375" PointY="16.5" />
-        <AssociationConnector Association="RiskManagementModel.FK_DocumentFolderRole_MasterDocumentFolder" />
-        <AssociationConnector Association="RiskManagementModel.FK_DocumentFolderUser_MasterDocumentFolder" />
-        <AssociationConnector Association="RiskManagementModel.FK_Training_Assignment" />
-        <EntityTypeShape EntityType="RiskManagementModel.Document" Width="1.5" PointX="3" PointY="33.375" />
-        <EntityTypeShape EntityType="RiskManagementModel.MasterRoleSection" Width="1.5" PointX="11.25" PointY="22.625" />
-        <EntityTypeShape EntityType="RiskManagementModel.RoleResponsibility" Width="1.5" PointX="9" PointY="22.625" />
-        <EntityTypeShape EntityType="RiskManagementModel.RoleResponsibilityVersionSection" Width="1.5" PointX="13.5" PointY="18.5" />
-        <AssociationConnector Association="RiskManagementModel.FK_Document_MasterDocumentFolder" />
-        <AssociationConnector Association="RiskManagementModel.FK_Document_MasterDocumentType" />
-        <AssociationConnector Association="RiskManagementModel.FK_Document_MasterReviewFrequencyUnit" />
-        <AssociationConnector Association="RiskManagementModel.FK_DocumentVersion_Document" />
-        <AssociationConnector Association="RiskManagementModel.FK_RoleResponsibilityVersionSection_MasterRoleSection" />
-        <AssociationConnector Association="RiskManagementModel.FK_RoleResponsibility_Role" />
-        <EntityTypeShape EntityType="RiskManagementModel.Action" Width="1.5" PointX="21.875" PointY="2.875" />
-        <EntityTypeShape EntityType="RiskManagementModel.Agendum" Width="1.5" PointX="9.375" PointY="7.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.Hazard" Width="1.5" PointX="9.375" PointY="4.875" />
-        <AssociationConnector Association="RiskManagementModel.FK_Action_ActionComment_ActionId" />
-        <AssociationConnector Association="RiskManagementModel.FK_ActionResponsiblePerson_Action" />
-        <AssociationConnector Association="RiskManagementModel.FK_ActionSource_Action_ActionSourceID" />
-        <AssociationConnector Association="RiskManagementModel.FK_EventActionStatus_Action_EventActionStatusID" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessmentHazard_Hazard_HazardId" />
-        <EntityTypeShape EntityType="RiskManagementModel.Appointment" Width="1.5" PointX="19.125" PointY="2.375" />
-        <EntityTypeShape EntityType="RiskManagementModel.Event" Width="1.5" PointX="16.875" PointY="0.75" />
-        <AssociationConnector Association="RiskManagementModel.FK_Event_Appointment_EventId" />
-        <AssociationConnector Association="RiskManagementModel.FK_EventAttendee_Event" />
-        <AssociationConnector Association="RiskManagementModel.FK_Location_Event_LocationID" />
-        <AssociationConnector Association="RiskManagementModel.FK_SubTitle_Event_EventSubType" />
-        <AssociationConnector Association="RiskManagementModel.FK_Title_Event_EventType" />
-        <EntityTypeShape EntityType="RiskManagementModel.AuditEvent" Width="1.5" PointX="18.375" PointY="18.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.Objective" Width="1.5" PointX="20.375" PointY="15.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.Frequency" Width="1.5" PointX="20.375" PointY="20.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.MeasureColumn" Width="1.5" PointX="24.875" PointY="19.125" />
-        <EntityTypeShape EntityType="RiskManagementModel.MeasureObjective" Width="1.5" PointX="24.875" PointY="22.125" />
-        <EntityTypeShape EntityType="RiskManagementModel.Measure" Width="1.5" PointX="21.875" PointY="9.5" />
-        <EntityTypeShape EntityType="RiskManagementModel.MeasureColumnData" Width="1.5" PointX="24.125" PointY="8" />
-        <AssociationConnector Association="RiskManagementModel.FK_Measure_Frequency" />
-        <AssociationConnector Association="RiskManagementModel.FK_MeasureColumn_Measure" />
-        <AssociationConnector Association="RiskManagementModel.FK_MeasureColumnData_Measure" />
-        <AssociationConnector Association="RiskManagementModel.FK_MeasureObjective_Measure" />
-        <AssociationConnector Association="RiskManagementModel.FK_MeasureColumnData_MeasureColumn" />
-        <EntityTypeShape EntityType="RiskManagementModel.PerformanceReview" Width="1.5" PointX="24.875" PointY="3.625" />
-        <AssociationConnector Association="RiskManagementModel.FK_PerformanceReview_Event" />
-        <EntityTypeShape EntityType="RiskManagementModel.ELMAH_Error" Width="1.5" PointX="3.375" PointY="11.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.Menu" Width="1.5" PointX="13.375" PointY="21.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.RoleMenuMapping" Width="1.5" PointX="22.375" PointY="13.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.UserRole" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="RiskManagementModel.User" Width="1.5" PointX="12.625" PointY="26" />
-        <AssociationConnector Association="RiskManagementModel.FK_User_Action_AddedBy" />
-        <AssociationConnector Association="RiskManagementModel.FK_ActionResponsiblePerson_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_ActionResponsiblePerson_User_AddedBy" />
-        <AssociationConnector Association="RiskManagementModel.FK_CorrectiveActionAssignedToList_User_UserId" />
-        <AssociationConnector Association="RiskManagementModel.FK_DocumentFodlerUser_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_DocumentVersion_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_DocumentVersion_User1" />
-        <AssociationConnector Association="RiskManagementModel.FK_EventAttendee_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_MeasureColumn_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_MeasureColumnData_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_Notification_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_PerformanceReview_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_PerformanceReview_User1" />
-        <AssociationConnector Association="RiskManagementModel.FK_RiskAssessmentTeam_User_UserId" />
-        <EntityTypeShape EntityType="RiskManagementModel.SecurityQuestion" Width="1.5" PointX="10.375" PointY="28.5" />
-        <AssociationConnector Association="RiskManagementModel.FK_User_SecurityQuestion_SecurityQuestion1" />
-        <AssociationConnector Association="RiskManagementModel.FK_User_SecurityQuestion_SecurityQuestion2" />
-        <EntityTypeShape EntityType="RiskManagementModel.Organization" Width="1.5" PointX="3.125" PointY="1.625" />
-        <AssociationConnector Association="RiskManagementModel.FK_Categories_Action_CategoryID" />
-        <AssociationConnector Association="RiskManagementModel.FK_Appointment_Organization" />
-        <AssociationConnector Association="RiskManagementModel.FK_CorrectiveAction_Organization" />
-        <AssociationConnector Association="RiskManagementModel.FK_PerformanceReview_Organization" />
-        <AssociationConnector Association="RiskManagementModel.FK_Training_Organization" />
-        <EntityTypeShape EntityType="RiskManagementModel.RoleResponsibilityVersion" Width="1.5" PointX="17.875" PointY="25" />
-        <AssociationConnector Association="RiskManagementModel.FK_RoleResponsibilityVersion_RoleResponsibility" />
-        <AssociationConnector Association="RiskManagementModel.FK_RoleResponsibilityVersion_RoleResponsibilityVersion" />
-        <AssociationConnector Association="RiskManagementModel.FK_RoleResponsibilityVersion_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_RoleResponsibilityVersion_User1" />
-        <AssociationConnector Association="RiskManagementModel.FK_RoleResponsibilityVersionSection_RoleResponsibilityVersion" />
-        <EntityTypeShape EntityType="RiskManagementModel.Audit" Width="1.5" PointX="17.875" PointY="33.375" />
-        <EntityTypeShape EntityType="RiskManagementModel.AuditSubjectQuestionResponse" Width="1.5" PointX="27.375" PointY="21.875" />
-        <EntityTypeShape EntityType="RiskManagementModel.AuditSubject" Width="1.5" PointX="22.875" PointY="25.125" />
-        <EntityTypeShape EntityType="RiskManagementModel.AuditSubjectReview" Width="1.5" PointX="25.125" PointY="13.75" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubject_Audit" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubjectReview_Audit" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubject_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubjectReview_AuditSubject" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubjectQuestionResponse_AuditSubjectReview" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubjectReview_Organization" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubjectReview_User" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubjectReview_User1" />
-        <EntityTypeShape EntityType="RiskManagementModel.AuditSubjectQuestion" Width="1.5" PointX="25.125" PointY="25.75" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubject_AuditSubjectQuestion" />
-        <AssociationConnector Association="RiskManagementModel.FK_AuditSubjectQuestionResponse_AuditSubjectQuestion" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.ActionResponsiblePerson" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.EventAttendee" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Location" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.SubTitle" Width="1.5" PointX="7.625" PointY="0.875" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Title" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Title_SubTitle_TitleID" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.EventActionStatu" Width="1.5" PointX="5.375" PointY="3.875" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.ActionComment" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.ActionSource" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Category" Width="1.5" PointX="7.375" PointY="6.875" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Role" Width="1.5" PointX="0.75" PointY="11.5" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.CorrectiveAction" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.ResultOfCorrectiveAction" Width="1.5" PointX="9.375" PointY="11.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.CorrectiveActionAssignedToList" Width="1.5" PointX="11.625" PointY="12" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_CorrectiveActionAssignedToList_CorrectiveAction_CorrectiveActionId" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.DurationUnit" Width="1.5" PointX="0.75" PointY="21" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MonitoringMethod" Width="1.5" PointX="5.25" PointY="24.25" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RiskAssessment" Width="1.5" PointX="3" PointY="20.625" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RiskAssessmentHazardMeasure" Width="1.5" PointX="12.375" PointY="4.625" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RiskAssessmentHazardReview" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RiskAssessmentTeam" Width="1.5" PointX="5.25" PointY="21" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessment_DurationUnit_ReviewDurationUnit" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessmentHazardReview_MonitoringMethod_MonitoringMethodId" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessmentTeam_RiskAssessMent_RiskAssessmentId" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RiskAssessmentHazard" Width="1.5" PointX="5.25" PointY="17" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessmentHazard_RiskAssessMent_RiskAssessmentId" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessmentHazardReview_RiskAssessmentHazard_RiskAssessmentHazardHazardId" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Assignment" Width="1.5" PointX="12.375" PointY="1.375" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.AssignmentQuestion" Width="1.5" PointX="14.625" PointY="1" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Training" Width="1.5" PointX="12.375" PointY="7.75" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AssignmentQuestion_Assignment" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RiskAssessmentReview" Width="1.5" PointX="5.25" PointY="27.25" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessmentReview_RiskAssessmentReview" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.TrainingMaterial" Width="1.5" PointX="14.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.TrainingSchedule" Width="1.5" PointX="14.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.TrainingScheduleUser" Width="1.5" PointX="14.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.AssignmentQuestionOption" Width="1.5" PointX="17.25" PointY="1.375" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_QuestionOption_QuestionId" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.TrainingAssignmentAnswer" Width="1.5" PointX="14.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.TrainingAssignmentAttempt" Width="1.5" PointX="16.375" PointY="4.75" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_TrainingAssignmentAnswer_TrainingAssignmentAttemptId" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.TrainingScheduleRole" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.DocumentNotification" Width="1.5" PointX="16.375" PointY="8.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MasterDocumentType" Width="2.625" PointX="2.625" PointY="30.5" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.UserScheduleResult" Width="1.5" PointX="10.375" PointY="14.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.DocumentVersion" Width="1.5" PointX="5.25" PointY="33.25" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MasterReviewFrequencyUnit" Width="1.5" PointX="16.375" PointY="21.25" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.DocumentFolderRole" Width="1.5" PointX="18.625" PointY="9.625" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.DocumentFolderUser" Width="1.5" PointX="18.625" PointY="12.375" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MasterNotificationSource" Width="1.5" PointX="6" PointY="30.625" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MasterNotificationType" Width="1.5" PointX="6" PointY="37.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Notification" Width="1.5" PointX="8.25" PointY="18.125" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_DocumentFolderRole_Role" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Notification_MasterNotification" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Notification_Notification" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MasterDocumentFolder" Width="1.5" PointX="16.375" PointY="16.5" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_DocumentFolderRole_MasterDocumentFolder" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_DocumentFolderUser_MasterDocumentFolder" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Training_Assignment" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Document" Width="1.5" PointX="3" PointY="33.375" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MasterRoleSection" Width="1.5" PointX="11.25" PointY="22.625" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RoleResponsibility" Width="1.5" PointX="9" PointY="22.625" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RoleResponsibilityVersionSection" Width="1.5" PointX="13.5" PointY="18.5" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Document_MasterDocumentFolder" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Document_MasterDocumentType" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Document_MasterReviewFrequencyUnit" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_DocumentVersion_Document" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RoleResponsibilityVersionSection_MasterRoleSection" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RoleResponsibility_Role" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Action" Width="1.5" PointX="21.875" PointY="2.875" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Agendum" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Hazard" Width="1.5" PointX="9.375" PointY="4.875" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Action_ActionComment_ActionId" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_ActionResponsiblePerson_Action" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_ActionSource_Action_ActionSourceID" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_EventActionStatus_Action_EventActionStatusID" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessmentHazard_Hazard_HazardId" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Appointment" Width="1.5" PointX="19.125" PointY="2.375" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Event" Width="1.5" PointX="16.875" PointY="0.75" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Event_Appointment_EventId" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_EventAttendee_Event" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Location_Event_LocationID" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_SubTitle_Event_EventSubType" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Title_Event_EventType" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.AuditEvent" Width="1.5" PointX="18.375" PointY="18.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Objective" Width="1.5" PointX="20.375" PointY="15.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Frequency" Width="1.5" PointX="20.375" PointY="20.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MeasureColumn" Width="1.5" PointX="24.875" PointY="19.125" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MeasureObjective" Width="1.5" PointX="24.875" PointY="22.125" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Measure" Width="1.5" PointX="21.875" PointY="9.5" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.MeasureColumnData" Width="1.5" PointX="24.125" PointY="8" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Measure_Frequency" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_MeasureColumn_Measure" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_MeasureColumnData_Measure" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_MeasureObjective_Measure" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_MeasureColumnData_MeasureColumn" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.PerformanceReview" Width="1.5" PointX="24.875" PointY="3.625" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_PerformanceReview_Event" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.ELMAH_Error" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Menu" Width="1.5" PointX="13.375" PointY="21.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RoleMenuMapping" Width="1.5" PointX="22.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.UserRole" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.User" Width="1.5" PointX="12.625" PointY="26" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_User_Action_AddedBy" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_ActionResponsiblePerson_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_ActionResponsiblePerson_User_AddedBy" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_CorrectiveActionAssignedToList_User_UserId" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_DocumentFodlerUser_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_DocumentVersion_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_DocumentVersion_User1" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_EventAttendee_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_MeasureColumn_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_MeasureColumnData_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Notification_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_PerformanceReview_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_PerformanceReview_User1" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RiskAssessmentTeam_User_UserId" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.SecurityQuestion" Width="1.5" PointX="10.375" PointY="28.5" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_User_SecurityQuestion_SecurityQuestion1" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_User_SecurityQuestion_SecurityQuestion2" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Organization" Width="1.5" PointX="3.125" PointY="1.625" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Categories_Action_CategoryID" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Appointment_Organization" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_CorrectiveAction_Organization" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_PerformanceReview_Organization" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_Training_Organization" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.RoleResponsibilityVersion" Width="1.5" PointX="17.875" PointY="25" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RoleResponsibilityVersion_RoleResponsibility" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RoleResponsibilityVersion_RoleResponsibilityVersion" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RoleResponsibilityVersion_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RoleResponsibilityVersion_User1" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_RoleResponsibilityVersionSection_RoleResponsibilityVersion" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.Audit" Width="1.5" PointX="17.875" PointY="33.375" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.AuditSubjectQuestionResponse" Width="1.5" PointX="27.375" PointY="21.875" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.AuditSubject" Width="1.5" PointX="22.875" PointY="25.125" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.AuditSubjectReview" Width="1.5" PointX="25.125" PointY="13.75" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubject_Audit" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubjectReview_Audit" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubject_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubjectReview_AuditSubject" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubjectQuestionResponse_AuditSubjectReview" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubjectReview_Organization" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubjectReview_User" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubjectReview_User1" />
+        <EntityTypeShape EntityType="Angular2_AspDotNetModel.AuditSubjectQuestion" Width="1.5" PointX="25.125" PointY="25.75" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubject_AuditSubjectQuestion" />
+        <AssociationConnector Association="Angular2_AspDotNetModel.FK_AuditSubjectQuestionResponse_AuditSubjectQuestion" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -73,10 +73,9 @@ var MasterEventDataService = /** @class */ (function () {
     };
     MasterEventDataService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object])
+        __metadata("design:paramtypes", [http_1.Http])
     ], MasterEventDataService);
     return MasterEventDataService;
-    var _a;
 }());
 exports.MasterEventDataService = MasterEventDataService;
 //# sourceMappingURL=Mastereventdata.js.map

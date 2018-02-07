@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Models
+namespace Angular2_AspDotNet.Models
 {
     //Audit Report View Model
     public class AuditReportViewModel

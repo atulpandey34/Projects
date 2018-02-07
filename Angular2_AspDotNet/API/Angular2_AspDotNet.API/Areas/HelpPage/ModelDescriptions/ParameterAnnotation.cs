@@ -1,6 +1,6 @@
 using System;
 
-namespace RiskManagement.API.Areas.HelpPage.ModelDescriptions
+namespace Angular2_AspDotNet.API.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

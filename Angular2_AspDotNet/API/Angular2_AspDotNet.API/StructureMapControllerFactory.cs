@@ -1,5 +1,5 @@
-﻿using RiskManagement.Repository.Interfaces;
-using RiskManagement.Repository.Repository;
+﻿using Angular2_AspDotNet.Repository.Interfaces;
+using Angular2_AspDotNet.Repository.Repository;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 using System;
@@ -9,9 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Elmah;
-using RiskManagement.Data.UnitOfWork;
+using Angular2_AspDotNet.Data.UnitOfWork;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public class StructureMapControllerFactory : DefaultControllerFactory
     {

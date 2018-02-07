@@ -1,4 +1,4 @@
-﻿using RiskManagement.API.Common;
+﻿using Angular2_AspDotNet.API.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Security;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property, AllowMultiple = false)]
     public class CustomApiAuthorize : AuthorizeAttribute, IAuthorizationFilter

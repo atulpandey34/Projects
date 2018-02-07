@@ -1,5 +1,5 @@
-﻿using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,18 +8,18 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class NotificationRepository : RepositoryBase<RiskManagement.Data.Notification>, INotificationRepository, IDisposable
+    public class NotificationRepository : RepositoryBase<Angular2_AspDotNet.Data.Notification>, INotificationRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
 
 
-        public NotificationRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public NotificationRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
 
@@ -74,7 +74,7 @@ namespace RiskManagement.Repository.Repository
         public List<NotificationViewModel> GetAllNotificationList(int Userid, int OrganizationId)
         {
             List<SP_GetNotificationData_Result> data = base.RepositoryContext.SP_GetNotificationData(Userid, OrganizationId).ToList();
-            return Mapper.Map<IEnumerable<SP_GetNotificationData_Result>, IEnumerable<RiskManagement.Models.NotificationViewModel>>(data).ToList();
+            return Mapper.Map<IEnumerable<SP_GetNotificationData_Result>, IEnumerable<Angular2_AspDotNet.Models.NotificationViewModel>>(data).ToList();
         }
 
 

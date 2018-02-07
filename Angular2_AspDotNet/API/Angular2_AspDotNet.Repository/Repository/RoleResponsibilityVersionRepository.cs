@@ -1,19 +1,19 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class RoleResponsibilityVersionRepository : RepositoryBase<RiskManagement.Data.RoleResponsibilityVersion>, IRoleResponsibilityVersionRepository, IDisposable
+    public class RoleResponsibilityVersionRepository : RepositoryBase<Angular2_AspDotNet.Data.RoleResponsibilityVersion>, IRoleResponsibilityVersionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IRoleResponsibilityVersionSectionRepository _IRoleResponsibilityVersionSectionRepository = null;
-        public RoleResponsibilityVersionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public RoleResponsibilityVersionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             _IRoleResponsibilityVersionSectionRepository = new RoleResponsibilityVersionSectionRepository(unitOfWork);
@@ -75,7 +75,7 @@ namespace RiskManagement.Repository.Repository
 
                 if (model.Type == 1)
                 {
-                    foreach (RiskManagement.Models.RoleResponsibilityVersionSectionViewModel rrvs in model.RoleResponsibilityVersionSectionViewModel)
+                    foreach (Angular2_AspDotNet.Models.RoleResponsibilityVersionSectionViewModel rrvs in model.RoleResponsibilityVersionSectionViewModel)
                     {
                         rrvs.RoleResponsibilityVersionID = roleresponsibilityversion.RoleResponsibilityVersionID;
                         rrvs.OrganizationId = model.OrganizationId;

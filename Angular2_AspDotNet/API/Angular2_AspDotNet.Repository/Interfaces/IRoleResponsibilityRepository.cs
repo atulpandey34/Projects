@@ -1,17 +1,17 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IRoleResponsibilityRepository
     {
-        IEnumerable<RiskManagement.Data.RoleResponsibility> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
-        void Add(RiskManagement.Data.RoleResponsibility entity, int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.RoleResponsibility> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.RoleResponsibility entity, int LoggedInUserId, int LoggedInOrganizationId);
         RolesResponsibilityViewModel AddUpdateRoleResponsibility(RolesResponsibilityViewModel model, int UserId, int OrganizationId);
         RolesResponsibilityViewModel GetRoleResponsibility(int roleid, int LoggedInOrganizationId);
 

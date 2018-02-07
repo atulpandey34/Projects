@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace RiskManagement.API.Areas.HelpPage
+namespace Angular2_AspDotNet.API.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

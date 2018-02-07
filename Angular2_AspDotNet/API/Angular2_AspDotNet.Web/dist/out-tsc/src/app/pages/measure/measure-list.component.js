@@ -128,10 +128,9 @@ var MeasureListComponent = /** @class */ (function () {
             ],
             providers: [],
         }),
-        __metadata("design:paramtypes", [measure_service_1.MeasureService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _c || Object])
+        __metadata("design:paramtypes", [measure_service_1.MeasureService, router_1.Router, common_1.Location, router_1.ActivatedRoute])
     ], MeasureListComponent);
     return MeasureListComponent;
-    var _a, _b, _c;
 }());
 exports.MeasureListComponent = MeasureListComponent;
 //# sourceMappingURL=measure-list.component.js.map

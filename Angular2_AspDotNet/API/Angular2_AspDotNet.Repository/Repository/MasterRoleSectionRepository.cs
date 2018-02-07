@@ -1,21 +1,21 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class MasterRoleSectionRepository : RepositoryBase<RiskManagement.Data.MasterRoleSection>, IMasterRoleSectionRepository, IDisposable
+    public class MasterRoleSectionRepository : RepositoryBase<Angular2_AspDotNet.Data.MasterRoleSection>, IMasterRoleSectionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         
-        public MasterRoleSectionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public MasterRoleSectionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -39,10 +39,10 @@ namespace RiskManagement.Repository.Repository
         }
         
 
-        public List<RiskManagement.Models.MasterRoleSectionViewModel> GetAllMasterRoleSection( int LoggedInUserId, int LoggedInOrganizationId)
+        public List<Angular2_AspDotNet.Models.MasterRoleSectionViewModel> GetAllMasterRoleSection( int LoggedInUserId, int LoggedInOrganizationId)
         {
             var masterrolesection = base.GetAll(x=>x.OrganizationId==LoggedInOrganizationId).Where(x=>x.Active==true).OrderBy(x=>x.SectionName);
-            return Mapper.Map<IEnumerable<MasterRoleSection>, IEnumerable<RiskManagement.Models.MasterRoleSectionViewModel>>(masterrolesection).ToList();
+            return Mapper.Map<IEnumerable<MasterRoleSection>, IEnumerable<Angular2_AspDotNet.Models.MasterRoleSectionViewModel>>(masterrolesection).ToList();
         }
 
         public int AddMasterRoleSection(string sectionName, int LoggedInUserId, int LoggedInOrganizationId)

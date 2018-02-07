@@ -1,16 +1,16 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IDocumentVersionRepository
     {
-        RiskManagement.Data.DocumentVersion GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
-        void Add(RiskManagement.Data.DocumentVersion entity, int LoggedInUserId, int LoggedInOrganizationId);
+        Angular2_AspDotNet.Data.DocumentVersion GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.DocumentVersion entity, int LoggedInUserId, int LoggedInOrganizationId);
         void Delete(int id, int LoggedInUserId, int LoggedInOrganizationId);
         void DeleteDocumentVersion(int documentVersionId, int LoggedInUserId, int LoggedInOrganizationId);
         void DeleteByDocumentId(int documentid, int LoggedInUserId, int LoggedInOrganizationId);

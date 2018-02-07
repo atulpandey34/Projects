@@ -135,10 +135,9 @@ var TrainerComponent = /** @class */ (function () {
             ],
             providers: [training_service_1.TrainingService, assignment_service_1.AssignmentService, Mastereventdata_1.MasterEventDataService, user_service_1.UserService],
         }),
-        __metadata("design:paramtypes", [user_service_1.UserService, assignment_service_1.AssignmentService, Mastereventdata_1.MasterEventDataService, training_service_1.TrainingService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object])
+        __metadata("design:paramtypes", [user_service_1.UserService, assignment_service_1.AssignmentService, Mastereventdata_1.MasterEventDataService, training_service_1.TrainingService, router_1.Router, common_1.Location, forms_1.FormBuilder, router_1.ActivatedRoute])
     ], TrainerComponent);
     return TrainerComponent;
-    var _a, _b, _c, _d;
 }());
 exports.TrainerComponent = TrainerComponent;
 //# sourceMappingURL=trainer.component.js.map

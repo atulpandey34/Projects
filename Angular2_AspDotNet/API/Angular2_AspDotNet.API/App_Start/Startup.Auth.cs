@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using RiskManagement.API.Providers;
-using RiskManagement.API.Models;
+using Angular2_AspDotNet.API.Providers;
+using Angular2_AspDotNet.API.Models;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public partial class Startup
     {

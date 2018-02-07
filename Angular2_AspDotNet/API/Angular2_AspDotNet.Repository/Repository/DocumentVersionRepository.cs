@@ -1,19 +1,19 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class DocumentVersionRepository : RepositoryBase<RiskManagement.Data.DocumentVersion>, IDocumentVersionRepository, IDisposable
+    public class DocumentVersionRepository : RepositoryBase<Angular2_AspDotNet.Data.DocumentVersion>, IDocumentVersionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
-        public DocumentVersionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public DocumentVersionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
@@ -26,7 +26,7 @@ namespace RiskManagement.Repository.Repository
             return Get(x => x.DocumentID == id && x.OrganizationId == LoggedInOrganizationId);
         }
 
-        public void Add(RiskManagement.Data.DocumentVersion entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.DocumentVersion entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationId = LoggedInOrganizationId;
             base.Insert(entity);

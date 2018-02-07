@@ -1,27 +1,27 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class TrainingScheduleRepository : RepositoryBase<RiskManagement.Data.TrainingSchedule>, ITrainingScheduleRepository, IDisposable
+    public class TrainingScheduleRepository : RepositoryBase<Angular2_AspDotNet.Data.TrainingSchedule>, ITrainingScheduleRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private ITrainingScheduleUserRepository _ITrainingScheduleUserRepository = null;
         private ITrainingScheduleRoleRepository _ITrainingScheduleRoleRepository = null;
-        public TrainingScheduleRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public TrainingScheduleRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._ITrainingScheduleUserRepository = new TrainingScheduleUserRepository(unitOfWork);
             this._ITrainingScheduleRoleRepository = new TrainingScheduleRoleRepository(unitOfWork);
         }
-        public void Add(RiskManagement.Data.TrainingSchedule entity, int OrganizationId)
+        public void Add(Angular2_AspDotNet.Data.TrainingSchedule entity, int OrganizationId)
         {
             entity.OrganizationId = OrganizationId;
             base.Insert(entity);

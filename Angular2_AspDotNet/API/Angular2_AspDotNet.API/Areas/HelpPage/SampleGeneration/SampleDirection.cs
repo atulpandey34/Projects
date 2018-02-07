@@ -1,4 +1,4 @@
-namespace RiskManagement.API.Areas.HelpPage
+namespace Angular2_AspDotNet.API.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

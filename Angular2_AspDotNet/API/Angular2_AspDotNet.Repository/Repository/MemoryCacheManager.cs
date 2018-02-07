@@ -1,4 +1,4 @@
-﻿using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
     /// <summary>
     /// Represents a MemoryCacheCache

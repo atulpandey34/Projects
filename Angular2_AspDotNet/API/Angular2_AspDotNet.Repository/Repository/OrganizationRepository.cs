@@ -1,24 +1,24 @@
 ﻿using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
 
-    public class OrganizationRepository : RepositoryBase<RiskManagement.Data.Organization>, IOrganizationRepository, IDisposable
+    public class OrganizationRepository : RepositoryBase<Angular2_AspDotNet.Data.Organization>, IOrganizationRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
-        public OrganizationRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        public OrganizationRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
-        public void Add(RiskManagement.Data.Organization entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.Organization entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationID = LoggedInOrganizationId;
             base.Insert(entity);
@@ -96,7 +96,7 @@ namespace RiskManagement.Repository.Repository
         public List<OrganizationViewModel> GetAllOrganizationist(int Userid, int OrganizationId)
         {
             var data = base.GetAll();
-            return Mapper.Map<IEnumerable<Organization>, IEnumerable<RiskManagement.Models.OrganizationViewModel>>(data).ToList();
+            return Mapper.Map<IEnumerable<Organization>, IEnumerable<Angular2_AspDotNet.Models.OrganizationViewModel>>(data).ToList();
         }
 
         public OrganizationListViewResult GetOrganizationListData(OrganizationListFilterModel filter, int LoggedInUserId)

@@ -3,7 +3,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RiskManagement.Security
+namespace Angular2_AspDotNet.Security
 {
     public class AES
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using NCrontab.Advanced;
 using NCrontab.Advanced.Enumerations;
 
-namespace RiskManagement.Core
+namespace Angular2_AspDotNet.Core
 {
     public class CommonMethods
     {

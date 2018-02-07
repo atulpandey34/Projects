@@ -41,7 +41,7 @@ var BackTopComponent = /** @class */ (function () {
     ], BackTopComponent.prototype, "moveSpeed", void 0);
     __decorate([
         core_1.ViewChild('backTop'),
-        __metadata("design:type", typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object)
+        __metadata("design:type", core_1.ElementRef)
     ], BackTopComponent.prototype, "_selector", void 0);
     __decorate([
         core_1.HostListener('click'),
@@ -64,7 +64,6 @@ var BackTopComponent = /** @class */ (function () {
         })
     ], BackTopComponent);
     return BackTopComponent;
-    var _a;
 }());
 exports.BackTopComponent = BackTopComponent;
 //# sourceMappingURL=back-top.component.js.map

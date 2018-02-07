@@ -1,7 +1,7 @@
-﻿using RiskManagement.Data.UnitOfWork;
-using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
-using RiskManagement.Repository.Repository;
+﻿using Angular2_AspDotNet.Data.UnitOfWork;
+using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
+using Angular2_AspDotNet.Repository.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Http.Cors;
 using System.Web.Mvc;
 
-namespace RiskManagement.API.Controllers
+namespace Angular2_AspDotNet.API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/measure")]

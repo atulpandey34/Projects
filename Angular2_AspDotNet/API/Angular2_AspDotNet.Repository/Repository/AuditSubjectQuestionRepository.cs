@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,13 +12,13 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class AuditSubjectQuestionRepository : RepositoryBase<RiskManagement.Data.AuditSubjectQuestion>, IAuditSubjectQuestionRepository, IDisposable
+    public class AuditSubjectQuestionRepository : RepositoryBase<Angular2_AspDotNet.Data.AuditSubjectQuestion>, IAuditSubjectQuestionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         
-        public AuditSubjectQuestionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public AuditSubjectQuestionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
            

@@ -1,31 +1,31 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Linq;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class AssignmentQuestionRepository : RepositoryBase<RiskManagement.Data.AssignmentQuestion>, IAssignmentQuestionRepository, IDisposable
+    public class AssignmentQuestionRepository : RepositoryBase<Angular2_AspDotNet.Data.AssignmentQuestion>, IAssignmentQuestionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IAssignmentQuestionRepository _IAssignmentQuestionRepository = null;
         private IAssignmentQuestionOptionRepository _IAssignmentQuestionOptionRepository = null;
 
         private IActionRepository _IActionRepository = null;
-        public AssignmentQuestionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public AssignmentQuestionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
 
             this._IActionRepository = new ActionRepository(unitOfWork);
             this._IAssignmentQuestionOptionRepository = new AssignmentQuestionOptionRepository(unitOfWork);
         }
-        public void Add(RiskManagement.Data.AssignmentQuestion entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.AssignmentQuestion entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationId = LoggedInOrganizationId;
             base.Insert(entity);
@@ -167,7 +167,7 @@ namespace RiskManagement.Repository.Repository
         //            this._IRiskAssessmentHazardMeasureRepository.Add(riskAssessmentHazardMeasure);
         //            if (viewModel1.ActionId == 1)
         //            {
-        //                RiskManagement.Data.Action action = new RiskManagement.Data.Action();
+        //                Angular2_AspDotNet.Data.Action action = new Angular2_AspDotNet.Data.Action();
         //                action.SourceID = riskAssessmentHazardMeasure.RiskAssessmentHazardMeasureId;
         //                action.Title = riskAssessmentHazardMeasure.Text;
         //                action.Duedate = DateTime.Now.AddDays(7);

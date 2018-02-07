@@ -1,27 +1,27 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IUserRepository
     {
-        IEnumerable<RiskManagement.Data.User> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.User> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.User entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.User entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         UserViewModel GetSingle(int Userid, int OrganizationId);
 
-        void Update(RiskManagement.Data.User entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.User entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int Userid, int OrganizationId);
 
-        IEnumerable<RiskManagement.Models.UserModel> GetAllUser(int Userid, int OrganizationId);
-        IEnumerable<RiskManagement.Models.UserModel> GetAllauditor(int OrganizationId);
+        IEnumerable<Angular2_AspDotNet.Models.UserModel> GetAllUser(int Userid, int OrganizationId);
+        IEnumerable<Angular2_AspDotNet.Models.UserModel> GetAllauditor(int OrganizationId);
         void AddUser(UserViewModel model, int Userid, int OrganizationId);
         bool ValidateUserEmail(string email, int Userid, int OrganizationId);
         bool ValidateUserName(string userName, int Userid, int OrganizationId);

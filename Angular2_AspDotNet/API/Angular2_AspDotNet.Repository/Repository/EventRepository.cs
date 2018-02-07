@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using RiskManagement.Core;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+using Angular2_AspDotNet.Core;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,12 +14,12 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class EventRepository : RepositoryBase<RiskManagement.Data.Event>, IEventRepository, IDisposable
+    public class EventRepository : RepositoryBase<Angular2_AspDotNet.Data.Event>, IEventRepository, IDisposable
     {
         private int LoggedInUserID = 1;
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IEventAttendeeRepository _IEventAttendeeRepository = null;
         private IActionRepository _IActionRepository = null;
         private IActionResponsiblePersonRepository _IActionResponsiblePersonRepository = null;
@@ -28,7 +28,7 @@ namespace RiskManagement.Repository.Repository
         private IObjectiveRepository _IObjectiveRepository = null;
         private IPerformanceReviewRepository _IPerformanceReviewRepository = null;
         private IRoleResponsibilityRepository _IRoleResponsibilityRepository = null;
-        public EventRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public EventRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             _IEventAttendeeRepository = new EventAttendeeRepository(this._unitOfWork);
@@ -40,7 +40,7 @@ namespace RiskManagement.Repository.Repository
             this._IPerformanceReviewRepository = new PerformanceReviewRepository(this._unitOfWork);
             this._IRoleResponsibilityRepository = new RoleResponsibilityRepository(this._unitOfWork);
         }
-        public void Add(RiskManagement.Data.Event entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.Event entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationID = LoggedInOrganizationId;
             base.Insert(entity);
@@ -91,7 +91,7 @@ namespace RiskManagement.Repository.Repository
             {
 
                 model.SourceID = evenT.EventID;
-                var data = Mapper.Map<ActionDataModel, RiskManagement.Data.Action>(model);
+                var data = Mapper.Map<ActionDataModel, Angular2_AspDotNet.Data.Action>(model);
                 if (model.ActionID == 0)
                 {
                     data.OrganizationID = OrganizationId;
@@ -459,7 +459,7 @@ namespace RiskManagement.Repository.Repository
             {
 
                 model.SourceID = evenT.EventID;
-                var data = Mapper.Map<ActionDataModel, RiskManagement.Data.Action>(model);
+                var data = Mapper.Map<ActionDataModel, Angular2_AspDotNet.Data.Action>(model);
                 if (model.ActionID == 0)
                 {
                     data.CreatedDate = DateTime.Now;

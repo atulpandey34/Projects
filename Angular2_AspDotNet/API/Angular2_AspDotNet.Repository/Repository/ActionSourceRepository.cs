@@ -1,23 +1,23 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class ActionSourceRepository : RepositoryBase<RiskManagement.Data.ActionSource>, IActionSourceRepository, IDisposable
+    public class ActionSourceRepository : RepositoryBase<Angular2_AspDotNet.Data.ActionSource>, IActionSourceRepository, IDisposable
     {
 
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
-        public ActionSourceRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public ActionSourceRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
-        public void Add(RiskManagement.Data.ActionSource entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.ActionSource entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationId = LoggedInOrganizationId;
             base.Insert(entity);
@@ -39,10 +39,10 @@ namespace RiskManagement.Repository.Repository
             return base.GetManyQueryable(x => x.OrganizationId == LoggedInOrganizationId);
         }
 
-        public IEnumerable<RiskManagement.Models.ActionSourceModel> GetAllActionSource(int Userid, int OrganizationId)
+        public IEnumerable<Angular2_AspDotNet.Models.ActionSourceModel> GetAllActionSource(int Userid, int OrganizationId)
         {
             var userList = base.GetManyQueryable(x => x.OrganizationId == OrganizationId);
-            return Mapper.Map<IEnumerable<ActionSource>, IEnumerable<RiskManagement.Models.ActionSourceModel>>(userList);
+            return Mapper.Map<IEnumerable<ActionSource>, IEnumerable<Angular2_AspDotNet.Models.ActionSourceModel>>(userList);
         }
 
         public ActionSource GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId)

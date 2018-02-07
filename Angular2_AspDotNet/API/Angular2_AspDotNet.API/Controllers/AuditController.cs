@@ -1,14 +1,14 @@
 ﻿using System.Web.Http;
 using System.Collections.Generic;
-using RiskManagement.Repository.Interfaces;
-using RiskManagement.Models;
-using RiskManagement.Repository.Repository;
-using RiskManagement.Data.UnitOfWork;
+using Angular2_AspDotNet.Repository.Interfaces;
+using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Repository;
+using Angular2_AspDotNet.Data.UnitOfWork;
 using System.Linq;
-using RiskManagement.Data;
+using Angular2_AspDotNet.Data;
 using System.Web.Http.Cors;
 using System;
-using RiskManagement.API;
+using Angular2_AspDotNet.API;
 using System.Net.Http;
 using System.Collections.Specialized;
 using System.IO;
@@ -17,7 +17,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 
-namespace RiskManagement.API.Controllers
+namespace Angular2_AspDotNet.API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/audit")]

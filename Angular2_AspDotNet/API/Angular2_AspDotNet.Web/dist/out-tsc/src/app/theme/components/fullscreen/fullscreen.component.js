@@ -78,11 +78,11 @@ var FullScreenComponent = /** @class */ (function () {
     };
     __decorate([
         core_1.ViewChild('expand'),
-        __metadata("design:type", typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object)
+        __metadata("design:type", core_1.ElementRef)
     ], FullScreenComponent.prototype, "expand", void 0);
     __decorate([
         core_1.ViewChild('compress'),
-        __metadata("design:type", typeof (_b = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _b || Object)
+        __metadata("design:type", core_1.ElementRef)
     ], FullScreenComponent.prototype, "compress", void 0);
     __decorate([
         core_1.HostListener('click'),
@@ -104,7 +104,6 @@ var FullScreenComponent = /** @class */ (function () {
         })
     ], FullScreenComponent);
     return FullScreenComponent;
-    var _a, _b;
 }());
 exports.FullScreenComponent = FullScreenComponent;
 //# sourceMappingURL=fullscreen.component.js.map

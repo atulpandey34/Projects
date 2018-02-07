@@ -48,10 +48,9 @@ var MultipleImageUploaderComponent = /** @class */ (function () {
             templateUrl: './multiple-image-uploader.component.html',
             styleUrls: ['./multiple-image-uploader.component.scss']
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof core_1.ChangeDetectorRef !== "undefined" && core_1.ChangeDetectorRef) === "function" && _a || Object])
+        __metadata("design:paramtypes", [core_1.ChangeDetectorRef])
     ], MultipleImageUploaderComponent);
     return MultipleImageUploaderComponent;
-    var _a;
 }());
 exports.MultipleImageUploaderComponent = MultipleImageUploaderComponent;
 //# sourceMappingURL=multiple-image-uploader.component.js.map

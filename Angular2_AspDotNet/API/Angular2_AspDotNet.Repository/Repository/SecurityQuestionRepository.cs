@@ -1,5 +1,5 @@
-﻿using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,18 +8,18 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class SecurityQuestionRepository : RepositoryBase<RiskManagement.Data.SecurityQuestion>, ISecurityQuestionRepository, IDisposable
+    public class SecurityQuestionRepository : RepositoryBase<Angular2_AspDotNet.Data.SecurityQuestion>, ISecurityQuestionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
 
 
-        public SecurityQuestionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public SecurityQuestionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
 
@@ -57,7 +57,7 @@ namespace RiskManagement.Repository.Repository
         public List<SecurityQuestionModel> GetAllSecurityQuestion(int Userid, int OrganizationId)
         {
             var data = base.GetAll();
-            return Mapper.Map<IEnumerable<SecurityQuestion>, IEnumerable<RiskManagement.Models.SecurityQuestionModel>>(data).ToList();
+            return Mapper.Map<IEnumerable<SecurityQuestion>, IEnumerable<Angular2_AspDotNet.Models.SecurityQuestionModel>>(data).ToList();
         }
 
 

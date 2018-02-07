@@ -6,6 +6,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.environment = {
     production: false,
-    apiEndpoint: 'http://localriskmanagementapi.com/api'
+    apiEndpoint: 'http://localAngular2_AspDotNetapi.com/api'
 };
 //# sourceMappingURL=environment.js.map

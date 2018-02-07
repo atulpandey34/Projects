@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using RiskManagement.API.Areas.HelpPage.ModelDescriptions;
+using Angular2_AspDotNet.API.Areas.HelpPage.ModelDescriptions;
 
-namespace RiskManagement.API.Areas.HelpPage
+namespace Angular2_AspDotNet.API.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

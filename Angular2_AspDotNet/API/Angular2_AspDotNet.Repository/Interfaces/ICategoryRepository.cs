@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface ICategoryRepository
     {
-        IEnumerable<RiskManagement.Data.Category> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.Category> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.Category entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Add(Angular2_AspDotNet.Data.Category entity, int LoggedInUserId, int LoggedInOrganizationId);
 
-        RiskManagement.Data.Category GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
+        Angular2_AspDotNet.Data.Category GetSingle(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        void Update(RiskManagement.Data.Category entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.Category entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int LoggedInUserId, int LoggedInOrganizationId);
 
-        IEnumerable<RiskManagement.Models.CategoryModel> GetAllCategory(int Userid, int OrganizationId);
+        IEnumerable<Angular2_AspDotNet.Models.CategoryModel> GetAllCategory(int Userid, int OrganizationId);
     }
 }

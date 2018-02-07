@@ -13,12 +13,12 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using RiskManagement.API.Models;
-using RiskManagement.API.Providers;
-using RiskManagement.API.Results;
+using Angular2_AspDotNet.API.Models;
+using Angular2_AspDotNet.API.Providers;
+using Angular2_AspDotNet.API.Results;
 
 
-namespace RiskManagement.API.Controllers
+namespace Angular2_AspDotNet.API.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

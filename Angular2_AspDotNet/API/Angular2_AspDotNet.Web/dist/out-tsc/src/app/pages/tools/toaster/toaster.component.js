@@ -81,10 +81,9 @@ var ToasterComponent = /** @class */ (function () {
             templateUrl: './toaster.component.html',
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof ngx_toastr_1.ToastrService !== "undefined" && ngx_toastr_1.ToastrService) === "function" && _a || Object])
+        __metadata("design:paramtypes", [ngx_toastr_1.ToastrService])
     ], ToasterComponent);
     return ToasterComponent;
-    var _a;
 }());
 exports.ToasterComponent = ToasterComponent;
 //# sourceMappingURL=toaster.component.js.map

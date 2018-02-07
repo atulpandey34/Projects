@@ -1,22 +1,22 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class LocationRepository : RepositoryBase<RiskManagement.Data.Location>, ILocationRepository, IDisposable
+    public class LocationRepository : RepositoryBase<Angular2_AspDotNet.Data.Location>, ILocationRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
-        public LocationRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public LocationRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
-        public void Add(RiskManagement.Data.Location entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.Location entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationId = LoggedInOrganizationId;
             base.Insert(entity);
@@ -45,10 +45,10 @@ namespace RiskManagement.Repository.Repository
             return base.Get(x=>x.LocationID==id && x.OrganizationId==LoggedInOrganizationId);
         }
 
-        public IEnumerable<RiskManagement.Models.LocationModel> GetAllLocation(int Userid, int OrganizationId)
+        public IEnumerable<Angular2_AspDotNet.Models.LocationModel> GetAllLocation(int Userid, int OrganizationId)
         {
             var locationList = base.GetAll(x=>x.OrganizationId== OrganizationId);
-            return Mapper.Map<IEnumerable<Location>, IEnumerable<RiskManagement.Models.LocationModel>>(locationList);
+            return Mapper.Map<IEnumerable<Location>, IEnumerable<Angular2_AspDotNet.Models.LocationModel>>(locationList);
         }
         public  void Update(Location entity, int LoggedInUserId, int LoggedInOrganizationId)
         {

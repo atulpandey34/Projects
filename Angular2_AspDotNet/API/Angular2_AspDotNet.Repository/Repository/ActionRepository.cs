@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,15 +12,15 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class ActionRepository : RepositoryBase<RiskManagement.Data.Action>, IActionRepository, IDisposable
+    public class ActionRepository : RepositoryBase<Angular2_AspDotNet.Data.Action>, IActionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IActionResponsiblePersonRepository _ActionResponsiblePersonRepository = null;
         private IActionCommentRepository _actionCommentRepository = null;
 
-        public ActionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public ActionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._ActionResponsiblePersonRepository = new ActionResponsiblePersonRepository(unitOfWork);
@@ -143,7 +143,7 @@ namespace RiskManagement.Repository.Repository
         public int UpdateActionData(ActionDataModel model, int Userid, int OrganizationId)
         {
             
-            var data = Mapper.Map<ActionDataModel, RiskManagement.Data.Action>(model);
+            var data = Mapper.Map<ActionDataModel, Angular2_AspDotNet.Data.Action>(model);
             data.OrganizationID = OrganizationId;
             if (model.ActionID > 0)
             {

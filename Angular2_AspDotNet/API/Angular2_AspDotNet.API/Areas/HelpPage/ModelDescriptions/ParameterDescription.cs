@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace RiskManagement.API.Areas.HelpPage.ModelDescriptions
+namespace Angular2_AspDotNet.API.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterDescription
     {

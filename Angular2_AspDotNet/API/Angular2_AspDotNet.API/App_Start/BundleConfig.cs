@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public class BundleConfig
     {

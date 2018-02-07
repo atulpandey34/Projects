@@ -320,10 +320,9 @@ var RolesResponsibilityComponent = /** @class */ (function () {
                 '../form-elements/controls/file-uploader/file-uploader.component.scss',],
             providers: [user_service_1.UserService, rolesresponsibility_service_1.RolesResponsibilityService],
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object, rolesresponsibility_service_1.RolesResponsibilityService, user_service_1.UserService, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _c || Object, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object])
+        __metadata("design:paramtypes", [forms_1.FormBuilder, rolesresponsibility_service_1.RolesResponsibilityService, user_service_1.UserService, router_1.Router, common_1.Location, router_1.ActivatedRoute])
     ], RolesResponsibilityComponent);
     return RolesResponsibilityComponent;
-    var _a, _b, _c, _d;
 }());
 exports.RolesResponsibilityComponent = RolesResponsibilityComponent;
 //# sourceMappingURL=rolesresponsibility.component.js.map

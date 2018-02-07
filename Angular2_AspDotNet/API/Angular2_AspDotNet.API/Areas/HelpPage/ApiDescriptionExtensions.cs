@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace RiskManagement.API.Areas.HelpPage
+namespace Angular2_AspDotNet.API.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

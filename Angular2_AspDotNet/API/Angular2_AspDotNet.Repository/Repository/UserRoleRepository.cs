@@ -1,5 +1,5 @@
-﻿using RiskManagement.Models;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Models;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,18 +8,18 @@ using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using AutoMapper;
-using RiskManagement.Data;
-using RiskManagement.Data.Repository;
+using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class UserRoleRepository : RepositoryBase<RiskManagement.Data.UserRole>, IUserRoleRepository, IDisposable
+    public class UserRoleRepository : RepositoryBase<Angular2_AspDotNet.Data.UserRole>, IUserRoleRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
 
 
-        public UserRoleRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public UserRoleRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
 

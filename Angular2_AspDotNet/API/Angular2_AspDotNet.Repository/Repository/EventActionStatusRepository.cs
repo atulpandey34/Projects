@@ -1,22 +1,22 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class EventActionStatusRepository : RepositoryBase<RiskManagement.Data.EventActionStatu>, IEventActionStatusRepository, IDisposable
+    public class EventActionStatusRepository : RepositoryBase<Angular2_AspDotNet.Data.EventActionStatu>, IEventActionStatusRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
 
-        public EventActionStatusRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public EventActionStatusRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
         }
-        public void Add(RiskManagement.Data.EventActionStatu entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.EventActionStatu entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationId = LoggedInOrganizationId;
             base.Insert(entity);
@@ -37,10 +37,10 @@ namespace RiskManagement.Repository.Repository
         {
             return base.GetAll(x => x.OrganizationId == LoggedInOrganizationId);
         }
-        public IEnumerable<RiskManagement.Models.EventActionStatusModel> GetAllStatus(int Userid, int OrganizationId)
+        public IEnumerable<Angular2_AspDotNet.Models.EventActionStatusModel> GetAllStatus(int Userid, int OrganizationId)
         {
             var titleList = base.GetAll(x => x.OrganizationId == OrganizationId);
-            return Mapper.Map<IEnumerable<EventActionStatu>, IEnumerable<RiskManagement.Models.EventActionStatusModel>>(titleList);
+            return Mapper.Map<IEnumerable<EventActionStatu>, IEnumerable<Angular2_AspDotNet.Models.EventActionStatusModel>>(titleList);
         }
 
 

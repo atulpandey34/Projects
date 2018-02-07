@@ -149,10 +149,9 @@ var MeasureComponent = /** @class */ (function () {
             ],
             providers: [measure_service_1.MeasureService]
         }),
-        __metadata("design:paramtypes", [measure_service_1.MeasureService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object])
+        __metadata("design:paramtypes", [measure_service_1.MeasureService, router_1.Router, router_1.ActivatedRoute])
     ], MeasureComponent);
     return MeasureComponent;
-    var _a, _b;
 }());
 exports.MeasureComponent = MeasureComponent;
 //# sourceMappingURL=newmeasure.component.js.map

@@ -1,27 +1,27 @@
-﻿using RiskManagement.Data;
-using RiskManagement.Data.Repository;
-using RiskManagement.Repository.Interfaces;
+﻿using Angular2_AspDotNet.Data;
+using Angular2_AspDotNet.Data.Repository;
+using Angular2_AspDotNet.Repository.Interfaces;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using AutoMapper;
-using RiskManagement.Models;
+using Angular2_AspDotNet.Models;
 using System.Data.Entity.Core.Objects;
 
-namespace RiskManagement.Repository.Repository
+namespace Angular2_AspDotNet.Repository.Repository
 {
-    public class CorrectiveActionRepository : RepositoryBase<RiskManagement.Data.CorrectiveAction>, ICorrectiveActionRepository, IDisposable
+    public class CorrectiveActionRepository : RepositoryBase<Angular2_AspDotNet.Data.CorrectiveAction>, ICorrectiveActionRepository, IDisposable
     {
-        private RiskManagement.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
+        private Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork _unitOfWork = null;
         private IActionRepository _IActionRepository = null;
         private ICorrectiveActionAssignedToListRepository _ICorrectiveActionAssignedToListRepository = null;
-        public CorrectiveActionRepository(RiskManagement.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
+        public CorrectiveActionRepository(Angular2_AspDotNet.Data.UnitOfWork.UnitOfWork unitOfWork) : base(unitOfWork.Context)
         {
             this._unitOfWork = unitOfWork;
             this._IActionRepository = new ActionRepository(unitOfWork);
             this._ICorrectiveActionAssignedToListRepository = new CorrectiveActionAssignedToListRepository(unitOfWork);
         }
-        public void Add(RiskManagement.Data.CorrectiveAction entity, int LoggedInUserId, int LoggedInOrganizationId)
+        public void Add(Angular2_AspDotNet.Data.CorrectiveAction entity, int LoggedInUserId, int LoggedInOrganizationId)
         {
             entity.OrganizationID = LoggedInOrganizationId;
             base.Insert(entity);

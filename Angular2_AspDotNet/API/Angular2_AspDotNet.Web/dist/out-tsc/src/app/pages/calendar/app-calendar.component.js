@@ -451,7 +451,7 @@ var AppCalendarComponent = /** @class */ (function () {
     };
     __decorate([
         core_1.ViewChild('modalContent'),
-        __metadata("design:type", typeof (_a = typeof core_1.TemplateRef !== "undefined" && core_1.TemplateRef) === "function" && _a || Object)
+        __metadata("design:type", core_1.TemplateRef)
     ], AppCalendarComponent.prototype, "modalContent", void 0);
     AppCalendarComponent = __decorate([
         core_1.Component({
@@ -461,10 +461,9 @@ var AppCalendarComponent = /** @class */ (function () {
             providers: [Mastereventdata_1.MasterEventDataService],
             styles: [".modal-dialog{\n    overflow-y: initial !important\n}\n.modal-body{\n    height: 400px;\n    \n    overflow-y: auto;\n}"]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof ng_bootstrap_1.NgbModal !== "undefined" && ng_bootstrap_1.NgbModal) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, Mastereventdata_1.MasterEventDataService])
+        __metadata("design:paramtypes", [ng_bootstrap_1.NgbModal, forms_1.FormBuilder, Mastereventdata_1.MasterEventDataService])
     ], AppCalendarComponent);
     return AppCalendarComponent;
-    var _a, _b, _c;
 }());
 exports.AppCalendarComponent = AppCalendarComponent;
 //# sourceMappingURL=app-calendar.component.js.map

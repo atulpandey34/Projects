@@ -1,22 +1,22 @@
-﻿using RiskManagement.Models;
+﻿using Angular2_AspDotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiskManagement.Repository.Interfaces
+namespace Angular2_AspDotNet.Repository.Interfaces
 {
     public interface IRiskAssessmentRepository
     {
-        IEnumerable<RiskManagement.Data.RiskAssessment> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
+        IEnumerable<Angular2_AspDotNet.Data.RiskAssessment> GetAll( int LoggedInUserId, int LoggedInOrganizationId);
 
 
-        void Add(RiskManagement.Data.RiskAssessment entity, int Userid, int OrganizationId);
+        void Add(Angular2_AspDotNet.Data.RiskAssessment entity, int Userid, int OrganizationId);
 
-        RiskManagement.Data.RiskAssessment GetSingle(int id, int Userid, int OrganizationId);
+        Angular2_AspDotNet.Data.RiskAssessment GetSingle(int id, int Userid, int OrganizationId);
 
-        void Update(RiskManagement.Data.RiskAssessment entity, int LoggedInUserId, int LoggedInOrganizationId);
+        void Update(Angular2_AspDotNet.Data.RiskAssessment entity, int LoggedInUserId, int LoggedInOrganizationId);
 
         void Delete(int id, int Userid, int OrganizationId);
 

@@ -4,17 +4,17 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace RiskManagement.Data.Repository
+namespace Angular2_AspDotNet.Data.Repository
 {
     public class RepositoryBase<TEntity> where TEntity : class
     {
         #region Private member variable
         private IDbSet<TEntity> _entities;
-        public RiskManagementEntities RepositoryContext;
+        public Angular2_AspDotNetEntities RepositoryContext;
         internal DbSet<TEntity> DbSet;
         #endregion
 
-        public RepositoryBase(RiskManagementEntities context)
+        public RepositoryBase(Angular2_AspDotNetEntities context)
         {
             this.RepositoryContext = context;
             this.DbSet = context.Set<TEntity>();

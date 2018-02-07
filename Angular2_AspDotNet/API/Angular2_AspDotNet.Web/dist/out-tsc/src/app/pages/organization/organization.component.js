@@ -109,10 +109,9 @@ var DocumentComponent = /** @class */ (function () {
                 '../form-elements/controls/file-uploader/file-uploader.component.scss',],
             providers: [organization_service_1.OrganizationService],
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _a || Object, organization_service_1.OrganizationService, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object, typeof (_d = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _d || Object])
+        __metadata("design:paramtypes", [forms_1.FormBuilder, organization_service_1.OrganizationService, router_1.ActivatedRoute, router_1.Router, common_1.Location])
     ], DocumentComponent);
     return DocumentComponent;
-    var _a, _b, _c, _d;
 }());
 exports.DocumentComponent = DocumentComponent;
 //# sourceMappingURL=organization.component.js.map

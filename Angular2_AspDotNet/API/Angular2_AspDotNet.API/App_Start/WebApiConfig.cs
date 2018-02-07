@@ -8,7 +8,7 @@ using Newtonsoft.Json.Serialization;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 
-namespace RiskManagement.API
+namespace Angular2_AspDotNet.API
 {
     public static class WebApiConfig
     {

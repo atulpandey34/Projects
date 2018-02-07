@@ -121,10 +121,9 @@ var LoginComponent = /** @class */ (function () {
             providers: [login_service_1.LoginService],
             encapsulation: core_1.ViewEncapsulation.None
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof ngx_cookie_1.CookieService !== "undefined" && ngx_cookie_1.CookieService) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, login_service_1.LoginService])
+        __metadata("design:paramtypes", [ngx_cookie_1.CookieService, router_1.Router, forms_1.FormBuilder, login_service_1.LoginService])
     ], LoginComponent);
     return LoginComponent;
-    var _a, _b, _c;
 }());
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

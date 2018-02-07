@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace RiskManagement.API.Areas.HelpPage.ModelDescriptions
+namespace Angular2_AspDotNet.API.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

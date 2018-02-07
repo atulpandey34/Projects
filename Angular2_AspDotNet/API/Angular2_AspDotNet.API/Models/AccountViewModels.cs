@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RiskManagement.API.Models
+namespace Angular2_AspDotNet.API.Models
 {
     // Models returned by AccountController actions.
 

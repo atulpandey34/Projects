@@ -61,10 +61,9 @@ var AuthenticatedHttpService = /** @class */ (function (_super) {
     };
     AuthenticatedHttpService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [typeof (_a = typeof http_1.XHRBackend !== "undefined" && http_1.XHRBackend) === "function" && _a || Object, typeof (_b = typeof http_1.RequestOptions !== "undefined" && http_1.RequestOptions) === "function" && _b || Object, typeof (_c = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _c || Object])
+        __metadata("design:paramtypes", [http_1.XHRBackend, http_1.RequestOptions, router_1.Router])
     ], AuthenticatedHttpService);
     return AuthenticatedHttpService;
-    var _a, _b, _c;
 }(http_1.Http));
 exports.AuthenticatedHttpService = AuthenticatedHttpService;
 //# sourceMappingURL=401.service.js.map

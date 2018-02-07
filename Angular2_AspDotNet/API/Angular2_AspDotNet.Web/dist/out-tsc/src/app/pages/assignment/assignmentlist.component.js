@@ -82,10 +82,9 @@ var AssignmentListComponent = /** @class */ (function () {
                 "../../../../node_modules/primeng/resources/themes/omega/theme.css"],
             providers: [eventaction_service_1.EventActionService, Mastereventdata_1.MasterEventDataService, user_service_1.UserService, assignment_service_1.AssignmentService],
         }),
-        __metadata("design:paramtypes", [assignment_service_1.AssignmentService, user_service_1.UserService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object, typeof (_c = typeof forms_1.FormBuilder !== "undefined" && forms_1.FormBuilder) === "function" && _c || Object, eventaction_service_1.EventActionService, typeof (_d = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _d || Object, Mastereventdata_1.MasterEventDataService])
+        __metadata("design:paramtypes", [assignment_service_1.AssignmentService, user_service_1.UserService, router_1.Router, common_1.Location, forms_1.FormBuilder, eventaction_service_1.EventActionService, router_1.ActivatedRoute, Mastereventdata_1.MasterEventDataService])
     ], AssignmentListComponent);
     return AssignmentListComponent;
-    var _a, _b, _c, _d;
 }());
 exports.AssignmentListComponent = AssignmentListComponent;
 //# sourceMappingURL=assignmentlist.component.js.map
